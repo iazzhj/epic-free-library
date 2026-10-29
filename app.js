@@ -159,9 +159,24 @@
     if (token !== renderToken) return;
     if (q && state.scope === "cur") list = list.filter(f => fxMatches(f, q));
     $("#effectsMeta").textContent = q && state.scope === "cur" ? `${list.length} / ${info.count}개` : `${info.count}개`;
-    grid.innerHTML = list.length ? list.map((f, i) => fxCard(f, i)).join("")
+    grid.innerHTML = list.length ? groupedCards(list)
       : `<div class="empty"><strong>검색어와 맞는 이펙트가 없습니다.</strong>검색어를 지우거나 범위를 '전체'로 바꿔 보세요.</div>`;
     wireVideos();
+  }
+
+  // 경로 기준 묶음 제목: 'Greystone/Abilities/ClearAPath' → 'Abilities / ClearAPath'
+  function groupedCards(list){
+    let html = "", last = null;
+    list.forEach((f, i) => {
+      const g = (f.path || "").split("/").slice(1).join(" / ") || "기타";
+      if (g !== last) {
+        const n = list.filter(x => ((x.path || "").split("/").slice(1).join(" / ") || "기타") === g).length;
+        html += `<h3 class="fx-group">${esc(g)} <span>${n}</span></h3>`;
+        last = g;
+      }
+      html += fxCard(f, i);
+    });
+    return html;
   }
 
   function emptyState(a){

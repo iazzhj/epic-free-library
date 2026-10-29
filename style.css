@@ -146,3 +146,6 @@ button,input,select{font:inherit;color:inherit}
   .hero .tile{max-width:220px;font-size:36px}
 }
 @media (prefers-reduced-motion:reduce){.side{transition:none}}
+.fx-group{grid-column:1/-1;margin:10px 0 -4px;font:600 13px var(--mono);color:var(--ink);display:flex;gap:8px;align-items:baseline;border-bottom:1px solid var(--line);padding-bottom:6px}
+.fx-group:first-child{margin-top:0}
+.fx-group span{color:var(--muted);font-weight:400}

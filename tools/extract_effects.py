@@ -96,7 +96,11 @@ def relative_path(package_path, folder):
         if rel.startswith(prefix):
             rel = rel[len(prefix):]
             break
+    if rel.endswith("/FX"):
+        rel = rel[:-3]
     hero = folder[len("Paragon"):] if folder.startswith("Paragon") else folder
+    if rel == hero or rel.startswith(hero + "/"):
+        return rel
     return hero + ("/" + rel if rel else "")
 
 
