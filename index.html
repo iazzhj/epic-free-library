@@ -1,353 +1,69 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Epic 무료 에셋 라이브러리</title>
-<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="에픽게임즈가 무료로 공개한 언리얼 엔진 리소스를 찾고 Fab 원본으로 바로 이동하는 라이브러리">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;700&family=IBM+Plex+Sans+KR:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
-<style>
-/* Layout: 스튜디오 에셋 브라우저 — 상단 고정 필터 바, 요약 스트립, 카드 그리드, 하단 갱신 기록 */
-:root{
-  --bg:#eef1f4; --surface:#ffffff; --ink:#18202a; --muted:#5a6675; --line:#d5dbe2;
-  --accent:#0e6e8c; --accent-ink:#ffffff; --gold:#a8670a; --warn:#b4401f; --ok:#2c7a4b;
-  --c-char:#6a4fb3; --c-env:#2f7d5b; --c-anim:#b0581a; --c-sample:#0e6e8c; --c-limited:#b4401f; --c-comm:#6b7280;
-  --display:"Chakra Petch","IBM Plex Sans KR",system-ui,sans-serif;
-  --body:"IBM Plex Sans KR",system-ui,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
-  --mono:"JetBrains Mono",ui-monospace,Consolas,monospace;
-}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --bg:#11161c; --surface:#1a2129; --ink:#e4e9ef; --muted:#97a3b1; --line:#2b3540;
-  --accent:#4fb3d1; --accent-ink:#0b1217; --gold:#e0a64a; --warn:#ef7a57; --ok:#5cc28a;
-  --c-char:#a48ce8; --c-env:#5cc28a; --c-anim:#e8955a; --c-sample:#4fb3d1; --c-limited:#ef7a57; --c-comm:#9aa3af;
-  color-scheme:dark}}
-:root[data-theme="dark"]{
-  --bg:#11161c; --surface:#1a2129; --ink:#e4e9ef; --muted:#97a3b1; --line:#2b3540;
-  --accent:#4fb3d1; --accent-ink:#0b1217; --gold:#e0a64a; --warn:#ef7a57; --ok:#5cc28a;
-  --c-char:#a48ce8; --c-env:#5cc28a; --c-anim:#e8955a; --c-sample:#4fb3d1; --c-limited:#ef7a57; --c-comm:#9aa3af;
-  color-scheme:dark}
-*{box-sizing:border-box}
-body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.55;
-  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
-body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
-.wrap{max-width:1180px;margin:0 auto;padding-block:28px 48px;display:flex;flex-direction:column;gap:22px}
-header.top{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px}
-.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.08em;color:var(--muted);text-transform:uppercase}
-h1{font-family:var(--display);font-weight:700;font-size:clamp(26px,4vw,38px);line-height:1.1;margin:4px 0 0;text-wrap:balance}
-.lede{color:var(--muted);margin:6px 0 0;max-width:62ch}
-.stamp{font-family:var(--mono);font-size:12px;color:var(--muted);text-align:right}
-.stamp b{color:var(--ink);font-weight:600}
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
 
-.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);padding-block:10px;
-  display:flex;flex-direction:column;gap:10px;border-bottom:1px solid var(--line)}
-.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
-.search{flex:1 1 240px;min-width:0;display:flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:0 10px}
-.search input{flex:1;min-width:0;border:0;background:transparent;color:var(--ink);font:inherit;padding:9px 0;outline:none}
-.search:focus-within{border-color:var(--accent)}
-.chip{font:500 13px var(--body);border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:5px 12px;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
-.chip .n{font-family:var(--mono);font-size:11px;color:var(--muted)}
-.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
-.chip[aria-pressed="true"] .n{color:var(--bg);opacity:.7}
-.chip:focus-visible,.btn:focus-visible,.star:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-.sel{font:inherit;font-size:13px;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:6px 8px}
-.lbl{font-size:12px;color:var(--muted)}
-
-.alert{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:baseline;border:1px solid var(--c-limited);border-left-width:4px;border-radius:6px;padding:10px 14px;background:var(--surface)}
-.alert strong{color:var(--c-limited)}
-.alert .mono{font-family:var(--mono);font-size:12px;color:var(--muted)}
-
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:14px;display:flex;flex-direction:column;gap:10px;min-width:0}
-.card.dim{opacity:.55}
-.head{display:flex;gap:12px;align-items:flex-start}
-.mono-tile{flex:0 0 44px;height:44px;border-radius:6px;display:grid;place-items:center;font:700 16px var(--display);color:var(--surface);background:var(--k)}
-.title{min-width:0;flex:1}
-.title h3{margin:0;font:600 15px var(--body);line-height:1.3;overflow-wrap:anywhere}
-.kind{font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:var(--k);text-transform:uppercase}
-.star{border:0;background:transparent;cursor:pointer;font-size:18px;line-height:1;color:var(--muted);padding:2px}
-.star[aria-pressed="true"]{color:var(--gold)}
-.desc{margin:0;font-size:13.5px;color:var(--muted)}
-.tags{display:flex;flex-wrap:wrap;gap:5px}
-.tag{font-family:var(--mono);font-size:11px;border:1px solid var(--line);border-radius:4px;padding:1px 6px;color:var(--ink)}
-.tag.vfx{border-color:var(--c-limited);color:var(--c-limited)}
-.badge{font-family:var(--mono);font-size:11px;border-radius:4px;padding:1px 6px;background:var(--k);color:var(--surface)}
-.badge.exp{background:var(--muted)}
-.meta{font-family:var(--mono);font-size:11.5px;color:var(--muted)}
-.actions{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto}
-.btn{font:600 13px var(--body);text-decoration:none;border-radius:5px;padding:6px 10px;border:1px solid var(--line);color:var(--ink);background:transparent}
-.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
-.btn:hover{border-color:var(--accent)}
-.empty{grid-column:1/-1;text-align:center;color:var(--muted);padding:40px 0}
-
-section h2{font-family:var(--display);font-size:20px;margin:0 0 8px}
-.log{display:flex;flex-direction:column;gap:6px;margin:0;padding:0;list-style:none}
-.log li{display:grid;grid-template-columns:96px 1fr;gap:12px;font-size:13.5px}
-.log time{font-family:var(--mono);font-size:12px;color:var(--muted)}
-.notes{font-size:13px;color:var(--muted);max-width:80ch}
-.notes p{margin:4px 0}
-@media (max-width:480px){.stamp{text-align:left}.log li{grid-template-columns:1fr;gap:0}}
-@media (prefers-reduced-motion:no-preference){.card{transition:border-color .15s}.card:hover{border-color:var(--accent)}}
-</style>
-
-<div class="wrap">
-  <header class="top">
-    <div>
-      <div class="eyebrow">Unreal Engine · Fab · Free</div>
-      <h1>Epic 무료 에셋 라이브러리</h1>
-      <p class="lede">에픽이 무료로 공개한 캐릭터·환경·애니메이션·VFX·샘플 프로젝트를 한곳에서 찾고, 버튼 하나로 Fab 원본 페이지로 이동합니다.</p>
+  <!-- 왼쪽: 목록 -->
+  <aside class="side" id="side" aria-label="에셋 목록">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span>EPIC FREE LIBRARY</span>
+      <button class="icon-btn only-mobile" id="closeSide" aria-label="목록 닫기">✕</button>
     </div>
-    <div class="stamp">마지막 갱신 <b id="updated"></b><br>등록 <b id="total"></b>개</div>
-  </header>
-
-  <div id="limitedAlert"></div>
-
-  <div class="bar">
-    <div class="row">
-      <label class="search" for="q"><span aria-hidden="true">⌕</span><input id="q" type="search" placeholder="이름·태그 검색 (예: Countess, VFX, 환경)" autocomplete="off"></label>
-      <span class="lbl">정렬</span>
-      <select id="sort" class="sel" aria-label="정렬">
-        <option value="cat">분류순</option>
-        <option value="name">이름순</option>
-        <option value="added">최근 추가순</option>
-      </select>
+    <div class="nav-row">
+      <button class="btn" id="prev">← 이전</button>
+      <button class="btn" id="next">다음 →</button>
     </div>
-    <div class="row" id="cats" role="group" aria-label="분류"></div>
-    <div class="row" id="types" role="group" aria-label="포함 요소"></div>
-  </div>
+    <label class="search" for="q">
+      <span aria-hidden="true">⌕</span>
+      <input id="q" type="search" placeholder="에셋·이펙트 이름, 설명 검색" autocomplete="off">
+    </label>
+    <div class="seg" role="group" aria-label="검색 범위">
+      <button id="scopeAll" aria-pressed="true">전체</button>
+      <button id="scopeCur" aria-pressed="false">현재 항목</button>
+    </div>
+    <select id="cat" class="sel" aria-label="분류"></select>
+    <div class="count" id="count"></div>
+    <ol class="list" id="list"></ol>
+  </aside>
 
-  <div class="grid" id="grid" aria-live="polite"></div>
-
-  <section>
-    <h2>갱신 기록</h2>
-    <ul class="log" id="log"></ul>
-  </section>
-
-  <section class="notes">
-    <h2>이용 메모</h2>
-    <p>Paragon 팩은 Unreal Engine 프로젝트에서 자유롭게 쓸 수 있지만, 'PARAGON' 상표를 게임 이름이나 홍보에 쓰는 것은 허용되지 않습니다.</p>
-    <p>기간 한정 무료 에셋은 Fab Standard License로 제공되며, 무료 기간이 끝나면 다시 유료로 돌아갈 수 있습니다. 기간 안에 Fab에서 '라이브러리에 추가'를 눌러 두세요.</p>
-    <p>'비공식' 표시는 에픽이 아닌 커뮤니티 제작자가 에픽 원본을 가공해 무료 배포한 항목입니다.</p>
-    <p>★ 표시는 이 브라우저에만 저장됩니다.</p>
-  </section>
-</div>
-
-<script>
-/* =====================================================================
-   DATA — 갱신 시 이 블록만 수정합니다.
-   필드: id(고유), name, cat(분류 키), types(포함 요소), fab(리스팅 UUID 또는 전체 URL),
-         docs(선택, 공식 문서 URL), desc(선택), added(등록일), until(선택, 기간한정 종료 UTC ISO),
-         by(선택, 제작자), official(false면 비공식 표시)
-   ===================================================================== */
-const UPDATED = "2026-10-29";
-
-const CATS = {
-  char:    { label: "Paragon 캐릭터", short: "캐릭터", color: "--c-char" },
-  env:     { label: "환경",           short: "환경",   color: "--c-env" },
-  anim:    { label: "애니메이션",     short: "애니메이션", color: "--c-anim" },
-  sample:  { label: "샘플 프로젝트",  short: "샘플",   color: "--c-sample" },
-  limited: { label: "기간 한정 무료", short: "기간한정", color: "--c-limited" },
-  comm:    { label: "커뮤니티 파생",  short: "비공식", color: "--c-comm" }
-};
-
-const PARAGON_TYPES = ["모델", "애니메이션", "VFX", "스킨", "애님 BP"];
-const PARAGON_DESC = "캐릭터 모델, 애니메이션, 스킨, FX, 애니메이션 블루프린트 포함.";
-const heroes = [
-  ["Aurora","918456eb-4c36-4346-9be2-8986e25c9a0b"],["Boris","2e32cbb8-b415-4c39-962f-a687c64263bd"],
-  ["Countess","0bf014eb-f2ed-4029-adda-81a855eb5220"],["Crunch","c23ee3a7-4a73-4a83-9061-30b682d269f8"],
-  ["Dekker","6cc4f913-db56-44cc-9a42-6aeeeb147c79"],["Drongo","40e3af76-9b2d-4680-81b6-606f6d9269ef"],
-  ["Feng Mao","af344d79-eca6-4b6c-aae9-87c617a27ba1"],["Gadget","52a621fd-28bb-4898-a2e7-93229a40e3f4"],
-  ["Gideon","51935254-f70f-400a-8ca5-91a3e1b83e3b"],["Greystone","122fd7bf-6f12-4304-a930-cccbbacdaebc"],
-  ["GRIM.exe","75578197-6f11-4839-8b9f-88009839e1eb"],["Grux","8c4bac2c-f7f7-4632-a644-47f4e104f5d8"],
-  ["Howitzer","7397dd8d-2e47-4e68-9e9d-a10c6fa0a9c7"],["Iggy & Scorch","67570f6d-3290-4482-819d-b18853bd8307"],
-  ["Kallari","ec8f2cb8-f904-4473-902f-67ade18bd225"],["Khaimera","e7c665c1-8c13-42f0-9152-0753008853d7"],
-  ["Kwang","f4c67e92-b976-4b5b-ab9f-4c25b010f6f3"],["Lt. Belica","6f3a45fb-b5fe-4866-9a60-de315301f75b"],
-  ["Morigesh","29e67175-fa08-448f-822b-37f411530749"],["Muriel","c16f2277-675d-4366-a7e6-cf3b5085f936"],
-  ["Murdock","89ae5876-3350-432e-882b-7d617e8c7e6f"],["Narbash","d8904a0e-9169-4763-b82b-5fcf864235a4"],
-  ["Phase","b2c95d5c-a805-460b-a01b-db6da3a778f0"],["Rampage","0807cf74-08fd-4a33-8c8d-f33c9439fb1f"],
-  ["Revenant","a5f05f30-d6bd-48b4-9b41-5f3012c7e95d"],["Riktor","edaa6546-f31e-4894-9ee9-0600829e0fff"],
-  ["Serath","522b6160-15ab-492b-a2b0-c09f9bb5f6e6"],["Sevarog","a4882b5e-cfad-4830-a3dd-46a6c31a79b2"],
-  ["Shinbi","e3b7b93c-2633-4f60-8cf1-8ee5bf7de4a9"],["Sparrow","7d76ddf0-d9ce-4d00-939e-d72793534d01"],
-  ["Steel","5c0e13c1-8d00-4213-8a05-5c501c01548d"],["Terra","5ea6bcb6-e43e-4bbe-813f-c19d8c907565"],
-  ["The Fey","9afbcde6-4a14-4018-95c3-2f3a2e1da858"],["Twinblast","9fa88852-5711-42e1-94fa-2491498a64da"],
-  ["Wraith","17e0840f-8651-4933-bd6d-211a34b1dd17"],["Wukong","27054d0c-c26e-4fe3-b6f9-fa778dfcb8b6"],
-  ["Yin","dc21702b-7f1e-4aa5-a747-78d519f5fb51"],["Zinx","15e6593c-3696-4f87-99ef-fcec9e3138fd"]
-];
-
-const ASSETS = [
-  ...heroes.map(([name, fab]) => ({
-    id: "paragon-" + name.toLowerCase().replace(/[^a-z0-9]+/g, "-"),
-    name: "Paragon: " + name, cat: "char", types: PARAGON_TYPES, fab, desc: PARAGON_DESC, added: "2026-10-29"
-  })),
-  { id:"paragon-minions", name:"Paragon: Minions", cat:"char", types:["모델","애니메이션","VFX"],
-    fab:"039ea035-9360-4e76-ad06-5d3a92da6f65", desc:"레인 미니언 캐릭터 팩.", added:"2026-10-29" },
-  { id:"paragon-agora-monolith", name:"Paragon: Agora and Monolith Environment", cat:"env", types:["환경","머티리얼","VFX","샘플 레벨"],
-    fab:"6f401fb5-88b5-41b4-bf1b-62321414e1f0", desc:"Agora·Monolith 맵 구성 요소 1,500개 이상과 샘플 레벨.", added:"2026-10-29" },
-
-  { id:"gasp", name:"Game Animation Sample Project", cat:"anim", types:["애니메이션","모션 매칭","캐릭터 BP"],
-    fab:"880e319a-a59e-4ed2-b268-b32dac7fa016",
-    docs:"https://dev.epicgames.com/documentation/unreal-engine/game-animation-sample-project-in-unreal-engine",
-    desc:"모션캡처 애니메이션 500개 이상과 모션 매칭 기반 3인칭 이동 시스템. 문서 기준 UE 5.8 대응.", added:"2026-10-29" },
-
-  { id:"lyra", name:"Lyra Starter Game", cat:"sample", types:["게임플레이","블루프린트","캐릭터"],
-    fab:"93faede1-4434-47c0-85f1-bf27c0820ad0",
-    docs:"https://dev.epicgames.com/documentation/unreal-engine/lyra-sample-game-in-unreal-engine",
-    desc:"UE5 게임 구조를 배우는 공식 샘플 게임.", added:"2026-10-29" },
-  { id:"city-sample", name:"City Sample", cat:"sample", types:["환경","차량","군중"],
-    fab:"4898e707-7855-404b-af0e-a505ee690e68", desc:"대규모 도시 오픈월드 학습용 샘플.", added:"2026-10-29" },
-  { id:"city-sample-buildings", name:"City Sample Buildings", cat:"env", types:["환경","모델"],
-    fab:"008fe959-5511-428e-93bd-f99b1179f6d5", desc:"City Sample의 건물 에셋만 분리한 팩.", added:"2026-10-29" },
-  { id:"city-sample-vehicles", name:"City Sample Vehicles", cat:"env", types:["모델","차량"],
-    fab:"2909157b-ddfa-4cef-a925-69dc2467021f", desc:"City Sample의 차량 에셋만 분리한 팩.", added:"2026-10-29" },
-  { id:"electric-dreams", name:"Electric Dreams Env", cat:"env", types:["환경","PCG","Substrate"],
-    fab:"d79688f5-29be-4fb2-a650-2d4a813f5306", desc:"절차적 콘텐츠 생성(PCG)과 Substrate를 보여주는 환경.", added:"2026-10-29" },
-  { id:"valley-ancient", name:"Valley of the Ancient", cat:"sample", types:["환경","Nanite","Lumen"],
-    fab:"0c19880e-21bd-42ba-8287-1caccc3951b1",
-    docs:"https://dev.epicgames.com/documentation/unreal-engine/valley-of-the-ancient-sample-game-for-unreal-engine",
-    desc:"UE5 얼리 액세스 쇼케이스 프로젝트.", added:"2026-10-29" },
-  { id:"stack-o-bot", name:"Stack O Bot", cat:"sample", types:["게임플레이","블루프린트"],
-    fab:"b4dfff49-0e7d-4c4b-a6c5-8a0315831c9c",
-    docs:"https://dev.epicgames.com/documentation/unreal-engine/stack-o-bot-sample-game-in-unreal-engine",
-    desc:"퍼즐 플랫포머 샘플 게임.", added:"2026-10-29" },
-  { id:"cropout", name:"Cropout Sample Project", cat:"sample", types:["게임플레이","블루프린트","모바일"],
-    fab:"bd733d81-7c29-44fe-b53f-65b14d06a9e2", desc:"탑다운 캐주얼 전략 샘플.", added:"2026-10-29" },
-  { id:"content-examples", name:"Content Examples", cat:"sample", types:["기능 예제","VFX","머티리얼"],
-    fab:"4d251261-d98c-48e2-baee-8f4e47c67091",
-    docs:"https://dev.epicgames.com/documentation/unreal-engine/content-examples-sample-project-for-unreal-engine",
-    desc:"엔진 기능별 예제 맵 모음.", added:"2026-10-29" },
-
-  { id:"lt-2026-10-20-desert", name:"Modular Post Apocalyptic Desert Environment", cat:"limited", types:["환경","모듈러"],
-    fab:"be5ed72e-f542-41f4-b747-bdb343eef609", by:"JustB Studios", until:"2026-11-03T15:00:00Z", added:"2026-10-29" },
-  { id:"lt-2026-10-20-golem", name:"Armored Stone Golem - Dark Fantasy Boss", cat:"limited", types:["모델","캐릭터"],
-    fab:"e40713f0-ebea-4f4d-ad9b-b577db4432d5", by:"Alexander Lenski", until:"2026-11-03T15:00:00Z", added:"2026-10-29" },
-  { id:"lt-2026-10-20-celebrations", name:"Celebrations All In One Bundle", cat:"limited", types:["VFX","머티리얼"],
-    fab:"7917aa8f-1e38-44cc-90d7-9c69da3c87b4", by:"Pautinka", desc:"크리스마스·할로윈 등 기념일용 VFX와 머티리얼.", until:"2026-11-03T15:00:00Z", added:"2026-10-29" },
-
-  { id:"comm-paragon-manny", name:"Paragon animations retargeted to Manny", cat:"comm", types:["애니메이션"], official:false,
-    fab:"e6de87b1-b755-478d-9228-a9eb89ff4411", desc:"Paragon 휴머노이드 애니메이션 약 5,300개를 UE5 Manny에 리타깃. 메시 미포함.", added:"2026-10-29" }
-];
-
-const LOG = [
-  { date:"2026-10-29", text:"첫 공개. Paragon 캐릭터 38종·미니언·환경, 공식 샘플 9종, 애니메이션 샘플, 기간 한정 무료 3종(~11/3), 커뮤니티 파생 1종 등록." }
-];
-const EXTERNAL = [
-  { label:"Paragon VFX 미리보기", url:"https://paragon-effect.sangha.workers.dev/" },
-  { label:"Fab 기간 한정 무료 공지", url:"https://forums.unrealengine.com/t/fab-limited-time-free-content/2738884" },
-  { label:"Epic Games 판매자 페이지", url:"https://www.fab.com/sellers/Epic%20Games" }
-];
-/* ============================== END DATA ============================== */
-
-const $ = s => document.querySelector(s);
-const fabUrl = f => f.startsWith("http") ? f : "https://www.fab.com/listings/" + f;
-const now = new Date();
-const isExpired = a => a.until && new Date(a.until) < now;
-const store = {
-  get(){ try { return JSON.parse(localStorage.getItem("efl-stars") || "[]"); } catch(e){ return []; } },
-  set(v){ try { localStorage.setItem("efl-stars", JSON.stringify(v)); } catch(e){} }
-};
-let stars = new Set(store.get());
-const state = { cat:"all", type:null, q:"", sort:"cat" };
-
-function esc(s){ return String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
-function initials(name){
-  const n = name.replace(/^Paragon:\s*/, "");
-  const w = n.split(/[\s.&-]+/).filter(Boolean);
-  return (w.length > 1 ? w[0][0] + w[1][0] : n.slice(0,2)).toUpperCase();
-}
-function fmtDate(iso){
-  const d = new Date(iso);
-  return d.toLocaleString("ko-KR",{ month:"long", day:"numeric", hour:"2-digit", minute:"2-digit", timeZone:"Asia/Seoul" }) + " (KST)";
-}
-
-function buildChips(){
-  const cats = $("#cats");
-  const counts = { all: ASSETS.length, star: 0 };
-  ASSETS.forEach(a => { counts[a.cat] = (counts[a.cat]||0) + 1; if (stars.has(a.id)) counts.star++; });
-  const items = [["all","전체"], ...Object.entries(CATS).map(([k,v]) => [k, v.label]), ["star","★ 내 체크"]];
-  cats.innerHTML = items.filter(([k]) => k === "all" || k === "star" || counts[k])
-    .map(([k,l]) => `<button class="chip" data-cat="${k}" aria-pressed="${state.cat===k}">${esc(l)} <span class="n">${counts[k]||0}</span></button>`).join("");
-
-  const typeCount = {};
-  ASSETS.forEach(a => a.types.forEach(t => typeCount[t] = (typeCount[t]||0) + 1));
-  const top = Object.entries(typeCount).sort((a,b) => b[1]-a[1]).slice(0, 10);
-  $("#types").innerHTML = `<span class="lbl">포함 요소</span>` + top
-    .map(([t,n]) => `<button class="chip" data-type="${esc(t)}" aria-pressed="${state.type===t}">${esc(t)} <span class="n">${n}</span></button>`).join("");
-}
-
-function render(){
-  const q = state.q.trim().toLowerCase();
-  const order = Object.keys(CATS);
-  let list = ASSETS.filter(a => {
-    if (state.cat === "star") { if (!stars.has(a.id)) return false; }
-    else if (state.cat !== "all" && a.cat !== state.cat) return false;
-    if (state.type && !a.types.includes(state.type)) return false;
-    if (q) {
-      const hay = [a.name, a.desc||"", a.by||"", CATS[a.cat].label, ...a.types].join(" ").toLowerCase();
-      if (!hay.includes(q)) return false;
-    }
-    return true;
-  });
-  list.sort((a,b) => {
-    if (state.sort === "name") return a.name.localeCompare(b.name);
-    if (state.sort === "added") return (b.added||"").localeCompare(a.added||"") || a.name.localeCompare(b.name);
-    return order.indexOf(a.cat) - order.indexOf(b.cat) || a.name.localeCompare(b.name);
-  });
-  $("#grid").innerHTML = list.length ? list.map(card).join("") :
-    `<p class="empty">조건에 맞는 에셋이 없습니다. 검색어를 지우거나 다른 분류를 골라 보세요.</p>`;
-}
-
-function card(a){
-  const c = CATS[a.cat];
-  const exp = isExpired(a);
-  const badges = [];
-  if (a.official === false) badges.push(`<span class="badge">비공식</span>`);
-  if (a.until) badges.push(exp ? `<span class="badge exp">무료 종료</span>` : `<span class="badge">~ ${esc(fmtDate(a.until))}</span>`);
-  return `<article class="card${exp ? " dim" : ""}" style="--k:var(${c.color})">
-    <div class="head">
-      <div class="mono-tile" aria-hidden="true">${esc(initials(a.name))}</div>
-      <div class="title">
-        <div class="kind">${esc(c.short)}</div>
-        <h3>${esc(a.name)}</h3>
+  <!-- 가운데: 상세 -->
+  <main class="main" id="main">
+    <div class="topbar only-mobile">
+      <button class="btn" id="openSide">☰ 목록</button>
+      <span class="topbar-title" id="topTitle"></span>
+    </div>
+    <div id="notice"></div>
+    <section class="hero" id="hero" aria-live="polite"></section>
+    <section class="effects">
+      <div class="section-head">
+        <h2 id="effectsTitle">EFFECTS</h2>
+        <span class="section-meta" id="effectsMeta"></span>
       </div>
-      <button class="star" data-star="${a.id}" aria-pressed="${stars.has(a.id)}" aria-label="${esc(a.name)} 체크">${stars.has(a.id) ? "★" : "☆"}</button>
-    </div>
-    ${badges.length ? `<div class="tags">${badges.join("")}</div>` : ""}
-    ${a.desc ? `<p class="desc">${esc(a.desc)}</p>` : ""}
-    <div class="tags">${a.types.map(t => `<span class="tag${t==="VFX" ? " vfx" : ""}">${esc(t)}</span>`).join("")}</div>
-    ${a.by ? `<div class="meta">제작 ${esc(a.by)}</div>` : ""}
-    <div class="actions">
-      <a class="btn primary" href="${esc(fabUrl(a.fab))}" target="_blank" rel="noopener">Fab에서 열기 ↗</a>
-      ${a.docs ? `<a class="btn" href="${esc(a.docs)}" target="_blank" rel="noopener">공식 문서 ↗</a>` : ""}
-    </div>
-  </article>`;
-}
+      <div class="effect-grid" id="effects"></div>
+    </section>
+    <footer class="foot" id="foot"></footer>
+  </main>
 
-function renderAlert(){
-  const live = ASSETS.filter(a => a.cat === "limited" && !isExpired(a));
-  const links = EXTERNAL.map(e => `<a class="btn" href="${esc(e.url)}" target="_blank" rel="noopener">${esc(e.label)} ↗</a>`).join("");
-  if (!live.length) { $("#limitedAlert").innerHTML = `<div class="row">${links}</div>`; return; }
-  const until = live.map(a => a.until).sort()[0];
-  $("#limitedAlert").innerHTML = `<div class="alert">
-    <strong>기간 한정 무료 ${live.length}종 진행 중</strong>
-    <span class="mono">${esc(fmtDate(until))}까지</span>
-    <span>기간 안에 Fab 라이브러리에 추가해 두세요.</span>
-  </div><div class="row" style="margin-top:10px">${links}</div>`;
-}
+  <!-- 오른쪽: 재생 속도 -->
+  <aside class="rail" aria-label="미리보기 속도">
+    <div class="rail-title">미리보기 속도<small>영상 파일은 그대로</small></div>
+    <output class="speed-now" id="speedNow" for="speedRange">1x</output>
+    <div class="speed-btns" id="speedBtns"></div>
+    <input type="range" id="speedRange" min="0.1" max="2" step="0.05" value="1" aria-label="재생 속도">
+  </aside>
 
-$("#updated").textContent = UPDATED;
-$("#total").textContent = ASSETS.length;
-$("#log").innerHTML = LOG.slice().reverse().map(l => `<li><time>${esc(l.date)}</time><span>${esc(l.text)}</span></li>`).join("");
-
-document.addEventListener("click", e => {
-  const cat = e.target.closest("[data-cat]");
-  const type = e.target.closest("[data-type]");
-  const star = e.target.closest("[data-star]");
-  if (cat) { state.cat = cat.dataset.cat; buildChips(); render(); }
-  if (type) { state.type = state.type === type.dataset.type ? null : type.dataset.type; buildChips(); render(); }
-  if (star) {
-    const id = star.dataset.star;
-    stars.has(id) ? stars.delete(id) : stars.add(id);
-    store.set([...stars]); buildChips(); render();
-  }
-});
-$("#q").addEventListener("input", e => { state.q = e.target.value; render(); });
-$("#sort").addEventListener("change", e => { state.sort = e.target.value; render(); });
-
-renderAlert(); buildChips(); render();
-</script>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
