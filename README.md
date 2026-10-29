@@ -57,3 +57,13 @@
 ```
 
 `video` 가 상대 경로이면 `assets.json` 의 `mediaBase` 를 앞에 붙입니다. 영상을 외부 저장소(예: Cloudflare R2)로 옮길 때는 `mediaBase` 만 바꾸면 됩니다.
+
+## 이펙트 추가 작업 흐름
+
+| 순서 | 위치 | 스크립트 | 결과 |
+|---|---|---|---|
+| 1 | 언리얼 에디터 | `tools/extract_effects.py` | `Saved/EpicFreeLibrary/effects_export.json` |
+| 2 | 저장소 | `tools/import_export.py <effects_export.json>` | `data/effects/` 이펙트 목록 |
+| 3 | 언리얼 에디터 | `tools/capture/fx_capture.py` | 이펙트별 PNG 프레임 (검정 배경) |
+| 4 | 언리얼 에디터 또는 파이썬 | `tools/capture/encode_videos.py` (ffmpeg 필요) | 루프·길이 측정, webm·jpg, `upload_<id>.zip` |
+| 5 | 저장소 | `tools/import_capture.py <upload_xxx.zip>` | `media/` 영상, 이펙트 데이터에 병합 |
