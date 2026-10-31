@@ -18,6 +18,17 @@ FIELDS = ("loop", "duration", "video", "poster", "visible")
 def main(zip_path):
     with zipfile.ZipFile(zip_path) as z:
         result = json.loads(z.read("capture_result.json").decode("utf-8"))
+        if "camera_plan.json" in z.namelist():
+            plan_path = os.path.join(ROOT, "data", "camera_plan.json")
+            plan = {}
+            if os.path.exists(plan_path):
+                with open(plan_path, encoding="utf-8") as f:
+                    plan = json.load(f)
+            for pid, items in json.loads(z.read("camera_plan.json").decode("utf-8")).items():
+                plan.setdefault(pid, {}).update(items)
+            with open(plan_path, "w", encoding="utf-8") as f:
+                json.dump(plan, f, ensure_ascii=False, indent=2)
+                f.write("\n")
         for info in z.infolist():
             name = info.filename
             if not name.startswith("media/") or name.endswith("/") or ".." in name:

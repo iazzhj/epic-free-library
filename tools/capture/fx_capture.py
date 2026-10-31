@@ -46,6 +46,38 @@ SEQ_ROOT = "/Game/EFL/Sequences"
 SAVED = os.path.join(unreal.Paths.project_saved_dir(), "EpicFreeLibrary")
 EXPORT_FILE = os.path.join(SAVED, "effects_export.json")
 FRAMES_ROOT = os.path.join(SAVED, "frames")
+# encode_videos.py 가 만드는 이펙트별 카메라 계획. 있으면 이펙트마다 거리·조준점을 바꿔 촬영
+PLAN_FILE = os.path.join(SAVED, "camera_plan.json")
+PLAN = {}
+
+
+def load_plan():
+    global PLAN
+    if os.path.exists(PLAN_FILE):
+        with open(PLAN_FILE, encoding="utf-8") as f:
+            PLAN = json.load(f)
+        n = sum(len(v) for v in PLAN.values())
+        unreal.log("[EFL] 카메라 계획 불러옴: 이펙트 {0}개 (camera_plan.json)".format(n))
+    else:
+        PLAN = {}
+        unreal.log("[EFL] 카메라 계획 없음: 모든 이펙트를 기본 거리로 촬영")
+
+
+def camera_for(pack_id, name):
+    """이펙트별 카메라 위치·회전. 방향은 기본 카메라와 같고 거리와 조준점만 바뀜."""
+    base_t = CAMERA_TARGET
+    base_d = (CAMERA_LOCATION - base_t)
+    dist0 = base_d.length()
+    direction = base_d * (1.0 / dist0)  # 조준점 → 카메라 방향
+    p = PLAN.get(pack_id, {}).get(name)
+    if p:
+        t = unreal.Vector(*p["target"])
+        d = float(p["distance"])
+    else:
+        t, d = base_t, dist0
+    loc = t + direction * d
+    rot = unreal.MathLibrary.find_look_at_rotation(loc, t)
+    return loc, rot, {"target": [t.x, t.y, t.z], "distance": d, "planned": bool(p)}
 
 level_sub = actor_sub = asset_tools = None
 
@@ -212,8 +244,26 @@ def make_sequence(pack_id, effect, cam):
     cut.set_range(0, frames)
     cut.set_camera_binding_id(binding_id(seq, cam_binding))
 
+    # 이펙트별 카메라 위치: 카메라에 고정값 트랜스폼 트랙을 넣어 이 시퀀스에서만 옮김
+    loc, rot, info = camera_for(pack_id, effect["name"])
+    if info["planned"]:
+        try:
+            tt = cam_binding.add_track(unreal.MovieScene3DTransformTrack)
+            ts = tt.add_section()
+            ts.set_range(0, frames)
+            values = {"Location.X": loc.x, "Location.Y": loc.y, "Location.Z": loc.z,
+                      "Rotation.X": rot.roll, "Rotation.Y": rot.pitch, "Rotation.Z": rot.yaw,
+                      "Scale.X": 1.0, "Scale.Y": 1.0, "Scale.Z": 1.0}
+            order = list(values.values())
+            for i, ch in enumerate(ts.get_all_channels()):
+                key = str(ch.channel_name) if hasattr(ch, "channel_name") else str(ch.get_name())
+                ch.set_default(values.get(key, order[i] if i < len(order) else 1.0))
+        except Exception as e:
+            unreal.log_warning("[EFL]   카메라 위치 지정 실패, 기본 위치로 촬영 ({0}): {1}".format(effect["name"], e))
+            info = camera_for("", "")[2]
+
     unreal.EditorAssetLibrary.save_loaded_asset(seq)
-    return path
+    return path, info
 
 
 # ---------------------------------------------------------------- 렌더 큐
@@ -225,7 +275,7 @@ def queue_jobs(items):
     queue = mrq.get_queue()
     queue.delete_all_jobs()
     map_obj = MAP_PATH + "." + MAP_PATH.split("/")[-1]
-    for pack_id, effect, seq_path in items:
+    for pack_id, effect, seq_path, cam_info in items:
         job = queue.allocate_new_job(unreal.MoviePipelineExecutorJob)
         job.job_name = pack_id + "/" + effect["name"]
         job.map = unreal.SoftObjectPath(map_obj)
@@ -241,6 +291,12 @@ def queue_jobs(items):
         out = cfg.find_or_add_setting_by_class(unreal.MoviePipelineOutputSetting)
         out_dir = os.path.join(FRAMES_ROOT, pack_id, effect["name"])
         os.makedirs(out_dir, exist_ok=True)
+        # 어떤 카메라로 찍었는지 기록 → encode_videos.py 가 다음 계획을 계산할 때 사용
+        cam_info = dict(cam_info, fov=CAMERA_FOV, width=WIDTH, height=HEIGHT,
+                        base_location=[CAMERA_LOCATION.x, CAMERA_LOCATION.y, CAMERA_LOCATION.z],
+                        base_target=[CAMERA_TARGET.x, CAMERA_TARGET.y, CAMERA_TARGET.z])
+        with open(os.path.join(out_dir, "camera.json"), "w", encoding="utf-8") as f:
+            json.dump(cam_info, f)
         out.set_editor_property("output_directory", unreal.DirectoryPath(out_dir))
         out.set_editor_property("output_resolution", unreal.IntPoint(WIDTH, HEIGHT))
         out.set_editor_property("file_name_format", "{frame_number}")
@@ -265,6 +321,7 @@ def main():
     with open(EXPORT_FILE, encoding="utf-8") as f:
         export = json.load(f)
     os.makedirs(FRAMES_ROOT, exist_ok=True)
+    load_plan()
 
     log("2/4 촬영 레벨 준비 중")
     cam = setup_map()
@@ -285,7 +342,8 @@ def main():
                 return
             task.enter_progress_frame(1, effect["name"])
             try:
-                items.append((pack_id, effect, make_sequence(pack_id, effect, cam)))
+                seq_path, cam_info = make_sequence(pack_id, effect, cam)
+                items.append((pack_id, effect, seq_path, cam_info))
             except Exception as e:
                 unreal.log_error("[EFL] 시퀀스 생성 실패 {0}: {1}".format(effect["name"], e))
     level_sub.save_current_level()

@@ -131,14 +131,88 @@ def bright_counts(ffmpeg, folder, files):
     t.start()
     size = ANALYZE_W * ANALYZE_H
     counts = []
+    heat, used = 0, 0  # 픽셀마다 '밝았던 프레임 수'를 바이트 단위로 누적 (큰 정수 덧셈으로 한 번에)
     while True:
         buf = proc.stdout.read(size)
         if len(buf) < size:
             break
-        counts.append(buf.translate(_BRIGHT).count(1))
+        mask = buf.translate(_BRIGHT)
+        counts.append(mask.count(1))
+        if len(counts) % 2 == 0 and used < 250:  # 2프레임마다 표본, 바이트 넘침 방지
+            heat += int.from_bytes(mask, "big")
+            used += 1
     t.join()
     proc.wait()
+    bright_counts.heat = heat.to_bytes(size, "big") if used else bytes(size)
     return counts
+
+
+# ---------------------------------------------------------------- 카메라 계획
+TARGET_FILL = 0.55   # 이펙트가 화면 가로·세로 중 큰 쪽의 이 비율을 차지하도록 맞춤
+MIN_DIST, MAX_DIST = 150.0, 3000.0
+
+
+def measure(heat, w=ANALYZE_W, h=ANALYZE_H):
+    """밝기 누적 지도에서 이펙트가 차지하는 영역(가로·세로 2~98% 구간, 0~1 비율)과 가장자리 잘림 여부."""
+    cols = [sum(heat[c::w]) for c in range(w)]
+    rows = [sum(heat[r * w:(r + 1) * w]) for r in range(h)]
+    total = sum(cols)
+    if total == 0:
+        return None
+
+    def span(hist):
+        lo_cut, hi_cut, acc, lo, hi = total * 0.02, total * 0.98, 0, 0, len(hist) - 1
+        for i, v in enumerate(hist):
+            acc += v
+            if acc >= lo_cut:
+                lo = i
+                break
+        acc = 0
+        for i, v in enumerate(hist):
+            acc += v
+            if acc >= hi_cut:
+                hi = i
+                break
+        return lo / len(hist), (hi + 1) / len(hist)
+
+    x0, x1 = span(cols)
+    y0, y1 = span(rows)
+    edge = max(sum(cols[:2]), sum(cols[-2:]), sum(rows[:2]), sum(rows[-2:])) / total
+    return {"x0": x0, "x1": x1, "y0": y0, "y1": y1, "clipped": edge > 0.01}
+
+
+def plan_camera(m, cam):
+    """측정 결과와 촬영에 쓴 카메라(camera.json)로 다음 촬영의 거리·조준점 계산."""
+    import math
+    t = cam["target"]
+    d0 = float(cam["distance"])
+    bl, bt = cam["base_location"], cam["base_target"]
+    f = [bt[i] - bl[i] for i in range(3)]                     # 카메라가 바라보는 방향
+    fl = math.sqrt(sum(v * v for v in f))
+    f = [v / fl for v in f]
+    r = [-f[1], f[0], 0.0]                                      # 화면 오른쪽 (언리얼 좌표: Z 위)
+    rl = math.sqrt(sum(v * v for v in r)) or 1.0
+    r = [v / rl for v in r]
+    u = [f[1] * r[2] - f[2] * r[1], f[2] * r[0] - f[0] * r[2], f[0] * r[1] - f[1] * r[0]]
+    if u[2] < 0:
+        u = [-v for v in u]
+    half_w = d0 * math.tan(math.radians(cam.get("fov", 60.0)) / 2)
+    half_h = half_w * cam.get("height", 360) / cam.get("width", 640)
+    cx, cy = (m["x0"] + m["x1"]) / 2, (m["y0"] + m["y1"]) / 2
+    dx, dy = (cx - 0.5) * 2 * half_w, (0.5 - cy) * 2 * half_h
+    target = [t[i] + r[i] * dx + u[i] * dy for i in range(3)]
+    fill = max(m["x1"] - m["x0"], m["y1"] - m["y0"], 0.01)
+    zoom = TARGET_FILL / fill
+    if m["clipped"]:
+        zoom = min(zoom, 0.7)  # 화면 밖으로 잘렸으면 실제 크기를 알 수 없으니 확실히 물러남
+    zoom = max(0.35, min(zoom, 4.0))
+    dist = max(MIN_DIST, min(MAX_DIST, d0 / zoom))
+    return {"target": [round(v, 1) for v in target], "distance": round(dist, 1),
+            "fill": round(fill, 3), "clipped": m["clipped"]}
+
+
+DEFAULT_CAMERA = {"target": [0.0, 0.0, 60.0], "distance": 923.1, "fov": 60.0, "width": 640, "height": 360,
+                  "base_location": [-850.0, 0.0, 420.0], "base_target": [0.0, 0.0, 60.0]}
 
 
 def encode(ffmpeg, folder, files, out_path):
@@ -170,6 +244,11 @@ def main():
     if os.path.exists(result_path):
         with open(result_path, encoding="utf-8") as f:
             result = json.load(f)
+    plan_path = os.path.join(base, "camera_plan.json")
+    plan = {}
+    if os.path.exists(plan_path):
+        with open(plan_path, encoding="utf-8") as f:
+            plan = json.load(f)
 
     for pack_id in sorted(os.listdir(frames_root)):
         pack_dir = os.path.join(frames_root, pack_id)
@@ -199,15 +278,30 @@ def main():
                 "poster": "media/{0}/{1}.jpg".format(pack_id, name),
             }
             label = {"loop": "Loop", "burst": "{0}s", "repeat": "{0}s (반복 단발)"}[a["pattern"]].format(a["duration"])
-            log("{0}: {1}, 영상 {2:.1f}초, {3}KB".format(
-                name, label, (a["end"] - a["start"]) / FPS, os.path.getsize(video) // 1024))
+            m = measure(bright_counts.heat)
+            size_note = ""
+            if m:
+                cam_file = os.path.join(folder, "camera.json")
+                cam = DEFAULT_CAMERA
+                if os.path.exists(cam_file):
+                    with open(cam_file, encoding="utf-8") as f:
+                        cam = dict(DEFAULT_CAMERA, **json.load(f))
+                p = plan_camera(m, cam)
+                plan.setdefault(pack_id, {})[name] = p
+                size_note = ", 화면 점유 {0:.0%}{1} → 다음 거리 {2:.0f}".format(
+                    p["fill"], " (잘림)" if p["clipped"] else "", p["distance"])
+            log("{0}: {1}, 영상 {2:.1f}초, {3}KB{4}".format(
+                name, label, (a["end"] - a["start"]) / FPS, os.path.getsize(video) // 1024, size_note))
 
         with open(result_path, "w", encoding="utf-8") as f:
             json.dump(result, f, ensure_ascii=False, indent=2)
+        with open(plan_path, "w", encoding="utf-8") as f:
+            json.dump(plan, f, ensure_ascii=False, indent=2)
 
         zip_path = os.path.join(base, "upload_{0}.zip".format(pack_id))
         with zipfile.ZipFile(zip_path, "w", zipfile.ZIP_STORED) as z:
             z.write(result_path, "capture_result.json")
+            z.write(plan_path, "camera_plan.json")
             for fname in sorted(os.listdir(out_dir)):
                 z.write(os.path.join(out_dir, fname), "media/{0}/{1}".format(pack_id, fname))
         log("완료: {0} ({1}MB) — 이 파일을 Claude 에게 보내 주세요.".format(
