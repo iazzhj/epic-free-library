@@ -163,15 +163,24 @@ def make_sequence(pack_id, effect, cam):
     actor_sub.destroy_actor(tmp)
 
     # 시퀀스에 복사된 이미터에 이펙트가 실제로 들어갔는지 확인
+    tcomp = None
     try:
         tpl = fx_binding.get_object_template()
-        tcomp = tpl.get_component_by_class(unreal.ParticleSystemComponent)
-        if tcomp.get_editor_property("template") is None:
+        # 템플릿 액터는 등록 전 상태라 get_component_by_class 가 비어 있을 수 있어 속성으로 직접 가져옴
+        try:
+            tcomp = tpl.get_editor_property("particle_system_component")
+        except Exception:
+            tcomp = tpl.get_component_by_class(unreal.ParticleSystemComponent)
+        if tcomp is None:
+            raise RuntimeError("시퀀스 이미터에 파티클 컴포넌트가 없음")
+        before = tcomp.get_editor_property("template")
+        if before is None:
             tcomp.set_editor_property("template", ps)
-            log("  템플릿 비어 있어 다시 지정: " + effect["name"])
         tcomp.set_editor_property("auto_activate", True)
+        log("  이미터 확인: {0} (템플릿 {1})".format(
+            effect["name"], "다시 지정함" if before is None else "정상"))
     except Exception as e:
-        unreal.log_warning("[EFL]   템플릿 확인 생략 ({0}): {1}".format(effect["name"], e))
+        unreal.log_warning("[EFL]   이미터 확인 실패 ({0}): {1}".format(effect["name"], e))
     spawn_tracks = fx_binding.find_tracks_by_type(unreal.MovieSceneSpawnTrack)
     track = spawn_tracks[0] if spawn_tracks else fx_binding.add_track(unreal.MovieSceneSpawnTrack)
     sections = track.get_sections()
@@ -188,7 +197,8 @@ def make_sequence(pack_id, effect, cam):
         psec = ptrack.add_section()
         psec.set_range(0, frames)
         ch = psec.get_all_channels()[0]
-        ch.add_key(unreal.FrameNumber(0), 0)  # 0 = Activate
+        key_enum = getattr(unreal, "ParticleKey", None) or getattr(unreal, "EParticleKey", None)
+        ch.add_key(unreal.FrameNumber(0), key_enum.ACTIVATE if key_enum else 0)
     except Exception as e:
         unreal.log_warning("[EFL]   파티클 토글 트랙 추가 실패 ({0}): {1}".format(effect["name"], e))
 
