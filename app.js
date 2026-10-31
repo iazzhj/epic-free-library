@@ -113,7 +113,7 @@
     return `<article class="fx">
       <div class="fx-media">
         ${src ? `<video muted loop playsinline preload="none" data-src="${esc(src)}"${f.poster ? ` poster="${esc(mediaUrl(f.poster))}"` : ""}></video>`
-              : `<span class="no-video">${f.visible === false ? "화면에 보이는 입자 없음" : "영상 준비 중"}</span>`}
+              : `<span class="no-video">${f.visible === false ? (/trail/i.test(f.name) ? "궤적 이펙트 · 움직이는 대상이 필요해 정지 촬영 불가" : "정지 촬영으로는 보이지 않는 이펙트") : "영상 준비 중"}</span>`}
         <span class="fx-num">${i + 1}</span>
       </div>
       <div class="fx-body">

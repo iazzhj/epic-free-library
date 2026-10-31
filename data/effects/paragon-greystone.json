@@ -6,51 +6,66 @@
     {
       "name": "P_CameraEffect_ClearAPath",
       "path": "Greystone/Abilities/ClearAPath",
-      "loop": null,
+      "loop": true,
       "duration": null,
-      "system": "Cascade"
+      "system": "Cascade",
+      "video": "media/paragon-greystone/P_CameraEffect_ClearAPath.webm",
+      "poster": "media/paragon-greystone/P_CameraEffect_ClearAPath.jpg",
+      "visible": true
     },
     {
       "name": "P_CameraEffect_ClearAPath_Impact",
       "path": "Greystone/Abilities/ClearAPath",
       "loop": null,
       "duration": null,
-      "system": "Cascade"
+      "system": "Cascade",
+      "visible": false
     },
     {
       "name": "P_Greystone_ClearAPath_Impact",
       "path": "Greystone/Abilities/ClearAPath",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 0.4,
+      "system": "Cascade",
+      "video": "media/paragon-greystone/P_Greystone_ClearAPath_Impact.webm",
+      "poster": "media/paragon-greystone/P_Greystone_ClearAPath_Impact.jpg",
+      "visible": true
     },
     {
       "name": "P_Greystone_ClearAPath_Impacts",
       "path": "Greystone/Abilities/ClearAPath",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 0.3,
+      "system": "Cascade",
+      "video": "media/paragon-greystone/P_Greystone_ClearAPath_Impacts.webm",
+      "poster": "media/paragon-greystone/P_Greystone_ClearAPath_Impacts.jpg",
+      "visible": true
     },
     {
       "name": "P_Greystone_ClearAPath_Swipe",
       "path": "Greystone/Abilities/ClearAPath",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 0.4,
+      "system": "Cascade",
+      "video": "media/paragon-greystone/P_Greystone_ClearAPath_Swipe.webm",
+      "poster": "media/paragon-greystone/P_Greystone_ClearAPath_Swipe.jpg",
+      "visible": true
     },
     {
       "name": "P_Greystone_ClearAPath_Trail",
       "path": "Greystone/Abilities/ClearAPath",
       "loop": null,
       "duration": null,
-      "system": "Cascade"
+      "system": "Cascade",
+      "visible": false
     },
     {
       "name": "p_Greystone_Spinning_Flare",
       "path": "Greystone/Abilities/ClearAPath",
       "loop": null,
       "duration": null,
-      "system": "Cascade"
+      "system": "Cascade",
+      "visible": false
     },
     {
       "name": "P_Greystone_SwordSpinning_01",
@@ -65,50 +80,64 @@
     {
       "name": "P_Greystone_SwordSpinning_End",
       "path": "Greystone/Abilities/ClearAPath",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 2.3,
+      "system": "Cascade",
+      "video": "media/paragon-greystone/P_Greystone_SwordSpinning_End.webm",
+      "poster": "media/paragon-greystone/P_Greystone_SwordSpinning_End.jpg",
+      "visible": true
     },
     {
       "name": "P_Greystone_SwordSpinning_Start",
       "path": "Greystone/Abilities/ClearAPath",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 1.8,
+      "system": "Cascade",
+      "video": "media/paragon-greystone/P_Greystone_SwordSpinning_Start.webm",
+      "poster": "media/paragon-greystone/P_Greystone_SwordSpinning_Start.jpg",
+      "visible": true
     },
     {
       "name": "P_Greystone_Deflect_Looping",
       "path": "Greystone/Abilities/Deflect",
-      "loop": null,
+      "loop": true,
       "duration": null,
-      "system": "Cascade"
+      "system": "Cascade",
+      "video": "media/paragon-greystone/P_Greystone_Deflect_Looping.webm",
+      "poster": "media/paragon-greystone/P_Greystone_Deflect_Looping.jpg",
+      "visible": true
     },
     {
       "name": "P_Greystone_Deflect_Remove",
       "path": "Greystone/Abilities/Deflect",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 0.5,
+      "system": "Cascade",
+      "video": "media/paragon-greystone/P_Greystone_Deflect_Remove.webm",
+      "poster": "media/paragon-greystone/P_Greystone_Deflect_Remove.jpg",
+      "visible": true
     },
     {
       "name": "P_Greystone_Leap_AOE_Trail",
       "path": "Greystone/Abilities/LeapAOE",
       "loop": null,
       "duration": null,
-      "system": "Cascade"
+      "system": "Cascade",
+      "visible": false
     },
     {
       "name": "P_Greystone_Leap_AOE_Trail_GlowEdge",
       "path": "Greystone/Abilities/LeapAOE",
       "loop": null,
       "duration": null,
-      "system": "Cascade"
+      "system": "Cascade",
+      "visible": false
     },
     {
       "name": "P_Greystone_LeapAOE_GroundSmash",
       "path": "Greystone/Abilities/LeapAOE",
       "loop": false,
-      "duration": 1.0,
+      "duration": 1.1,
       "system": "Cascade",
       "video": "media/paragon-greystone/P_Greystone_LeapAOE_GroundSmash.webm",
       "poster": "media/paragon-greystone/P_Greystone_LeapAOE_GroundSmash.jpg",
@@ -117,23 +146,32 @@
     {
       "name": "P_Greystone_LeapAOE_GroundSmash1",
       "path": "Greystone/Abilities/LeapAOE",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 0.8,
+      "system": "Cascade",
+      "video": "media/paragon-greystone/P_Greystone_LeapAOE_GroundSmash1.webm",
+      "poster": "media/paragon-greystone/P_Greystone_LeapAOE_GroundSmash1.jpg",
+      "visible": true
     },
     {
       "name": "P_Greystone_LeapAOE_Start",
       "path": "Greystone/Abilities/LeapAOE",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 0.3,
+      "system": "Cascade",
+      "video": "media/paragon-greystone/P_Greystone_LeapAOE_Start.webm",
+      "poster": "media/paragon-greystone/P_Greystone_LeapAOE_Start.jpg",
+      "visible": true
     },
     {
       "name": "P_LeapSmash_Location",
       "path": "Greystone/Abilities/LeapAOE",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 1.3,
+      "system": "Cascade",
+      "video": "media/paragon-greystone/P_LeapSmash_Location.webm",
+      "poster": "media/paragon-greystone/P_LeapSmash_Location.jpg",
+      "visible": true
     },
     {
       "name": "P_Greystone_Primary_Impact",
@@ -150,315 +188,430 @@
       "path": "Greystone/Abilities/Primary",
       "loop": null,
       "duration": null,
-      "system": "Cascade"
+      "system": "Cascade",
+      "visible": false
     },
     {
       "name": "P_Greystone_Primary_Trails_L",
       "path": "Greystone/Abilities/Primary",
       "loop": null,
       "duration": null,
-      "system": "Cascade"
+      "system": "Cascade",
+      "visible": false
     },
     {
       "name": "P_Greystone_Primary_Trails_R",
       "path": "Greystone/Abilities/Primary",
       "loop": null,
       "duration": null,
-      "system": "Cascade"
+      "system": "Cascade",
+      "visible": false
     },
     {
       "name": "P_Greystone_Primary_Trails_Taunt",
       "path": "Greystone/Abilities/Primary",
       "loop": null,
       "duration": null,
-      "system": "Cascade"
+      "system": "Cascade",
+      "visible": false
     },
     {
       "name": "P_Greystone_Recall_Trails",
       "path": "Greystone/Abilities/Primary",
       "loop": null,
       "duration": null,
-      "system": "Cascade"
+      "system": "Cascade",
+      "visible": false
     },
     {
       "name": "P_Greystone_Spawn_DrawSword",
       "path": "Greystone/Abilities/Primary",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 0.6,
+      "system": "Cascade",
+      "video": "media/paragon-greystone/P_Greystone_Spawn_DrawSword.webm",
+      "poster": "media/paragon-greystone/P_Greystone_Spawn_DrawSword.jpg",
+      "visible": true
     },
     {
       "name": "P_Greystone_Trail_OnlyWind",
       "path": "Greystone/Abilities/Primary",
       "loop": null,
       "duration": null,
-      "system": "Cascade"
+      "system": "Cascade",
+      "visible": false
     },
     {
       "name": "P_CameraEffect_Ultimate",
       "path": "Greystone/Abilities/Ultimate",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 1.0,
+      "system": "Cascade",
+      "video": "media/paragon-greystone/P_CameraEffect_Ultimate.webm",
+      "poster": "media/paragon-greystone/P_CameraEffect_Ultimate.jpg",
+      "visible": true
     },
     {
       "name": "P_Greystone_HToKill_After",
       "path": "Greystone/Abilities/Ultimate",
-      "loop": null,
+      "loop": true,
       "duration": null,
-      "system": "Cascade"
+      "system": "Cascade",
+      "video": "media/paragon-greystone/P_Greystone_HToKill_After.webm",
+      "poster": "media/paragon-greystone/P_Greystone_HToKill_After.jpg",
+      "visible": true
     },
     {
       "name": "P_Greystone_HToKill_Impact",
       "path": "Greystone/Abilities/Ultimate",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 1.6,
+      "system": "Cascade",
+      "video": "media/paragon-greystone/P_Greystone_HToKill_Impact.webm",
+      "poster": "media/paragon-greystone/P_Greystone_HToKill_Impact.jpg",
+      "visible": true
     },
     {
       "name": "P_Greystone_HToKill_Impact_Local",
       "path": "Greystone/Abilities/Ultimate",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 1.5,
+      "system": "Cascade",
+      "video": "media/paragon-greystone/P_Greystone_HToKill_Impact_Local.webm",
+      "poster": "media/paragon-greystone/P_Greystone_HToKill_Impact_Local.jpg",
+      "visible": true
     },
     {
       "name": "P_Greystone_HToKill_Resurrect",
       "path": "Greystone/Abilities/Ultimate",
-      "loop": null,
+      "loop": true,
       "duration": null,
-      "system": "Cascade"
+      "system": "Cascade",
+      "video": "media/paragon-greystone/P_Greystone_HToKill_Resurrect.webm",
+      "poster": "media/paragon-greystone/P_Greystone_HToKill_Resurrect.jpg",
+      "visible": true
     },
     {
       "name": "P_Greystone_HToKill_Resurrect_Local",
       "path": "Greystone/Abilities/Ultimate",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 1.3,
+      "system": "Cascade",
+      "video": "media/paragon-greystone/P_Greystone_HToKill_Resurrect_Local.webm",
+      "poster": "media/paragon-greystone/P_Greystone_HToKill_Resurrect_Local.jpg",
+      "visible": true
     },
     {
       "name": "P_Greystone_HToKill_Start",
       "path": "Greystone/Abilities/Ultimate",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 1.7,
+      "system": "Cascade",
+      "video": "media/paragon-greystone/P_Greystone_HToKill_Start.webm",
+      "poster": "media/paragon-greystone/P_Greystone_HToKill_Start.jpg",
+      "visible": true
     },
     {
       "name": "P_Greystone_HToKill_Trail",
       "path": "Greystone/Abilities/Ultimate",
-      "loop": null,
+      "loop": true,
       "duration": null,
-      "system": "Cascade"
+      "system": "Cascade",
+      "video": "media/paragon-greystone/P_Greystone_HToKill_Trail.webm",
+      "poster": "media/paragon-greystone/P_Greystone_HToKill_Trail.jpg",
+      "visible": true
     },
     {
       "name": "P_Greystone_HToKill_Trail_TEMP",
       "path": "Greystone/Abilities/Ultimate",
-      "loop": null,
+      "loop": true,
       "duration": null,
-      "system": "Cascade"
+      "system": "Cascade",
+      "video": "media/paragon-greystone/P_Greystone_HToKill_Trail_TEMP.webm",
+      "poster": "media/paragon-greystone/P_Greystone_HToKill_Trail_TEMP.jpg",
+      "visible": true
     },
     {
       "name": "P_Greystone_HToKill_Trail_V2",
       "path": "Greystone/Abilities/Ultimate",
-      "loop": null,
+      "loop": true,
       "duration": null,
-      "system": "Cascade"
+      "system": "Cascade",
+      "video": "media/paragon-greystone/P_Greystone_HToKill_Trail_V2.webm",
+      "poster": "media/paragon-greystone/P_Greystone_HToKill_Trail_V2.jpg",
+      "visible": true
     },
     {
       "name": "P_Greystone_HToKill_Trail_V2_Local",
       "path": "Greystone/Abilities/Ultimate",
-      "loop": null,
+      "loop": true,
       "duration": null,
-      "system": "Cascade"
+      "system": "Cascade",
+      "video": "media/paragon-greystone/P_Greystone_HToKill_Trail_V2_Local.webm",
+      "poster": "media/paragon-greystone/P_Greystone_HToKill_Trail_V2_Local.jpg",
+      "visible": true
     },
     {
       "name": "P_Greystone_HToKill_WarmUp",
       "path": "Greystone/Abilities/Ultimate",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 1.7,
+      "system": "Cascade",
+      "video": "media/paragon-greystone/P_Greystone_HToKill_WarmUp.webm",
+      "poster": "media/paragon-greystone/P_Greystone_HToKill_WarmUp.jpg",
+      "visible": true
     },
     {
       "name": "P_Greystone_Statue_Destroy",
       "path": "Greystone/Abilities/Ultimate",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 2.3,
+      "system": "Cascade",
+      "video": "media/paragon-greystone/P_Greystone_Statue_Destroy.webm",
+      "poster": "media/paragon-greystone/P_Greystone_Statue_Destroy.jpg",
+      "visible": true
     },
     {
       "name": "P_Greystone_Ultimate_Glow_Activate",
       "path": "Greystone/Abilities/Ultimate",
-      "loop": null,
+      "loop": true,
       "duration": null,
-      "system": "Cascade"
+      "system": "Cascade",
+      "video": "media/paragon-greystone/P_Greystone_Ultimate_Glow_Activate.webm",
+      "poster": "media/paragon-greystone/P_Greystone_Ultimate_Glow_Activate.jpg",
+      "visible": true
     },
     {
       "name": "P_Greystone_Ultimate_Glow_Light",
       "path": "Greystone/Abilities/Ultimate",
-      "loop": null,
+      "loop": true,
       "duration": null,
-      "system": "Cascade"
+      "system": "Cascade",
+      "video": "media/paragon-greystone/P_Greystone_Ultimate_Glow_Light.webm",
+      "poster": "media/paragon-greystone/P_Greystone_Ultimate_Glow_Light.jpg",
+      "visible": true
     },
     {
       "name": "P_Greystone_Ultimate_Slow",
       "path": "Greystone/Abilities/Ultimate",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 1.0,
+      "system": "Cascade",
+      "video": "media/paragon-greystone/P_Greystone_Ultimate_Slow.webm",
+      "poster": "media/paragon-greystone/P_Greystone_Ultimate_Slow.jpg",
+      "visible": true
     },
     {
       "name": "P_Greystone_Ultimate_Stone",
       "path": "Greystone/Abilities/Ultimate",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 1.9,
+      "system": "Cascade",
+      "video": "media/paragon-greystone/P_Greystone_Ultimate_Stone.webm",
+      "poster": "media/paragon-greystone/P_Greystone_Ultimate_Stone.jpg",
+      "visible": true
     },
     {
       "name": "P_HToKill_TurnToStone",
       "path": "Greystone/Abilities/Ultimate",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 2.4,
+      "system": "Cascade",
+      "video": "media/paragon-greystone/P_HToKill_TurnToStone.webm",
+      "poster": "media/paragon-greystone/P_HToKill_TurnToStone.jpg",
+      "visible": true
     },
     {
       "name": "P_Greystone_Novaborn_CameraEffect_Ultimate",
       "path": "Greystone/Skins/Novaborn",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 0.7,
+      "system": "Cascade",
+      "video": "media/paragon-greystone/P_Greystone_Novaborn_CameraEffect_Ultimate.webm",
+      "poster": "media/paragon-greystone/P_Greystone_Novaborn_CameraEffect_Ultimate.jpg",
+      "visible": true
     },
     {
       "name": "P_Greystone_Novaborn_HToKill_Impact",
       "path": "Greystone/Skins/Novaborn",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 1.5,
+      "system": "Cascade",
+      "video": "media/paragon-greystone/P_Greystone_Novaborn_HToKill_Impact.webm",
+      "poster": "media/paragon-greystone/P_Greystone_Novaborn_HToKill_Impact.jpg",
+      "visible": true
     },
     {
       "name": "P_Greystone_Novaborn_HToKill_Resurrect",
       "path": "Greystone/Skins/Novaborn",
-      "loop": null,
+      "loop": true,
       "duration": null,
-      "system": "Cascade"
+      "system": "Cascade",
+      "video": "media/paragon-greystone/P_Greystone_Novaborn_HToKill_Resurrect.webm",
+      "poster": "media/paragon-greystone/P_Greystone_Novaborn_HToKill_Resurrect.jpg",
+      "visible": true
     },
     {
       "name": "P_Greystone_Novaborn_HToKill_Resurrect_Local",
       "path": "Greystone/Skins/Novaborn",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 0.8,
+      "system": "Cascade",
+      "video": "media/paragon-greystone/P_Greystone_Novaborn_HToKill_Resurrect_Local.webm",
+      "poster": "media/paragon-greystone/P_Greystone_Novaborn_HToKill_Resurrect_Local.jpg",
+      "visible": true
     },
     {
       "name": "P_Greystone_Novaborn_HToKill_Start",
       "path": "Greystone/Skins/Novaborn",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 2.8,
+      "system": "Cascade",
+      "video": "media/paragon-greystone/P_Greystone_Novaborn_HToKill_Start.webm",
+      "poster": "media/paragon-greystone/P_Greystone_Novaborn_HToKill_Start.jpg",
+      "visible": true
     },
     {
       "name": "P_Greystone_Novaborn_LeapAOE_Constellations",
       "path": "Greystone/Skins/Novaborn",
-      "loop": null,
+      "loop": true,
       "duration": null,
-      "system": "Cascade"
+      "system": "Cascade",
+      "video": "media/paragon-greystone/P_Greystone_Novaborn_LeapAOE_Constellations.webm",
+      "poster": "media/paragon-greystone/P_Greystone_Novaborn_LeapAOE_Constellations.jpg",
+      "visible": true
     },
     {
       "name": "P_Greystone_Novaborn_LeapAOE_Constellations_Water",
       "path": "Greystone/Skins/Novaborn",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 1.5,
+      "system": "Cascade",
+      "video": "media/paragon-greystone/P_Greystone_Novaborn_LeapAOE_Constellations_Water.webm",
+      "poster": "media/paragon-greystone/P_Greystone_Novaborn_LeapAOE_Constellations_Water.jpg",
+      "visible": true
     },
     {
       "name": "P_Greystone_Novaborn_LeapAOE_Start",
       "path": "Greystone/Skins/Novaborn",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 0.4,
+      "system": "Cascade",
+      "video": "media/paragon-greystone/P_Greystone_Novaborn_LeapAOE_Start.webm",
+      "poster": "media/paragon-greystone/P_Greystone_Novaborn_LeapAOE_Start.jpg",
+      "visible": true
     },
     {
       "name": "P_Greystone_Novaborn_LeapAOE_Trails",
       "path": "Greystone/Skins/Novaborn",
       "loop": null,
       "duration": null,
-      "system": "Cascade"
+      "system": "Cascade",
+      "visible": false
     },
     {
       "name": "P_Greystone_Novaborn_LevelStart_ShieldSpawn",
       "path": "Greystone/Skins/Novaborn",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 0.6,
+      "system": "Cascade",
+      "video": "media/paragon-greystone/P_Greystone_Novaborn_LevelStart_ShieldSpawn.webm",
+      "poster": "media/paragon-greystone/P_Greystone_Novaborn_LevelStart_ShieldSpawn.jpg",
+      "visible": true
     },
     {
       "name": "P_Greystone_Novaborn_LevelStart_Trails",
       "path": "Greystone/Skins/Novaborn",
       "loop": null,
       "duration": null,
-      "system": "Cascade"
+      "system": "Cascade",
+      "visible": false
     },
     {
       "name": "P_Greystone_Novaborn_Primary_Impact",
       "path": "Greystone/Skins/Novaborn",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 0.4,
+      "system": "Cascade",
+      "video": "media/paragon-greystone/P_Greystone_Novaborn_Primary_Impact.webm",
+      "poster": "media/paragon-greystone/P_Greystone_Novaborn_Primary_Impact.jpg",
+      "visible": true
     },
     {
       "name": "P_Greystone_Novaborn_Primary_Trails",
       "path": "Greystone/Skins/Novaborn",
       "loop": null,
       "duration": null,
-      "system": "Cascade"
+      "system": "Cascade",
+      "visible": false
     },
     {
       "name": "P_Greystone_Novaborn_Spawn_DrawSword",
       "path": "Greystone/Skins/Novaborn",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 0.7,
+      "system": "Cascade",
+      "video": "media/paragon-greystone/P_Greystone_Novaborn_Spawn_DrawSword.webm",
+      "poster": "media/paragon-greystone/P_Greystone_Novaborn_Spawn_DrawSword.jpg",
+      "visible": true
     },
     {
       "name": "P_Greystone_Novaborn_Spawn_Light",
       "path": "Greystone/Skins/Novaborn",
       "loop": null,
       "duration": null,
-      "system": "Cascade"
+      "system": "Cascade",
+      "visible": false
     },
     {
       "name": "P_Greystone_Novaborn_Statue_Destroy",
       "path": "Greystone/Skins/Novaborn",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 2.3,
+      "system": "Cascade",
+      "video": "media/paragon-greystone/P_Greystone_Novaborn_Statue_Destroy.webm",
+      "poster": "media/paragon-greystone/P_Greystone_Novaborn_Statue_Destroy.jpg",
+      "visible": true
     },
     {
       "name": "P_Greystone_Novaborn_SwordSpinning_01",
       "path": "Greystone/Skins/Novaborn",
-      "loop": null,
+      "loop": true,
       "duration": null,
-      "system": "Cascade"
+      "system": "Cascade",
+      "video": "media/paragon-greystone/P_Greystone_Novaborn_SwordSpinning_01.webm",
+      "poster": "media/paragon-greystone/P_Greystone_Novaborn_SwordSpinning_01.jpg",
+      "visible": true
     },
     {
       "name": "P_Greystone_Novaborn_ULT_DragonHead",
       "path": "Greystone/Skins/Novaborn",
-      "loop": null,
+      "loop": true,
       "duration": null,
-      "system": "Cascade"
+      "system": "Cascade",
+      "video": "media/paragon-greystone/P_Greystone_Novaborn_ULT_DragonHead.webm",
+      "poster": "media/paragon-greystone/P_Greystone_Novaborn_ULT_DragonHead.jpg",
+      "visible": true
     },
     {
       "name": "P_Greystone_Novaborn_ULT_Trail",
       "path": "Greystone/Skins/Novaborn",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 0.8,
+      "system": "Cascade",
+      "video": "media/paragon-greystone/P_Greystone_Novaborn_ULT_Trail.webm",
+      "poster": "media/paragon-greystone/P_Greystone_Novaborn_ULT_Trail.jpg",
+      "visible": true
     },
     {
       "name": "P_Greystone_Novaborn_UltimateActive",
       "path": "Greystone/Skins/Novaborn",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 0.5,
+      "system": "Cascade",
+      "video": "media/paragon-greystone/P_Greystone_Novaborn_UltimateActive.webm",
+      "poster": "media/paragon-greystone/P_Greystone_Novaborn_UltimateActive.jpg",
+      "visible": true
     }
   ]
 }
