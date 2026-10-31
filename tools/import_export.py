@@ -11,9 +11,12 @@ import os
 import sys
 from datetime import date
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from ids import resolve  # noqa: E402
+
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 FX_DIR = os.path.join(ROOT, "data", "effects")
-KEEP = ("desc", "video", "poster", "loop", "duration")
+KEEP = ("desc", "video", "poster", "loop", "duration", "visible", "pattern")
 
 
 def clean_path(obj_path, folder):
@@ -45,7 +48,9 @@ def main(src):
     index_path = os.path.join(FX_DIR, "index.json")
     index = load(index_path, {"assets": {}})
     for pack in export["packs"]:
-        pid = pack["id"]
+        pid = resolve(pack["id"])
+        if pid != pack["id"]:
+            print(f"  id 맞춤: {pack['id']} -> {pid}")
         out_path = os.path.join(FX_DIR, pid + ".json")
         old = {e["name"]: e for e in load(out_path, {"effects": []})["effects"]}
         effects = []

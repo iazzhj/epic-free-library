@@ -165,12 +165,19 @@
   }
 
   // 경로 기준 묶음 제목: 'Greystone/Abilities/ClearAPath' → 'Abilities / ClearAPath'
+  // 맨 앞이 캐릭터 이름 폴더일 때만 떼어 냄 (팩마다 폴더 구성이 달라도 제목이 비지 않게)
+  const GROUP_WORDS = /^(abilities|skins?|shared|common|fx|particles|effects|cosmetics?|emotes?)$/i;
+  function groupOf(f){
+    const parts = (f.path || "").split("/").filter(Boolean);
+    if (parts.length > 1 && !GROUP_WORDS.test(parts[0])) parts.shift();
+    return parts.join(" / ") || "기타";
+  }
   function groupedCards(list){
     let html = "", last = null;
     list.forEach((f, i) => {
-      const g = (f.path || "").split("/").slice(1).join(" / ") || "기타";
+      const g = groupOf(f);
       if (g !== last) {
-        const n = list.filter(x => ((x.path || "").split("/").slice(1).join(" / ") || "기타") === g).length;
+        const n = list.filter(x => groupOf(x) === g).length;
         html += `<h3 class="fx-group">${esc(g)} <span>${n}</span></h3>`;
         last = g;
       }

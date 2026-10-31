@@ -254,9 +254,20 @@ def main():
         pack_dir = os.path.join(frames_root, pack_id)
         if not os.path.isdir(pack_dir):
             continue
+        # 지난 변환 이후 새로 녹화되지 않은 팩은 건너뜀 (이미 만든 zip 이 최신 프레임보다 새것이면)
+        zip_path = os.path.join(base, "upload_{0}.zip".format(pack_id))
+        if os.path.exists(zip_path):
+            newest = max((e.stat().st_mtime for d in os.scandir(pack_dir) if d.is_dir()
+                          for e in os.scandir(d.path) if e.name.lower().endswith(".png")), default=0)
+            if newest and newest < os.path.getmtime(zip_path):
+                log("{0}: 새로 녹화된 프레임이 없어 건너뜀".format(pack_id))
+                continue
         out_dir = os.path.join(media_root, pack_id)
+        if os.path.isdir(out_dir):
+            shutil.rmtree(out_dir)  # 이전 회차 영상이 섞이지 않게 비우고 다시 만듦
         os.makedirs(out_dir, exist_ok=True)
-        pack_result = result.setdefault(pack_id, {})
+        pack_result = {}
+        result[pack_id] = pack_result
         for name in sorted(os.listdir(pack_dir)):
             folder = os.path.join(pack_dir, name)
             files = frame_files(folder) if os.path.isdir(folder) else []
@@ -300,8 +311,9 @@ def main():
 
         zip_path = os.path.join(base, "upload_{0}.zip".format(pack_id))
         with zipfile.ZipFile(zip_path, "w", zipfile.ZIP_STORED) as z:
-            z.write(result_path, "capture_result.json")
-            z.write(plan_path, "camera_plan.json")
+            # zip 에는 이 팩의 결과만 담음
+            z.writestr("capture_result.json", json.dumps({pack_id: pack_result}, ensure_ascii=False, indent=2))
+            z.writestr("camera_plan.json", json.dumps({pack_id: plan.get(pack_id, {})}, ensure_ascii=False, indent=2))
             for fname in sorted(os.listdir(out_dir)):
                 z.write(os.path.join(out_dir, fname), "media/{0}/{1}".format(pack_id, fname))
         log("완료: {0} ({1}MB) — 이 파일을 Claude 에게 보내 주세요.".format(

@@ -11,8 +11,11 @@ import os
 import sys
 import zipfile
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from ids import resolve  # noqa: E402
+
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-FIELDS = ("loop", "duration", "video", "poster", "visible")
+FIELDS = ("loop", "duration", "video", "poster", "visible", "pattern")
 
 
 def main(zip_path):
@@ -25,7 +28,7 @@ def main(zip_path):
                 with open(plan_path, encoding="utf-8") as f:
                     plan = json.load(f)
             for pid, items in json.loads(z.read("camera_plan.json").decode("utf-8")).items():
-                plan.setdefault(pid, {}).update(items)
+                plan.setdefault(pid, {}).update(items)  # 카메라 계획은 언리얼 쪽 팩 id 그대로 보관
             with open(plan_path, "w", encoding="utf-8") as f:
                 json.dump(plan, f, ensure_ascii=False, indent=2)
                 f.write("\n")
@@ -40,7 +43,10 @@ def main(zip_path):
             with open(dest, "wb") as f:
                 f.write(z.read(info))
 
-    for pack_id, effects in result.items():
+    for raw_id, effects in result.items():
+        pack_id = resolve(raw_id)
+        if pack_id != raw_id:
+            print(f"  id 맞춤: {raw_id} -> {pack_id}")
         path = os.path.join(ROOT, "data", "effects", pack_id + ".json")
         if not os.path.exists(path):
             print(f"{pack_id}: 이펙트 목록이 없어 건너뜀 (import_export.py 먼저 실행)")
