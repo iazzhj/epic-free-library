@@ -1002,5 +1002,447 @@
       "fill": 0.55,
       "clipped": false
     }
+  },
+  "paragon-feng-mao": {
+    "PS_FengMao_AttackBuff": {
+      "target": [
+        -28.4,
+        -1.3,
+        -7.1
+      ],
+      "distance": 223.7,
+      "fill": 0.528,
+      "clipped": false
+    },
+    "PS_FengMao_Block_Pip": {
+      "target": [
+        -22.9,
+        -3.1,
+        5.8
+      ],
+      "distance": 290.0,
+      "fill": 0.633,
+      "clipped": false
+    },
+    "PS_FengMao_Block_Pip_02": {
+      "target": [
+        -20.3,
+        -9.0,
+        12.1
+      ],
+      "distance": 390.6,
+      "fill": 0.678,
+      "clipped": false
+    },
+    "PS_FengMao_Block_Pip_03": {
+      "target": [
+        -20.6,
+        -5.7,
+        11.3
+      ],
+      "distance": 367.3,
+      "fill": 0.556,
+      "clipped": false
+    },
+    "PS_SlowShield": {
+      "target": [
+        -42.8,
+        18.5,
+        -41.0
+      ],
+      "distance": 1828.8,
+      "fill": 0.739,
+      "clipped": false
+    },
+    "P_FengMao_Bamf": {
+      "target": [
+        -1.2,
+        -7.9,
+        57.2
+      ],
+      "distance": 784.6,
+      "fill": 0.544,
+      "clipped": false
+    },
+    "P_FengMao_Bone_AttackBuff": {
+      "target": [
+        -29.8,
+        2.5,
+        -10.5
+      ],
+      "distance": 327.6,
+      "fill": 0.522,
+      "clipped": false
+    },
+    "P_FengMao_Bone_Melee_SucessfulImpact": {
+      "target": [
+        -19.0,
+        7.2,
+        15.1
+      ],
+      "distance": 467.1,
+      "fill": 0.483,
+      "clipped": false
+    },
+    "P_FengMao_Bone_Pip": {
+      "target": [
+        -18.6,
+        -1.7,
+        15.9
+      ],
+      "distance": 151.5,
+      "fill": 0.361,
+      "clipped": false
+    },
+    "P_FengMao_Bone_Pip_02": {
+      "target": [
+        -16.4,
+        2.5,
+        21.3
+      ],
+      "distance": 179.5,
+      "fill": 0.428,
+      "clipped": false
+    },
+    "P_FengMao_Bone_Pip_03": {
+      "target": [
+        -20.3,
+        2.5,
+        12.1
+      ],
+      "distance": 212.1,
+      "fill": 0.506,
+      "clipped": false
+    },
+    "P_FengMao_Bone_TeleportEnd_Local": {
+      "target": [
+        13.4,
+        1.1,
+        91.7
+      ],
+      "distance": 729.3,
+      "fill": 0.489,
+      "clipped": false
+    },
+    "P_FengMao_Bone_TeleportStart_Local": {
+      "target": [
+        -0.6,
+        2.1,
+        58.5
+      ],
+      "distance": 1135.3,
+      "fill": 0.544,
+      "clipped": false
+    },
+    "P_FengMao_Bone_ULT_Impact01": {
+      "target": [
+        -17.6,
+        -10.8,
+        18.3
+      ],
+      "distance": 666.9,
+      "fill": 0.539,
+      "clipped": false
+    },
+    "P_FengMao_Bone_ULT_Impact02": {
+      "target": [
+        -5.9,
+        -1.5,
+        46.0
+      ],
+      "distance": 1028.4,
+      "fill": 0.578,
+      "clipped": false
+    },
+    "P_FengMao_Bone_ULT_Impact03": {
+      "target": [
+        -24.7,
+        0.8,
+        1.6
+      ],
+      "distance": 1543.7,
+      "fill": 0.611,
+      "clipped": false
+    },
+    "P_FengMao_Bone_Ult_Chargeup": {
+      "target": [
+        36.6,
+        -3.8,
+        146.4
+      ],
+      "distance": 356.1,
+      "fill": 0.678,
+      "clipped": false
+    },
+    "P_FengMao_Dash_Trail_Mesh": {
+      "target": [
+        -81.8,
+        -37.6,
+        -133.2
+      ],
+      "distance": 745.9,
+      "fill": 0.311,
+      "clipped": false
+    },
+    "P_FengMao_Melee_SucessfulImpact": {
+      "target": [
+        -22.5,
+        7.8,
+        6.8
+      ],
+      "distance": 603.0,
+      "fill": 0.539,
+      "clipped": false
+    },
+    "P_FengMao_TeleportEnd": {
+      "target": [
+        -3.3,
+        -1.5,
+        52.2
+      ],
+      "distance": 820.5,
+      "fill": 0.55,
+      "clipped": false
+    },
+    "P_FengMao_TeleportEnd_Local": {
+      "target": [
+        6.1,
+        -5.3,
+        74.4
+      ],
+      "distance": 525.6,
+      "fill": 0.517,
+      "clipped": false
+    },
+    "P_FengMao_TeleportStart": {
+      "target": [
+        -1.6,
+        1.3,
+        56.1
+      ],
+      "distance": 729.2,
+      "fill": 0.544,
+      "clipped": false
+    },
+    "P_FengMao_TeleportStart_Local": {
+      "target": [
+        -3.4,
+        4.5,
+        52.0
+      ],
+      "distance": 1206.4,
+      "fill": 0.583,
+      "clipped": false
+    },
+    "P_FengMao_TenaciousFury_Impact": {
+      "target": [
+        -8.5,
+        -15.7,
+        39.8
+      ],
+      "distance": 727.0,
+      "fill": 0.517,
+      "clipped": false
+    },
+    "P_FengMao_Ult_Chargeup": {
+      "target": [
+        37.7,
+        -8.7,
+        148.9
+      ],
+      "distance": 390.3,
+      "fill": 0.622,
+      "clipped": false
+    },
+    "P_FengMao_Ult_Impact_01": {
+      "target": [
+        8.1,
+        -4.0,
+        79.1
+      ],
+      "distance": 849.9,
+      "fill": 0.533,
+      "clipped": false
+    },
+    "P_FengMao_Ult_Impact_02": {
+      "target": [
+        14.9,
+        -15.3,
+        95.3
+      ],
+      "distance": 1165.6,
+      "fill": 0.578,
+      "clipped": false
+    },
+    "P_FengMao_Ult_Impact_03": {
+      "target": [
+        16.9,
+        -9.3,
+        99.9
+      ],
+      "distance": 1318.7,
+      "fill": 0.55,
+      "clipped": false
+    },
+    "P_FengMao_Undertow_AttackBuff": {
+      "target": [
+        -29.9,
+        1.1,
+        -10.7
+      ],
+      "distance": 324.1,
+      "fill": 0.517,
+      "clipped": false
+    },
+    "P_FengMao_Undertow_Melee_SucessfulImpact": {
+      "target": [
+        -23.3,
+        5.7,
+        4.9
+      ],
+      "distance": 569.6,
+      "fill": 0.533,
+      "clipped": false
+    },
+    "P_FengMao_Undertow_Pip": {
+      "target": [
+        -19.3,
+        -1.7,
+        14.4
+      ],
+      "distance": 202.8,
+      "fill": 0.483,
+      "clipped": false
+    },
+    "P_FengMao_Undertow_Pip_02": {
+      "target": [
+        -19.3,
+        -0.6,
+        14.4
+      ],
+      "distance": 223.8,
+      "fill": 0.489,
+      "clipped": false
+    },
+    "P_FengMao_Undertow_Pip_03": {
+      "target": [
+        -19.9,
+        1.7,
+        12.9
+      ],
+      "distance": 413.4,
+      "fill": 0.739,
+      "clipped": false
+    },
+    "P_FengMao_Undertow_TeleportEnd_Local": {
+      "target": [
+        13.3,
+        -7.4,
+        91.5
+      ],
+      "distance": 696.2,
+      "fill": 0.533,
+      "clipped": false
+    },
+    "P_FengMao_Undertow_TeleportStart_Local": {
+      "target": [
+        -1.7,
+        0.2,
+        55.9
+      ],
+      "distance": 1083.1,
+      "fill": 0.556,
+      "clipped": false
+    },
+    "P_FengMao_Undertow_ULT_Impact01": {
+      "target": [
+        -1.6,
+        -16.6,
+        56.1
+      ],
+      "distance": 1027.9,
+      "fill": 0.567,
+      "clipped": false
+    },
+    "P_FengMao_Undertow_ULT_Impact02": {
+      "target": [
+        -6.5,
+        -1.7,
+        44.7
+      ],
+      "distance": 979.9,
+      "fill": 0.567,
+      "clipped": false
+    },
+    "P_FengMao_Undertow_ULT_Impact03": {
+      "target": [
+        -10.4,
+        -1.7,
+        35.5
+      ],
+      "distance": 1444.4,
+      "fill": 0.6,
+      "clipped": false
+    },
+    "P_FengMao_Undertow_Ult_Chargeup": {
+      "target": [
+        38.1,
+        -4.5,
+        150.0
+      ],
+      "distance": 357.4,
+      "fill": 0.639,
+      "clipped": false
+    },
+    "P_Portal_CameraEffect_Arcblade_Ult": {
+      "target": [
+        -19.6,
+        0.0,
+        13.7
+      ],
+      "distance": 359.9,
+      "fill": 0.544,
+      "clipped": false
+    },
+    "P_Portal_CameraEffect_Arcblade_Ult_Impact": {
+      "target": [
+        -10.2,
+        0.0,
+        35.9
+      ],
+      "distance": 469.5,
+      "fill": 0.494,
+      "clipped": false
+    },
+    "P_Portal_CameraEffect_Arcblade__Dash": {
+      "target": [
+        -19.6,
+        0.0,
+        13.7
+      ],
+      "distance": 359.9,
+      "fill": 0.544,
+      "clipped": false
+    },
+    "P_Portal_CameraEffect_Arcblade__RoyalGuardUndertow": {
+      "target": [
+        -19.3,
+        0.0,
+        14.3
+      ],
+      "distance": 356.3,
+      "fill": 0.539,
+      "clipped": false
+    },
+    "P_Portal_CameraEffect_FengMao_Bone": {
+      "target": [
+        -19.6,
+        0.0,
+        13.7
+      ],
+      "distance": 359.9,
+      "fill": 0.544,
+      "clipped": false
+    }
   }
 }

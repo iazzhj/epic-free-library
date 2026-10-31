@@ -7,89 +7,133 @@
       "name": "PS_FengMao_AttackBuff",
       "key": "PS_FengMao_AttackBuff",
       "path": "Abilities/Block",
-      "loop": null,
+      "loop": true,
       "duration": null,
-      "system": "Cascade"
+      "system": "Cascade",
+      "video": "media/paragon-feng-mao/PS_FengMao_AttackBuff.webm",
+      "poster": "media/paragon-feng-mao/PS_FengMao_AttackBuff.jpg",
+      "visible": true,
+      "pattern": "loop"
     },
     {
       "name": "PS_FengMao_Block_Pip",
       "key": "PS_FengMao_Block_Pip",
       "path": "Abilities/Block",
-      "loop": null,
+      "loop": true,
       "duration": null,
-      "system": "Cascade"
+      "system": "Cascade",
+      "video": "media/paragon-feng-mao/PS_FengMao_Block_Pip.webm",
+      "poster": "media/paragon-feng-mao/PS_FengMao_Block_Pip.jpg",
+      "visible": true,
+      "pattern": "loop"
     },
     {
       "name": "PS_FengMao_Block_Pip_02",
       "key": "PS_FengMao_Block_Pip_02",
       "path": "Abilities/Block",
-      "loop": null,
+      "loop": true,
       "duration": null,
-      "system": "Cascade"
+      "system": "Cascade",
+      "video": "media/paragon-feng-mao/PS_FengMao_Block_Pip_02.webm",
+      "poster": "media/paragon-feng-mao/PS_FengMao_Block_Pip_02.jpg",
+      "visible": true,
+      "pattern": "loop"
     },
     {
       "name": "PS_FengMao_Block_Pip_03",
       "key": "PS_FengMao_Block_Pip_03",
       "path": "Abilities/Block",
-      "loop": null,
+      "loop": true,
       "duration": null,
-      "system": "Cascade"
+      "system": "Cascade",
+      "video": "media/paragon-feng-mao/PS_FengMao_Block_Pip_03.webm",
+      "poster": "media/paragon-feng-mao/PS_FengMao_Block_Pip_03.jpg",
+      "visible": true,
+      "pattern": "loop"
     },
     {
       "name": "P_FengMao_Bamf",
       "key": "P_FengMao_Bamf",
       "path": "Abilities/Dash",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 1.7,
+      "system": "Cascade",
+      "video": "media/paragon-feng-mao/P_FengMao_Bamf.webm",
+      "poster": "media/paragon-feng-mao/P_FengMao_Bamf.jpg",
+      "visible": true,
+      "pattern": "repeat"
     },
     {
       "name": "P_FengMao_Dash_Trail_Mesh",
       "key": "P_FengMao_Dash_Trail_Mesh",
       "path": "Abilities/Dash",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 0.4,
+      "system": "Cascade",
+      "video": "media/paragon-feng-mao/P_FengMao_Dash_Trail_Mesh.webm",
+      "poster": "media/paragon-feng-mao/P_FengMao_Dash_Trail_Mesh.jpg",
+      "visible": true,
+      "pattern": "repeat"
     },
     {
       "name": "P_FengMao_TeleportEnd",
       "key": "P_FengMao_TeleportEnd",
       "path": "Abilities/Dash",
-      "loop": null,
+      "loop": true,
       "duration": null,
-      "system": "Cascade"
+      "system": "Cascade",
+      "video": "media/paragon-feng-mao/P_FengMao_TeleportEnd.webm",
+      "poster": "media/paragon-feng-mao/P_FengMao_TeleportEnd.jpg",
+      "visible": true,
+      "pattern": "loop"
     },
     {
       "name": "P_FengMao_TeleportEnd_Local",
       "key": "P_FengMao_TeleportEnd_Local",
       "path": "Abilities/Dash",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 0.8,
+      "system": "Cascade",
+      "video": "media/paragon-feng-mao/P_FengMao_TeleportEnd_Local.webm",
+      "poster": "media/paragon-feng-mao/P_FengMao_TeleportEnd_Local.jpg",
+      "visible": true,
+      "pattern": "repeat"
     },
     {
       "name": "P_FengMao_TeleportStart",
       "key": "P_FengMao_TeleportStart",
       "path": "Abilities/Dash",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 1.4,
+      "system": "Cascade",
+      "video": "media/paragon-feng-mao/P_FengMao_TeleportStart.webm",
+      "poster": "media/paragon-feng-mao/P_FengMao_TeleportStart.jpg",
+      "visible": true,
+      "pattern": "repeat"
     },
     {
       "name": "P_FengMao_TeleportStart_Local",
       "key": "P_FengMao_TeleportStart_Local",
       "path": "Abilities/Dash",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 0.6,
+      "system": "Cascade",
+      "video": "media/paragon-feng-mao/P_FengMao_TeleportStart_Local.webm",
+      "poster": "media/paragon-feng-mao/P_FengMao_TeleportStart_Local.jpg",
+      "visible": true,
+      "pattern": "repeat"
     },
     {
       "name": "P_Portal_CameraEffect_Arcblade",
       "key": "P_Portal_CameraEffect_Arcblade__Dash",
       "path": "Abilities/Dash",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 0.3,
+      "system": "Cascade",
+      "video": "media/paragon-feng-mao/P_Portal_CameraEffect_Arcblade__Dash.webm",
+      "poster": "media/paragon-feng-mao/P_Portal_CameraEffect_Arcblade__Dash.jpg",
+      "visible": true,
+      "pattern": "repeat"
     },
     {
       "name": "P_SkillShotDash_Projectile_Trail",
@@ -97,7 +141,8 @@
       "path": "Abilities/Dash",
       "loop": null,
       "duration": null,
-      "system": "Cascade"
+      "system": "Cascade",
+      "visible": false
     },
     {
       "name": "P_FengMao_Melee_Embers",
@@ -105,63 +150,92 @@
       "path": "Abilities/Primary",
       "loop": null,
       "duration": null,
-      "system": "Cascade"
+      "system": "Cascade",
+      "visible": false
     },
     {
       "name": "P_FengMao_Melee_SucessfulImpact",
       "key": "P_FengMao_Melee_SucessfulImpact",
       "path": "Abilities/Primary",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 0.3,
+      "system": "Cascade",
+      "video": "media/paragon-feng-mao/P_FengMao_Melee_SucessfulImpact.webm",
+      "poster": "media/paragon-feng-mao/P_FengMao_Melee_SucessfulImpact.jpg",
+      "visible": true,
+      "pattern": "repeat"
     },
     {
       "name": "PS_SlowShield",
       "key": "PS_SlowShield",
       "path": "Abilities/SlowShield",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 1.7,
+      "system": "Cascade",
+      "video": "media/paragon-feng-mao/PS_SlowShield.webm",
+      "poster": "media/paragon-feng-mao/PS_SlowShield.jpg",
+      "visible": true,
+      "pattern": "repeat"
     },
     {
       "name": "P_FengMao_TenaciousFury_Impact",
       "key": "P_FengMao_TenaciousFury_Impact",
       "path": "Abilities/Ultimate",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 2.2,
+      "system": "Cascade",
+      "video": "media/paragon-feng-mao/P_FengMao_TenaciousFury_Impact.webm",
+      "poster": "media/paragon-feng-mao/P_FengMao_TenaciousFury_Impact.jpg",
+      "visible": true,
+      "pattern": "repeat"
     },
     {
       "name": "P_FengMao_Ult_Chargeup",
       "key": "P_FengMao_Ult_Chargeup",
       "path": "Abilities/Ultimate",
-      "loop": null,
+      "loop": true,
       "duration": null,
-      "system": "Cascade"
+      "system": "Cascade",
+      "video": "media/paragon-feng-mao/P_FengMao_Ult_Chargeup.webm",
+      "poster": "media/paragon-feng-mao/P_FengMao_Ult_Chargeup.jpg",
+      "visible": true,
+      "pattern": "loop"
     },
     {
       "name": "P_FengMao_Ult_Impact_01",
       "key": "P_FengMao_Ult_Impact_01",
       "path": "Abilities/Ultimate",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 4.8,
+      "system": "Cascade",
+      "video": "media/paragon-feng-mao/P_FengMao_Ult_Impact_01.webm",
+      "poster": "media/paragon-feng-mao/P_FengMao_Ult_Impact_01.jpg",
+      "visible": true,
+      "pattern": "repeat"
     },
     {
       "name": "P_FengMao_Ult_Impact_02",
       "key": "P_FengMao_Ult_Impact_02",
       "path": "Abilities/Ultimate",
-      "loop": null,
+      "loop": true,
       "duration": null,
-      "system": "Cascade"
+      "system": "Cascade",
+      "video": "media/paragon-feng-mao/P_FengMao_Ult_Impact_02.webm",
+      "poster": "media/paragon-feng-mao/P_FengMao_Ult_Impact_02.jpg",
+      "visible": true,
+      "pattern": "loop"
     },
     {
       "name": "P_FengMao_Ult_Impact_03",
       "key": "P_FengMao_Ult_Impact_03",
       "path": "Abilities/Ultimate",
-      "loop": null,
+      "loop": true,
       "duration": null,
-      "system": "Cascade"
+      "system": "Cascade",
+      "video": "media/paragon-feng-mao/P_FengMao_Ult_Impact_03.webm",
+      "poster": "media/paragon-feng-mao/P_FengMao_Ult_Impact_03.jpg",
+      "visible": true,
+      "pattern": "loop"
     },
     {
       "name": "P_FengMao_Ultimate_JumpDust",
@@ -169,31 +243,44 @@
       "path": "Abilities/Ultimate",
       "loop": null,
       "duration": null,
-      "system": "Cascade"
+      "system": "Cascade",
+      "visible": false
     },
     {
       "name": "P_Portal_CameraEffect_Arcblade_Ult",
       "key": "P_Portal_CameraEffect_Arcblade_Ult",
       "path": "Abilities/Ultimate",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 0.5,
+      "system": "Cascade",
+      "video": "media/paragon-feng-mao/P_Portal_CameraEffect_Arcblade_Ult.webm",
+      "poster": "media/paragon-feng-mao/P_Portal_CameraEffect_Arcblade_Ult.jpg",
+      "visible": true,
+      "pattern": "repeat"
     },
     {
       "name": "P_Portal_CameraEffect_Arcblade_Ult_Impact",
       "key": "P_Portal_CameraEffect_Arcblade_Ult_Impact",
       "path": "Abilities/Ultimate",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 0.2,
+      "system": "Cascade",
+      "video": "media/paragon-feng-mao/P_Portal_CameraEffect_Arcblade_Ult_Impact.webm",
+      "poster": "media/paragon-feng-mao/P_Portal_CameraEffect_Arcblade_Ult_Impact.jpg",
+      "visible": true,
+      "pattern": "repeat"
     },
     {
       "name": "P_FengMao_Bone_AttackBuff",
       "key": "P_FengMao_Bone_AttackBuff",
       "path": "BoneCollector",
-      "loop": null,
+      "loop": true,
       "duration": null,
-      "system": "Cascade"
+      "system": "Cascade",
+      "video": "media/paragon-feng-mao/P_FengMao_Bone_AttackBuff.webm",
+      "poster": "media/paragon-feng-mao/P_FengMao_Bone_AttackBuff.jpg",
+      "visible": true,
+      "pattern": "loop"
     },
     {
       "name": "P_FengMao_Bone_DefaultTrails",
@@ -201,7 +288,8 @@
       "path": "BoneCollector",
       "loop": null,
       "duration": null,
-      "system": "Cascade"
+      "system": "Cascade",
+      "visible": false
     },
     {
       "name": "P_FengMao_Bone_DefaultTrails_Primed",
@@ -209,103 +297,152 @@
       "path": "BoneCollector",
       "loop": null,
       "duration": null,
-      "system": "Cascade"
+      "system": "Cascade",
+      "visible": false
     },
     {
       "name": "P_FengMao_Bone_Melee_SucessfulImpact",
       "key": "P_FengMao_Bone_Melee_SucessfulImpact",
       "path": "BoneCollector",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 0.4,
+      "system": "Cascade",
+      "video": "media/paragon-feng-mao/P_FengMao_Bone_Melee_SucessfulImpact.webm",
+      "poster": "media/paragon-feng-mao/P_FengMao_Bone_Melee_SucessfulImpact.jpg",
+      "visible": true,
+      "pattern": "repeat"
     },
     {
       "name": "P_FengMao_Bone_Pip",
       "key": "P_FengMao_Bone_Pip",
       "path": "BoneCollector",
-      "loop": null,
+      "loop": true,
       "duration": null,
-      "system": "Cascade"
+      "system": "Cascade",
+      "video": "media/paragon-feng-mao/P_FengMao_Bone_Pip.webm",
+      "poster": "media/paragon-feng-mao/P_FengMao_Bone_Pip.jpg",
+      "visible": true,
+      "pattern": "loop"
     },
     {
       "name": "P_FengMao_Bone_Pip_02",
       "key": "P_FengMao_Bone_Pip_02",
       "path": "BoneCollector",
-      "loop": null,
+      "loop": true,
       "duration": null,
-      "system": "Cascade"
+      "system": "Cascade",
+      "video": "media/paragon-feng-mao/P_FengMao_Bone_Pip_02.webm",
+      "poster": "media/paragon-feng-mao/P_FengMao_Bone_Pip_02.jpg",
+      "visible": true,
+      "pattern": "loop"
     },
     {
       "name": "P_FengMao_Bone_Pip_03",
       "key": "P_FengMao_Bone_Pip_03",
       "path": "BoneCollector",
-      "loop": null,
+      "loop": true,
       "duration": null,
-      "system": "Cascade"
+      "system": "Cascade",
+      "video": "media/paragon-feng-mao/P_FengMao_Bone_Pip_03.webm",
+      "poster": "media/paragon-feng-mao/P_FengMao_Bone_Pip_03.jpg",
+      "visible": true,
+      "pattern": "loop"
     },
     {
       "name": "P_FengMao_Bone_TeleportEnd_Local",
       "key": "P_FengMao_Bone_TeleportEnd_Local",
       "path": "BoneCollector",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 0.7,
+      "system": "Cascade",
+      "video": "media/paragon-feng-mao/P_FengMao_Bone_TeleportEnd_Local.webm",
+      "poster": "media/paragon-feng-mao/P_FengMao_Bone_TeleportEnd_Local.jpg",
+      "visible": true,
+      "pattern": "repeat"
     },
     {
       "name": "P_FengMao_Bone_TeleportStart_Local",
       "key": "P_FengMao_Bone_TeleportStart_Local",
       "path": "BoneCollector",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 0.6,
+      "system": "Cascade",
+      "video": "media/paragon-feng-mao/P_FengMao_Bone_TeleportStart_Local.webm",
+      "poster": "media/paragon-feng-mao/P_FengMao_Bone_TeleportStart_Local.jpg",
+      "visible": true,
+      "pattern": "repeat"
     },
     {
       "name": "P_FengMao_Bone_Ult_Chargeup",
       "key": "P_FengMao_Bone_Ult_Chargeup",
       "path": "BoneCollector",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 1.4,
+      "system": "Cascade",
+      "video": "media/paragon-feng-mao/P_FengMao_Bone_Ult_Chargeup.webm",
+      "poster": "media/paragon-feng-mao/P_FengMao_Bone_Ult_Chargeup.jpg",
+      "visible": true,
+      "pattern": "repeat"
     },
     {
       "name": "P_FengMao_Bone_ULT_Impact01",
       "key": "P_FengMao_Bone_ULT_Impact01",
       "path": "BoneCollector",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 2.5,
+      "system": "Cascade",
+      "video": "media/paragon-feng-mao/P_FengMao_Bone_ULT_Impact01.webm",
+      "poster": "media/paragon-feng-mao/P_FengMao_Bone_ULT_Impact01.jpg",
+      "visible": true,
+      "pattern": "repeat"
     },
     {
       "name": "P_FengMao_Bone_ULT_Impact02",
       "key": "P_FengMao_Bone_ULT_Impact02",
       "path": "BoneCollector",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 2.6,
+      "system": "Cascade",
+      "video": "media/paragon-feng-mao/P_FengMao_Bone_ULT_Impact02.webm",
+      "poster": "media/paragon-feng-mao/P_FengMao_Bone_ULT_Impact02.jpg",
+      "visible": true,
+      "pattern": "repeat"
     },
     {
       "name": "P_FengMao_Bone_ULT_Impact03",
       "key": "P_FengMao_Bone_ULT_Impact03",
       "path": "BoneCollector",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 2.7,
+      "system": "Cascade",
+      "video": "media/paragon-feng-mao/P_FengMao_Bone_ULT_Impact03.webm",
+      "poster": "media/paragon-feng-mao/P_FengMao_Bone_ULT_Impact03.jpg",
+      "visible": true,
+      "pattern": "repeat"
     },
     {
       "name": "P_Portal_CameraEffect_FengMao_Bone",
       "key": "P_Portal_CameraEffect_FengMao_Bone",
       "path": "BoneCollector",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 0.3,
+      "system": "Cascade",
+      "video": "media/paragon-feng-mao/P_Portal_CameraEffect_FengMao_Bone.webm",
+      "poster": "media/paragon-feng-mao/P_Portal_CameraEffect_FengMao_Bone.jpg",
+      "visible": true,
+      "pattern": "repeat"
     },
     {
       "name": "P_FengMao_Undertow_AttackBuff",
       "key": "P_FengMao_Undertow_AttackBuff",
       "path": "RoyalGuardUndertow",
-      "loop": null,
+      "loop": true,
       "duration": null,
-      "system": "Cascade"
+      "system": "Cascade",
+      "video": "media/paragon-feng-mao/P_FengMao_Undertow_AttackBuff.webm",
+      "poster": "media/paragon-feng-mao/P_FengMao_Undertow_AttackBuff.jpg",
+      "visible": true,
+      "pattern": "loop"
     },
     {
       "name": "P_FengMao_Undertow_DefaultTrails",
@@ -313,7 +450,8 @@
       "path": "RoyalGuardUndertow",
       "loop": null,
       "duration": null,
-      "system": "Cascade"
+      "system": "Cascade",
+      "visible": false
     },
     {
       "name": "P_FengMao_Undertow_DefaultTrails_Primed",
@@ -321,95 +459,140 @@
       "path": "RoyalGuardUndertow",
       "loop": null,
       "duration": null,
-      "system": "Cascade"
+      "system": "Cascade",
+      "visible": false
     },
     {
       "name": "P_FengMao_Undertow_Melee_SucessfulImpact",
       "key": "P_FengMao_Undertow_Melee_SucessfulImpact",
       "path": "RoyalGuardUndertow",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 0.4,
+      "system": "Cascade",
+      "video": "media/paragon-feng-mao/P_FengMao_Undertow_Melee_SucessfulImpact.webm",
+      "poster": "media/paragon-feng-mao/P_FengMao_Undertow_Melee_SucessfulImpact.jpg",
+      "visible": true,
+      "pattern": "repeat"
     },
     {
       "name": "P_FengMao_Undertow_Pip",
       "key": "P_FengMao_Undertow_Pip",
       "path": "RoyalGuardUndertow",
-      "loop": null,
+      "loop": true,
       "duration": null,
-      "system": "Cascade"
+      "system": "Cascade",
+      "video": "media/paragon-feng-mao/P_FengMao_Undertow_Pip.webm",
+      "poster": "media/paragon-feng-mao/P_FengMao_Undertow_Pip.jpg",
+      "visible": true,
+      "pattern": "loop"
     },
     {
       "name": "P_FengMao_Undertow_Pip_02",
       "key": "P_FengMao_Undertow_Pip_02",
       "path": "RoyalGuardUndertow",
-      "loop": null,
+      "loop": true,
       "duration": null,
-      "system": "Cascade"
+      "system": "Cascade",
+      "video": "media/paragon-feng-mao/P_FengMao_Undertow_Pip_02.webm",
+      "poster": "media/paragon-feng-mao/P_FengMao_Undertow_Pip_02.jpg",
+      "visible": true,
+      "pattern": "loop"
     },
     {
       "name": "P_FengMao_Undertow_Pip_03",
       "key": "P_FengMao_Undertow_Pip_03",
       "path": "RoyalGuardUndertow",
-      "loop": null,
+      "loop": true,
       "duration": null,
-      "system": "Cascade"
+      "system": "Cascade",
+      "video": "media/paragon-feng-mao/P_FengMao_Undertow_Pip_03.webm",
+      "poster": "media/paragon-feng-mao/P_FengMao_Undertow_Pip_03.jpg",
+      "visible": true,
+      "pattern": "loop"
     },
     {
       "name": "P_FengMao_Undertow_TeleportEnd_Local",
       "key": "P_FengMao_Undertow_TeleportEnd_Local",
       "path": "RoyalGuardUndertow",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 0.7,
+      "system": "Cascade",
+      "video": "media/paragon-feng-mao/P_FengMao_Undertow_TeleportEnd_Local.webm",
+      "poster": "media/paragon-feng-mao/P_FengMao_Undertow_TeleportEnd_Local.jpg",
+      "visible": true,
+      "pattern": "repeat"
     },
     {
       "name": "P_FengMao_Undertow_TeleportStart_Local",
       "key": "P_FengMao_Undertow_TeleportStart_Local",
       "path": "RoyalGuardUndertow",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 0.5,
+      "system": "Cascade",
+      "video": "media/paragon-feng-mao/P_FengMao_Undertow_TeleportStart_Local.webm",
+      "poster": "media/paragon-feng-mao/P_FengMao_Undertow_TeleportStart_Local.jpg",
+      "visible": true,
+      "pattern": "repeat"
     },
     {
       "name": "P_FengMao_Undertow_Ult_Chargeup",
       "key": "P_FengMao_Undertow_Ult_Chargeup",
       "path": "RoyalGuardUndertow",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 1.3,
+      "system": "Cascade",
+      "video": "media/paragon-feng-mao/P_FengMao_Undertow_Ult_Chargeup.webm",
+      "poster": "media/paragon-feng-mao/P_FengMao_Undertow_Ult_Chargeup.jpg",
+      "visible": true,
+      "pattern": "repeat"
     },
     {
       "name": "P_FengMao_Undertow_ULT_Impact01",
       "key": "P_FengMao_Undertow_ULT_Impact01",
       "path": "RoyalGuardUndertow",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 2.5,
+      "system": "Cascade",
+      "video": "media/paragon-feng-mao/P_FengMao_Undertow_ULT_Impact01.webm",
+      "poster": "media/paragon-feng-mao/P_FengMao_Undertow_ULT_Impact01.jpg",
+      "visible": true,
+      "pattern": "repeat"
     },
     {
       "name": "P_FengMao_Undertow_ULT_Impact02",
       "key": "P_FengMao_Undertow_ULT_Impact02",
       "path": "RoyalGuardUndertow",
-      "loop": null,
+      "loop": true,
       "duration": null,
-      "system": "Cascade"
+      "system": "Cascade",
+      "video": "media/paragon-feng-mao/P_FengMao_Undertow_ULT_Impact02.webm",
+      "poster": "media/paragon-feng-mao/P_FengMao_Undertow_ULT_Impact02.jpg",
+      "visible": true,
+      "pattern": "loop"
     },
     {
       "name": "P_FengMao_Undertow_ULT_Impact03",
       "key": "P_FengMao_Undertow_ULT_Impact03",
       "path": "RoyalGuardUndertow",
-      "loop": null,
+      "loop": true,
       "duration": null,
-      "system": "Cascade"
+      "system": "Cascade",
+      "video": "media/paragon-feng-mao/P_FengMao_Undertow_ULT_Impact03.webm",
+      "poster": "media/paragon-feng-mao/P_FengMao_Undertow_ULT_Impact03.jpg",
+      "visible": true,
+      "pattern": "loop"
     },
     {
       "name": "P_Portal_CameraEffect_Arcblade",
       "key": "P_Portal_CameraEffect_Arcblade__RoyalGuardUndertow",
       "path": "RoyalGuardUndertow",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 0.3,
+      "system": "Cascade",
+      "video": "media/paragon-feng-mao/P_Portal_CameraEffect_Arcblade__RoyalGuardUndertow.webm",
+      "poster": "media/paragon-feng-mao/P_Portal_CameraEffect_Arcblade__RoyalGuardUndertow.jpg",
+      "visible": true,
+      "pattern": "repeat"
     }
   ]
 }
