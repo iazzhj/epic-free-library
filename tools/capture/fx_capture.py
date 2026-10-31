@@ -26,7 +26,7 @@ import os
 import unreal
 
 # ---------------------------------------------------------------- 설정
-PACK_FILTER = ["paragon-greystone"]  # 처리할 팩 id. 비우면 effects_export.json 의 전체 팩
+PACK_FILTER = ["paragon-lt-belica"]  # 처리할 팩 id. 비우면 effects_export.json 의 전체 팩
 TEST_LIMIT = 0          # 시험 실행용: 팩마다 앞에서 몇 개만 렌더링할지. 0 이면 전부
 # 시험 실행 때 이 이름들을 우선 렌더링 (화면에 잘 보이는 이펙트). 비우면 목록 앞에서부터
 TEST_NAMES = ["P_Greystone_SwordSpinning_01", "P_Greystone_LeapAOE_GroundSmash", "P_Greystone_Primary_Impact"]
