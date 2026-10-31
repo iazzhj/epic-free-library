@@ -62,6 +62,8 @@ def main(zip_path):
             for k in FIELDS:
                 if k in r:
                     e[k] = r[k]
+            if e.get("duration") == 0:
+                e["duration"] = 0.1  # 예전 변환본의 0초 표기 보정
         with open(path, "w", encoding="utf-8") as f:
             json.dump(data, f, ensure_ascii=False, indent=2)
             f.write("\n")

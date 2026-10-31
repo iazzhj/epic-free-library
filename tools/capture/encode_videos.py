@@ -68,7 +68,7 @@ def analyze(counts, fps=FPS):
     if len(segs) > 1:
         end = min(end, segs[1][0])
     return {"pattern": "repeat" if len(segs) > 1 else "burst", "loop": False,
-            "duration": round(seg_len / fps, 1),
+            "duration": max(0.1, round(seg_len / fps, 1)),  # 한두 프레임짜리 섬광도 0초로 표시되지 않게
             "start": start, "end": end, "poster": first[0] + max(2, int(seg_len * 0.15))}
 # ----------------------------------------------------------------
 
