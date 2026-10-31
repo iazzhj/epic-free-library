@@ -151,10 +151,27 @@ def make_sequence(pack_id, effect, cam):
 
     # 이펙트: 임시 이미터 액터를 만들어 시퀀스 전용(스폰어블)으로 복사한 뒤 레벨에서는 지움
     ps = unreal.load_asset(effect["object"])
+    if ps is None:
+        raise RuntimeError("이펙트 에셋을 불러오지 못했습니다: " + effect["object"])
     tmp = actor_sub.spawn_actor_from_class(unreal.Emitter, unreal.Vector(0, 0, 0), unreal.Rotator(0, 0, 0))
     tmp.set_template(ps)
+    comp = tmp.get_component_by_class(unreal.ParticleSystemComponent)
+    if comp:
+        comp.set_editor_property("template", ps)
+        comp.set_editor_property("auto_activate", True)
     fx_binding = seq.add_spawnable_from_instance(tmp)
     actor_sub.destroy_actor(tmp)
+
+    # 시퀀스에 복사된 이미터에 이펙트가 실제로 들어갔는지 확인
+    try:
+        tpl = fx_binding.get_object_template()
+        tcomp = tpl.get_component_by_class(unreal.ParticleSystemComponent)
+        if tcomp.get_editor_property("template") is None:
+            tcomp.set_editor_property("template", ps)
+            log("  템플릿 비어 있어 다시 지정: " + effect["name"])
+        tcomp.set_editor_property("auto_activate", True)
+    except Exception as e:
+        unreal.log_warning("[EFL]   템플릿 확인 생략 ({0}): {1}".format(effect["name"], e))
     spawn_tracks = fx_binding.find_tracks_by_type(unreal.MovieSceneSpawnTrack)
     track = spawn_tracks[0] if spawn_tracks else fx_binding.add_track(unreal.MovieSceneSpawnTrack)
     sections = track.get_sections()
@@ -164,6 +181,16 @@ def make_sequence(pack_id, effect, cam):
         sec.get_all_channels()[0].set_default(True)
     except Exception:
         pass
+
+    # 파티클 토글 트랙: 0프레임에 '활성화' 키. 시퀀서·렌더 큐에서 Cascade 이펙트를 확실히 켜는 표준 방법
+    try:
+        ptrack = fx_binding.add_track(unreal.MovieSceneParticleTrack)
+        psec = ptrack.add_section()
+        psec.set_range(0, frames)
+        ch = psec.get_all_channels()[0]
+        ch.add_key(unreal.FrameNumber(0), 0)  # 0 = Activate
+    except Exception as e:
+        unreal.log_warning("[EFL]   파티클 토글 트랙 추가 실패 ({0}): {1}".format(effect["name"], e))
 
     # 카메라 컷
     cam_binding = seq.add_possessable(cam)
