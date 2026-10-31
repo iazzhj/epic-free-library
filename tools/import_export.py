@@ -30,9 +30,29 @@ def clean_path(obj_path, folder):
         if parts[:len(prefix)] == prefix:
             parts = parts[len(prefix):]
             break
-    if parts and parts[-1] == "FX":
-        parts = parts[:-1]
+    parts = [x for x in parts if x.upper() != "FX"]  # 중간에 끼어 있는 FX 폴더도 제목에서 뺌
     return "/".join(parts)
+
+
+def effect_keys(effects):
+    """팩 안에서 이펙트를 구분하는 키. 이름이 겹치면 '이름__상위폴더'.
+    fx_capture.py 의 effect_keys 와 같은 규칙 (녹화 폴더 이름과 맞아야 함)."""
+    counts = {}
+    for e in effects:
+        counts[e["name"]] = counts.get(e["name"], 0) + 1
+    keys, used = [], set()
+    for e in effects:
+        key = e["name"]
+        if counts[key] > 1:
+            parts = e["object"].split(".")[0].split("/")[:-1]
+            tag = next((x for x in reversed(parts) if x.upper() not in ("FX", "TEMPFX")), "dup")
+            key = "{0}__{1}".format(e["name"], tag)
+        base, n = key, 2
+        while key in used:
+            key, n = "{0}_{1}".format(base, n), n + 1
+        used.add(key)
+        keys.append(key)
+    return keys
 
 
 def load(path, default):
@@ -52,17 +72,18 @@ def main(src):
         if pid != pack["id"]:
             print(f"  id 맞춤: {pack['id']} -> {pid}")
         out_path = os.path.join(FX_DIR, pid + ".json")
-        old = {e["name"]: e for e in load(out_path, {"effects": []})["effects"]}
+        old = {e.get("key", e["name"]): e for e in load(out_path, {"effects": []})["effects"]}
         effects = []
-        for e in pack["effects"]:
+        for e, key in zip(pack["effects"], effect_keys(pack["effects"])):
             item = {
                 "name": e["name"],
+                "key": key,
                 "path": clean_path(e["object"], pack["folder"]),
                 "loop": e.get("loop"),
                 "duration": e.get("duration"),
                 "system": e.get("system"),
             }
-            prev = old.get(e["name"], {})
+            prev = old.get(key, {})
             for k in KEEP:
                 if prev.get(k) is not None and item.get(k) is None:
                     item[k] = prev[k]

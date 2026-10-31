@@ -5,6 +5,7 @@
   "effects": [
     {
       "name": "P_CameraEffect_ClearAPath",
+      "key": "P_CameraEffect_ClearAPath",
       "path": "Greystone/Abilities/ClearAPath",
       "loop": true,
       "duration": null,
@@ -15,6 +16,7 @@
     },
     {
       "name": "P_CameraEffect_ClearAPath_Impact",
+      "key": "P_CameraEffect_ClearAPath_Impact",
       "path": "Greystone/Abilities/ClearAPath",
       "loop": null,
       "duration": null,
@@ -23,6 +25,7 @@
     },
     {
       "name": "P_Greystone_ClearAPath_Impact",
+      "key": "P_Greystone_ClearAPath_Impact",
       "path": "Greystone/Abilities/ClearAPath",
       "loop": false,
       "duration": 0.4,
@@ -33,6 +36,7 @@
     },
     {
       "name": "P_Greystone_ClearAPath_Impacts",
+      "key": "P_Greystone_ClearAPath_Impacts",
       "path": "Greystone/Abilities/ClearAPath",
       "loop": false,
       "duration": 0.4,
@@ -43,6 +47,7 @@
     },
     {
       "name": "P_Greystone_ClearAPath_Swipe",
+      "key": "P_Greystone_ClearAPath_Swipe",
       "path": "Greystone/Abilities/ClearAPath",
       "loop": false,
       "duration": 0.4,
@@ -53,6 +58,7 @@
     },
     {
       "name": "P_Greystone_ClearAPath_Trail",
+      "key": "P_Greystone_ClearAPath_Trail",
       "path": "Greystone/Abilities/ClearAPath",
       "loop": null,
       "duration": null,
@@ -61,6 +67,7 @@
     },
     {
       "name": "p_Greystone_Spinning_Flare",
+      "key": "p_Greystone_Spinning_Flare",
       "path": "Greystone/Abilities/ClearAPath",
       "loop": null,
       "duration": null,
@@ -69,6 +76,7 @@
     },
     {
       "name": "P_Greystone_SwordSpinning_01",
+      "key": "P_Greystone_SwordSpinning_01",
       "path": "Greystone/Abilities/ClearAPath",
       "loop": true,
       "duration": null,
@@ -79,6 +87,7 @@
     },
     {
       "name": "P_Greystone_SwordSpinning_End",
+      "key": "P_Greystone_SwordSpinning_End",
       "path": "Greystone/Abilities/ClearAPath",
       "loop": false,
       "duration": 2.4,
@@ -89,6 +98,7 @@
     },
     {
       "name": "P_Greystone_SwordSpinning_Start",
+      "key": "P_Greystone_SwordSpinning_Start",
       "path": "Greystone/Abilities/ClearAPath",
       "loop": false,
       "duration": 1.9,
@@ -99,6 +109,7 @@
     },
     {
       "name": "P_Greystone_Deflect_Looping",
+      "key": "P_Greystone_Deflect_Looping",
       "path": "Greystone/Abilities/Deflect",
       "loop": true,
       "duration": null,
@@ -109,6 +120,7 @@
     },
     {
       "name": "P_Greystone_Deflect_Remove",
+      "key": "P_Greystone_Deflect_Remove",
       "path": "Greystone/Abilities/Deflect",
       "loop": false,
       "duration": 0.5,
@@ -119,6 +131,7 @@
     },
     {
       "name": "P_Greystone_Leap_AOE_Trail",
+      "key": "P_Greystone_Leap_AOE_Trail",
       "path": "Greystone/Abilities/LeapAOE",
       "loop": null,
       "duration": null,
@@ -127,6 +140,7 @@
     },
     {
       "name": "P_Greystone_Leap_AOE_Trail_GlowEdge",
+      "key": "P_Greystone_Leap_AOE_Trail_GlowEdge",
       "path": "Greystone/Abilities/LeapAOE",
       "loop": null,
       "duration": null,
@@ -135,6 +149,7 @@
     },
     {
       "name": "P_Greystone_LeapAOE_GroundSmash",
+      "key": "P_Greystone_LeapAOE_GroundSmash",
       "path": "Greystone/Abilities/LeapAOE",
       "loop": false,
       "duration": 1.1,
@@ -145,6 +160,7 @@
     },
     {
       "name": "P_Greystone_LeapAOE_GroundSmash1",
+      "key": "P_Greystone_LeapAOE_GroundSmash1",
       "path": "Greystone/Abilities/LeapAOE",
       "loop": false,
       "duration": 0.8,
@@ -155,6 +171,7 @@
     },
     {
       "name": "P_Greystone_LeapAOE_Start",
+      "key": "P_Greystone_LeapAOE_Start",
       "path": "Greystone/Abilities/LeapAOE",
       "loop": false,
       "duration": 0.4,
@@ -165,6 +182,7 @@
     },
     {
       "name": "P_LeapSmash_Location",
+      "key": "P_LeapSmash_Location",
       "path": "Greystone/Abilities/LeapAOE",
       "loop": false,
       "duration": 1.5,
@@ -175,6 +193,7 @@
     },
     {
       "name": "P_Greystone_Primary_Impact",
+      "key": "P_Greystone_Primary_Impact",
       "path": "Greystone/Abilities/Primary",
       "loop": false,
       "duration": 0.4,
@@ -185,6 +204,7 @@
     },
     {
       "name": "P_Greystone_Primary_Sparks",
+      "key": "P_Greystone_Primary_Sparks",
       "path": "Greystone/Abilities/Primary",
       "loop": null,
       "duration": null,
@@ -193,6 +213,7 @@
     },
     {
       "name": "P_Greystone_Primary_Trails_L",
+      "key": "P_Greystone_Primary_Trails_L",
       "path": "Greystone/Abilities/Primary",
       "loop": null,
       "duration": null,
@@ -201,6 +222,7 @@
     },
     {
       "name": "P_Greystone_Primary_Trails_R",
+      "key": "P_Greystone_Primary_Trails_R",
       "path": "Greystone/Abilities/Primary",
       "loop": null,
       "duration": null,
@@ -209,6 +231,7 @@
     },
     {
       "name": "P_Greystone_Primary_Trails_Taunt",
+      "key": "P_Greystone_Primary_Trails_Taunt",
       "path": "Greystone/Abilities/Primary",
       "loop": null,
       "duration": null,
@@ -217,6 +240,7 @@
     },
     {
       "name": "P_Greystone_Recall_Trails",
+      "key": "P_Greystone_Recall_Trails",
       "path": "Greystone/Abilities/Primary",
       "loop": null,
       "duration": null,
@@ -225,6 +249,7 @@
     },
     {
       "name": "P_Greystone_Spawn_DrawSword",
+      "key": "P_Greystone_Spawn_DrawSword",
       "path": "Greystone/Abilities/Primary",
       "loop": false,
       "duration": 0.8,
@@ -235,6 +260,7 @@
     },
     {
       "name": "P_Greystone_Trail_OnlyWind",
+      "key": "P_Greystone_Trail_OnlyWind",
       "path": "Greystone/Abilities/Primary",
       "loop": null,
       "duration": null,
@@ -243,6 +269,7 @@
     },
     {
       "name": "P_CameraEffect_Ultimate",
+      "key": "P_CameraEffect_Ultimate",
       "path": "Greystone/Abilities/Ultimate",
       "loop": false,
       "duration": 1.0,
@@ -253,6 +280,7 @@
     },
     {
       "name": "P_Greystone_HToKill_After",
+      "key": "P_Greystone_HToKill_After",
       "path": "Greystone/Abilities/Ultimate",
       "loop": true,
       "duration": null,
@@ -263,6 +291,7 @@
     },
     {
       "name": "P_Greystone_HToKill_Impact",
+      "key": "P_Greystone_HToKill_Impact",
       "path": "Greystone/Abilities/Ultimate",
       "loop": false,
       "duration": 1.6,
@@ -273,6 +302,7 @@
     },
     {
       "name": "P_Greystone_HToKill_Impact_Local",
+      "key": "P_Greystone_HToKill_Impact_Local",
       "path": "Greystone/Abilities/Ultimate",
       "loop": false,
       "duration": 1.5,
@@ -283,6 +313,7 @@
     },
     {
       "name": "P_Greystone_HToKill_Resurrect",
+      "key": "P_Greystone_HToKill_Resurrect",
       "path": "Greystone/Abilities/Ultimate",
       "loop": false,
       "duration": 2.2,
@@ -293,6 +324,7 @@
     },
     {
       "name": "P_Greystone_HToKill_Resurrect_Local",
+      "key": "P_Greystone_HToKill_Resurrect_Local",
       "path": "Greystone/Abilities/Ultimate",
       "loop": false,
       "duration": 1.3,
@@ -303,6 +335,7 @@
     },
     {
       "name": "P_Greystone_HToKill_Start",
+      "key": "P_Greystone_HToKill_Start",
       "path": "Greystone/Abilities/Ultimate",
       "loop": false,
       "duration": 1.5,
@@ -313,6 +346,7 @@
     },
     {
       "name": "P_Greystone_HToKill_Trail",
+      "key": "P_Greystone_HToKill_Trail",
       "path": "Greystone/Abilities/Ultimate",
       "loop": true,
       "duration": null,
@@ -323,6 +357,7 @@
     },
     {
       "name": "P_Greystone_HToKill_Trail_TEMP",
+      "key": "P_Greystone_HToKill_Trail_TEMP",
       "path": "Greystone/Abilities/Ultimate",
       "loop": true,
       "duration": null,
@@ -333,6 +368,7 @@
     },
     {
       "name": "P_Greystone_HToKill_Trail_V2",
+      "key": "P_Greystone_HToKill_Trail_V2",
       "path": "Greystone/Abilities/Ultimate",
       "loop": true,
       "duration": null,
@@ -343,6 +379,7 @@
     },
     {
       "name": "P_Greystone_HToKill_Trail_V2_Local",
+      "key": "P_Greystone_HToKill_Trail_V2_Local",
       "path": "Greystone/Abilities/Ultimate",
       "loop": true,
       "duration": null,
@@ -353,6 +390,7 @@
     },
     {
       "name": "P_Greystone_HToKill_WarmUp",
+      "key": "P_Greystone_HToKill_WarmUp",
       "path": "Greystone/Abilities/Ultimate",
       "loop": false,
       "duration": 1.8,
@@ -363,6 +401,7 @@
     },
     {
       "name": "P_Greystone_Statue_Destroy",
+      "key": "P_Greystone_Statue_Destroy",
       "path": "Greystone/Abilities/Ultimate",
       "loop": false,
       "duration": 2.3,
@@ -373,6 +412,7 @@
     },
     {
       "name": "P_Greystone_Ultimate_Glow_Activate",
+      "key": "P_Greystone_Ultimate_Glow_Activate",
       "path": "Greystone/Abilities/Ultimate",
       "loop": true,
       "duration": null,
@@ -383,6 +423,7 @@
     },
     {
       "name": "P_Greystone_Ultimate_Glow_Light",
+      "key": "P_Greystone_Ultimate_Glow_Light",
       "path": "Greystone/Abilities/Ultimate",
       "loop": true,
       "duration": null,
@@ -393,6 +434,7 @@
     },
     {
       "name": "P_Greystone_Ultimate_Slow",
+      "key": "P_Greystone_Ultimate_Slow",
       "path": "Greystone/Abilities/Ultimate",
       "loop": false,
       "duration": 1.1,
@@ -403,6 +445,7 @@
     },
     {
       "name": "P_Greystone_Ultimate_Stone",
+      "key": "P_Greystone_Ultimate_Stone",
       "path": "Greystone/Abilities/Ultimate",
       "loop": true,
       "duration": null,
@@ -413,6 +456,7 @@
     },
     {
       "name": "P_HToKill_TurnToStone",
+      "key": "P_HToKill_TurnToStone",
       "path": "Greystone/Abilities/Ultimate",
       "loop": false,
       "duration": 2.5,
@@ -423,6 +467,7 @@
     },
     {
       "name": "P_Greystone_Novaborn_CameraEffect_Ultimate",
+      "key": "P_Greystone_Novaborn_CameraEffect_Ultimate",
       "path": "Greystone/Skins/Novaborn",
       "loop": false,
       "duration": 0.7,
@@ -433,6 +478,7 @@
     },
     {
       "name": "P_Greystone_Novaborn_HToKill_Impact",
+      "key": "P_Greystone_Novaborn_HToKill_Impact",
       "path": "Greystone/Skins/Novaborn",
       "loop": false,
       "duration": 1.4,
@@ -443,6 +489,7 @@
     },
     {
       "name": "P_Greystone_Novaborn_HToKill_Resurrect",
+      "key": "P_Greystone_Novaborn_HToKill_Resurrect",
       "path": "Greystone/Skins/Novaborn",
       "loop": false,
       "duration": 4.3,
@@ -453,6 +500,7 @@
     },
     {
       "name": "P_Greystone_Novaborn_HToKill_Resurrect_Local",
+      "key": "P_Greystone_Novaborn_HToKill_Resurrect_Local",
       "path": "Greystone/Skins/Novaborn",
       "loop": false,
       "duration": 0.8,
@@ -463,6 +511,7 @@
     },
     {
       "name": "P_Greystone_Novaborn_HToKill_Start",
+      "key": "P_Greystone_Novaborn_HToKill_Start",
       "path": "Greystone/Skins/Novaborn",
       "loop": false,
       "duration": 2.0,
@@ -473,6 +522,7 @@
     },
     {
       "name": "P_Greystone_Novaborn_LeapAOE_Constellations",
+      "key": "P_Greystone_Novaborn_LeapAOE_Constellations",
       "path": "Greystone/Skins/Novaborn",
       "loop": false,
       "duration": 1.3,
@@ -483,6 +533,7 @@
     },
     {
       "name": "P_Greystone_Novaborn_LeapAOE_Constellations_Water",
+      "key": "P_Greystone_Novaborn_LeapAOE_Constellations_Water",
       "path": "Greystone/Skins/Novaborn",
       "loop": false,
       "duration": 1.6,
@@ -493,6 +544,7 @@
     },
     {
       "name": "P_Greystone_Novaborn_LeapAOE_Start",
+      "key": "P_Greystone_Novaborn_LeapAOE_Start",
       "path": "Greystone/Skins/Novaborn",
       "loop": false,
       "duration": 0.4,
@@ -503,6 +555,7 @@
     },
     {
       "name": "P_Greystone_Novaborn_LeapAOE_Trails",
+      "key": "P_Greystone_Novaborn_LeapAOE_Trails",
       "path": "Greystone/Skins/Novaborn",
       "loop": null,
       "duration": null,
@@ -511,6 +564,7 @@
     },
     {
       "name": "P_Greystone_Novaborn_LevelStart_ShieldSpawn",
+      "key": "P_Greystone_Novaborn_LevelStart_ShieldSpawn",
       "path": "Greystone/Skins/Novaborn",
       "loop": false,
       "duration": 0.6,
@@ -521,6 +575,7 @@
     },
     {
       "name": "P_Greystone_Novaborn_LevelStart_Trails",
+      "key": "P_Greystone_Novaborn_LevelStart_Trails",
       "path": "Greystone/Skins/Novaborn",
       "loop": null,
       "duration": null,
@@ -529,6 +584,7 @@
     },
     {
       "name": "P_Greystone_Novaborn_Primary_Impact",
+      "key": "P_Greystone_Novaborn_Primary_Impact",
       "path": "Greystone/Skins/Novaborn",
       "loop": false,
       "duration": 0.4,
@@ -539,6 +595,7 @@
     },
     {
       "name": "P_Greystone_Novaborn_Primary_Trails",
+      "key": "P_Greystone_Novaborn_Primary_Trails",
       "path": "Greystone/Skins/Novaborn",
       "loop": null,
       "duration": null,
@@ -547,6 +604,7 @@
     },
     {
       "name": "P_Greystone_Novaborn_Spawn_DrawSword",
+      "key": "P_Greystone_Novaborn_Spawn_DrawSword",
       "path": "Greystone/Skins/Novaborn",
       "loop": false,
       "duration": 0.9,
@@ -557,6 +615,7 @@
     },
     {
       "name": "P_Greystone_Novaborn_Spawn_Light",
+      "key": "P_Greystone_Novaborn_Spawn_Light",
       "path": "Greystone/Skins/Novaborn",
       "loop": null,
       "duration": null,
@@ -565,6 +624,7 @@
     },
     {
       "name": "P_Greystone_Novaborn_Statue_Destroy",
+      "key": "P_Greystone_Novaborn_Statue_Destroy",
       "path": "Greystone/Skins/Novaborn",
       "loop": false,
       "duration": 2.1,
@@ -575,6 +635,7 @@
     },
     {
       "name": "P_Greystone_Novaborn_SwordSpinning_01",
+      "key": "P_Greystone_Novaborn_SwordSpinning_01",
       "path": "Greystone/Skins/Novaborn",
       "loop": true,
       "duration": null,
@@ -585,6 +646,7 @@
     },
     {
       "name": "P_Greystone_Novaborn_ULT_DragonHead",
+      "key": "P_Greystone_Novaborn_ULT_DragonHead",
       "path": "Greystone/Skins/Novaborn",
       "loop": true,
       "duration": null,
@@ -595,6 +657,7 @@
     },
     {
       "name": "P_Greystone_Novaborn_ULT_Trail",
+      "key": "P_Greystone_Novaborn_ULT_Trail",
       "path": "Greystone/Skins/Novaborn",
       "loop": false,
       "duration": 0.6,
@@ -605,6 +668,7 @@
     },
     {
       "name": "P_Greystone_Novaborn_UltimateActive",
+      "key": "P_Greystone_Novaborn_UltimateActive",
       "path": "Greystone/Skins/Novaborn",
       "loop": false,
       "duration": 0.7,

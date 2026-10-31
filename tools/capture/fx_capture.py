@@ -79,6 +79,27 @@ def camera_for(pack_id, name):
     rot = unreal.MathLibrary.find_look_at_rotation(loc, t)
     return loc, rot, {"target": [t.x, t.y, t.z], "distance": d, "planned": bool(p)}
 
+def effect_keys(effects):
+    """팩 안에서 이펙트를 구분하는 키. 이름이 겹치면 '이름__상위폴더'.
+    저장소의 tools/import_export.py 와 같은 규칙 (사이트 데이터와 맞아야 함)."""
+    counts = {}
+    for e in effects:
+        counts[e["name"]] = counts.get(e["name"], 0) + 1
+    keys, used = [], set()
+    for e in effects:
+        key = e["name"]
+        if counts[key] > 1:
+            parts = e["object"].split(".")[0].split("/")[:-1]
+            tag = next((x for x in reversed(parts) if x.upper() not in ("FX", "TEMPFX")), "dup")
+            key = "{0}__{1}".format(e["name"], tag)
+        base, n = key, 2
+        while key in used:
+            key, n = "{0}_{1}".format(base, n), n + 1
+        used.add(key)
+        keys.append(key)
+    return keys
+
+
 level_sub = actor_sub = asset_tools = None
 
 
@@ -170,7 +191,7 @@ def binding_id(seq, binding):
 
 
 def make_sequence(pack_id, effect, cam):
-    name = "SEQ_" + effect["name"]
+    name = "SEQ_" + effect["key"]
     folder = SEQ_ROOT + "/" + pack_id
     path = folder + "/" + name
     if unreal.EditorAssetLibrary.does_asset_exist(path):
@@ -245,7 +266,7 @@ def make_sequence(pack_id, effect, cam):
     cut.set_camera_binding_id(binding_id(seq, cam_binding))
 
     # 이펙트별 카메라 위치: 카메라에 고정값 트랜스폼 트랙을 넣어 이 시퀀스에서만 옮김
-    loc, rot, info = camera_for(pack_id, effect["name"])
+    loc, rot, info = camera_for(pack_id, effect["key"])
     if info["planned"]:
         try:
             tt = cam_binding.add_track(unreal.MovieScene3DTransformTrack)
@@ -277,7 +298,7 @@ def queue_jobs(items):
     map_obj = MAP_PATH + "." + MAP_PATH.split("/")[-1]
     for pack_id, effect, seq_path, cam_info in items:
         job = queue.allocate_new_job(unreal.MoviePipelineExecutorJob)
-        job.job_name = pack_id + "/" + effect["name"]
+        job.job_name = pack_id + "/" + effect["key"]
         job.map = unreal.SoftObjectPath(map_obj)
         job.sequence = unreal.SoftObjectPath(seq_path + "." + seq_path.split("/")[-1])
         cfg = job.get_configuration()
@@ -289,7 +310,7 @@ def queue_jobs(items):
         except Exception:
             pass
         out = cfg.find_or_add_setting_by_class(unreal.MoviePipelineOutputSetting)
-        out_dir = os.path.join(FRAMES_ROOT, pack_id, effect["name"])
+        out_dir = os.path.join(FRAMES_ROOT, pack_id, effect["key"])
         os.makedirs(out_dir, exist_ok=True)
         # 어떤 카메라로 찍었는지 기록 → encode_videos.py 가 다음 계획을 계산할 때 사용
         cam_info = dict(cam_info, fov=CAMERA_FOV, width=WIDTH, height=HEIGHT,
@@ -334,7 +355,10 @@ def main():
         named = [e for e in effects if e["name"] in TEST_NAMES]
         rest = [e for e in effects if e["name"] not in TEST_NAMES]
         return (named + rest)[:TEST_LIMIT]
-    todo = [(p["id"], e) for p in packs for e in pick(p["effects"]) if e.get("system") == "Cascade"]
+    todo = []
+    for p in packs:
+        keyed = [dict(e, key=k) for e, k in zip(p["effects"], effect_keys(p["effects"]))]
+        todo += [(p["id"], e) for e in pick(keyed) if e.get("system") == "Cascade"]
     with unreal.ScopedSlowTask(len(todo), "이펙트 시퀀스 만드는 중") as task:
         task.make_dialog(True)
         for pack_id, effect in todo:

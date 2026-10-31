@@ -55,7 +55,7 @@ def main(zip_path):
             data = json.load(f)
         matched = 0
         for e in data["effects"]:
-            r = effects.get(e["name"])
+            r = effects.get(e.get("key", e["name"]))
             if not r:
                 continue
             matched += 1
