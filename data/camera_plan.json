@@ -2,361 +2,361 @@
   "paragon-greystone": {
     "P_CameraEffect_ClearAPath": {
       "target": [
-        -20.1,
+        -19.3,
         0.0,
-        12.5
+        14.3
       ],
-      "distance": 363.6,
-      "fill": 0.217,
+      "distance": 356.3,
+      "fill": 0.539,
       "clipped": false
     },
     "P_CameraEffect_Ultimate": {
       "target": [
-        -20.8,
+        -19.5,
         0.0,
-        10.9
+        14.0
       ],
-      "distance": 373.0,
-      "fill": 0.222,
+      "distance": 357.9,
+      "fill": 0.528,
       "clipped": false
     },
     "P_Greystone_ClearAPath_Impact": {
       "target": [
-        -19.5,
-        -13.3,
-        14.0
+        -17.4,
+        -32.7,
+        19.0
       ],
-      "distance": 596.8,
-      "fill": 0.356,
+      "distance": 560.6,
+      "fill": 0.517,
       "clipped": false
     },
     "P_Greystone_ClearAPath_Impacts": {
       "target": [
-        -0.6,
-        41.6,
-        58.5
+        -25.7,
+        18.2,
+        -0.8
       ],
-      "distance": 811.2,
-      "fill": 0.483,
+      "distance": 803.0,
+      "fill": 0.544,
       "clipped": false
     },
     "P_Greystone_ClearAPath_Swipe": {
       "target": [
-        -7.8,
+        -4.3,
         -11.7,
-        41.6
+        50.0
       ],
-      "distance": 1007.0,
-      "fill": 0.6,
+      "distance": 966.3,
+      "fill": 0.528,
       "clipped": false
     },
     "P_Greystone_Deflect_Looping": {
       "target": [
-        -19.5,
+        -19.8,
         -10.0,
-        14.0
+        13.2
       ],
-      "distance": 230.8,
-      "fill": 0.078,
+      "distance": 150.0,
+      "fill": 0.278,
       "clipped": false
     },
     "P_Greystone_Deflect_Remove": {
       "target": [
         -20.1,
-        -10.0,
+        -6.0,
         12.5
       ],
-      "distance": 550.1,
-      "fill": 0.328,
+      "distance": 477.9,
+      "fill": 0.478,
       "clipped": false
     },
     "P_Greystone_HToKill_After": {
       "target": [
-        -6.5,
-        -31.6,
-        44.7
+        -1.7,
+        7.4,
+        56.0
       ],
-      "distance": 1137.6,
-      "fill": 0.678,
+      "distance": 1172.1,
+      "fill": 0.567,
       "clipped": false
     },
     "P_Greystone_HToKill_Impact": {
       "target": [
-        -7.8,
-        5.0,
-        41.6
+        -22.3,
+        -9.3,
+        7.3
       ],
-      "distance": 1589.2,
-      "fill": 0.947,
-      "clipped": true
+      "distance": 2488.1,
+      "fill": 0.861,
+      "clipped": false
     },
     "P_Greystone_HToKill_Impact_Local": {
       "target": [
-        -9.1,
-        8.3,
-        38.5
+        -27.4,
+        2.8,
+        -4.6
       ],
-      "distance": 1526.3,
-      "fill": 0.909,
-      "clipped": true
+      "distance": 2266.3,
+      "fill": 0.817,
+      "clipped": false
     },
     "P_Greystone_HToKill_Resurrect": {
       "target": [
-        -3.9,
-        3.3,
-        50.8
+        -18.6,
+        -7.5,
+        16.1
       ],
-      "distance": 1491.9,
-      "fill": 0.889,
+      "distance": 2109.8,
+      "fill": 0.778,
       "clipped": false
     },
     "P_Greystone_HToKill_Resurrect_Local": {
       "target": [
-        -16.2,
-        -15.0,
-        21.7
+        -23.5,
+        8.4,
+        4.5
       ],
-      "distance": 1296.1,
-      "fill": 0.772,
+      "distance": 1440.1,
+      "fill": 0.611,
       "clipped": false
     },
     "P_Greystone_HToKill_Start": {
       "target": [
-        39.0,
-        1.7,
-        152.0
+        82.6,
+        -3.1,
+        255.0
       ],
-      "distance": 1318.7,
-      "fill": 0.633,
+      "distance": 1883.9,
+      "fill": 0.706,
       "clipped": true
     },
     "P_Greystone_HToKill_Trail": {
       "target": [
-        1.9,
-        -16.7,
-        64.6
+        35.6,
+        0.6,
+        144.1
       ],
-      "distance": 1594.4,
-      "fill": 0.95,
+      "distance": 2319.1,
+      "fill": 0.8,
       "clipped": true
     },
     "P_Greystone_HToKill_Trail_TEMP": {
       "target": [
-        2.6,
-        0.0,
-        66.1
+        36.1,
+        -5.7,
+        145.1
       ],
-      "distance": 1585.1,
-      "fill": 0.944,
+      "distance": 2305.6,
+      "fill": 0.8,
       "clipped": true
     },
     "P_Greystone_HToKill_Trail_V2": {
       "target": [
-        0.6,
-        5.0,
-        61.5
+        19.7,
+        2.1,
+        106.5
       ],
-      "distance": 1594.4,
-      "fill": 0.95,
+      "distance": 2464.1,
+      "fill": 0.85,
       "clipped": false
     },
     "P_Greystone_HToKill_Trail_V2_Local": {
       "target": [
-        0.6,
-        -5.0,
-        61.5
+        6.3,
+        -2.1,
+        74.9
       ],
-      "distance": 1613.1,
-      "fill": 0.961,
+      "distance": 2753.7,
+      "fill": 0.939,
       "clipped": true
     },
     "P_Greystone_HToKill_WarmUp": {
       "target": [
-        -18.8,
+        -24.5,
         11.7,
-        15.5
+        2.0
       ],
-      "distance": 1620.7,
-      "fill": 0.966,
-      "clipped": true
+      "distance": 1823.3,
+      "fill": 0.619,
+      "clipped": false
     },
     "P_Greystone_LeapAOE_GroundSmash": {
       "target": [
-        -21.4,
+        -19.5,
         0.0,
-        9.4
+        13.8
       ],
-      "distance": 885.8,
-      "fill": 0.528,
+      "distance": 903.7,
+      "fill": 0.561,
       "clipped": false
     },
     "P_Greystone_LeapAOE_GroundSmash1": {
       "target": [
-        -24.0,
-        -1.7,
-        3.3
+        -26.9,
+        -9.0,
+        -3.5
       ],
-      "distance": 1016.3,
-      "fill": 0.606,
+      "distance": 923.9,
+      "fill": 0.5,
       "clipped": false
     },
     "P_Greystone_LeapAOE_Start": {
       "target": [
-        -52.6,
-        1.7,
-        -64.2
+        -48.5,
+        0.9,
+        -54.4
       ],
-      "distance": 419.6,
-      "fill": 0.25,
+      "distance": 330.6,
+      "fill": 0.433,
       "clipped": false
     },
     "P_Greystone_Novaborn_CameraEffect_Ultimate": {
       "target": [
-        -18.8,
+        -18.6,
         0.0,
-        15.5
+        16.0
       ],
-      "distance": 307.7,
-      "fill": 0.183,
+      "distance": 289.1,
+      "fill": 0.517,
       "clipped": false
     },
     "P_Greystone_Novaborn_HToKill_Impact": {
       "target": [
-        -0.6,
+        -2.9,
         1.7,
-        58.5
+        53.1
       ],
-      "distance": 1613.1,
-      "fill": 0.961,
+      "distance": 2802.6,
+      "fill": 0.956,
       "clipped": true
     },
     "P_Greystone_Novaborn_HToKill_Resurrect": {
       "target": [
-        14.9,
-        -6.7,
-        95.3
+        50.0,
+        -4.1,
+        178.3
       ],
-      "distance": 1426.6,
-      "fill": 0.85,
+      "distance": 2038.0,
+      "fill": 0.783,
       "clipped": true
     },
     "P_Greystone_Novaborn_HToKill_Resurrect_Local": {
       "target": [
-        -40.3,
+        -32.8,
         0.0,
-        -35.1
+        -17.3
       ],
-      "distance": 1070.0,
-      "fill": 0.637,
+      "distance": 1057.8,
+      "fill": 0.544,
       "clipped": false
     },
     "P_Greystone_Novaborn_HToKill_Start": {
       "target": [
-        8.4,
-        83.3,
-        79.9
+        34.5,
+        51.2,
+        141.5
       ],
-      "distance": 1482.6,
-      "fill": 0.883,
+      "distance": 2171.5,
+      "fill": 0.806,
       "clipped": false
     },
     "P_Greystone_Novaborn_LeapAOE_Constellations": {
       "target": [
-        -3.2,
-        196.5,
-        52.3
+        -19.6,
+        190.9,
+        13.5
       ],
-      "distance": 1557.1,
-      "fill": 0.928,
+      "distance": 1714.4,
+      "fill": 0.606,
       "clipped": false
     },
     "P_Greystone_Novaborn_LeapAOE_Constellations_Water": {
       "target": [
-        -19.5,
-        233.2,
-        14.0
+        -30.4,
+        200.7,
+        -11.7
       ],
-      "distance": 1286.7,
-      "fill": 0.767,
+      "distance": 1403.7,
+      "fill": 0.6,
       "clipped": false
     },
     "P_Greystone_Novaborn_LeapAOE_Start": {
       "target": [
-        -22.1,
-        18.3,
-        7.9
+        -16.6,
+        -14.7,
+        20.9
       ],
-      "distance": 652.7,
-      "fill": 0.389,
+      "distance": 712.0,
+      "fill": 0.6,
       "clipped": false
     },
     "P_Greystone_Novaborn_LevelStart_ShieldSpawn": {
       "target": [
-        46.8,
-        -48.3,
-        170.4
+        52.0,
+        -44.9,
+        182.8
       ],
-      "distance": 932.4,
-      "fill": 0.556,
+      "distance": 923.0,
+      "fill": 0.544,
       "clipped": false
     },
     "P_Greystone_Novaborn_Primary_Impact": {
       "target": [
-        -24.7,
-        -8.3,
-        1.7
+        -29.4,
+        3.8,
+        -9.5
       ],
-      "distance": 559.5,
-      "fill": 0.333,
+      "distance": 633.0,
+      "fill": 0.622,
       "clipped": false
     },
     "P_Greystone_Novaborn_Spawn_DrawSword": {
       "target": [
-        -19.5,
-        3.3,
-        14.0
+        -15.0,
+        1.0,
+        24.5
       ],
-      "distance": 317.0,
-      "fill": 0.189,
+      "distance": 371.4,
+      "fill": 0.644,
       "clipped": false
     },
     "P_Greystone_Novaborn_Statue_Destroy": {
       "target": [
-        26.0,
-        0.0,
-        121.3
+        78.0,
+        -4.8,
+        244.0
       ],
-      "distance": 1318.7,
-      "fill": 0.767,
-      "clipped": true
+      "distance": 1571.8,
+      "fill": 0.656,
+      "clipped": false
     },
     "P_Greystone_Novaborn_SwordSpinning_01": {
       "target": [
-        -35.1,
-        -28.3,
-        -22.8
+        -54.6,
+        -23.5,
+        -68.8
       ],
       "distance": 1318.7,
-      "fill": 0.691,
-      "clipped": true
+      "fill": 0.55,
+      "clipped": false
     },
     "P_Greystone_Novaborn_ULT_DragonHead": {
       "target": [
-        -20.1,
-        1.7,
-        12.5
+        -20.7,
+        0.5,
+        11.0
       ],
-      "distance": 230.8,
-      "fill": 0.072,
+      "distance": 150.0,
+      "fill": 0.284,
       "clipped": false
     },
     "P_Greystone_Novaborn_ULT_Trail": {
       "target": [
-        0.6,
+        -0.5,
         1.7,
-        61.5
+        58.8
       ],
-      "distance": 1613.1,
+      "distance": 2818.9,
       "fill": 0.961,
       "clipped": true
     },
@@ -366,128 +366,128 @@
         0.0,
         84.5
       ],
-      "distance": 839.2,
-      "fill": 0.5,
+      "distance": 864.6,
+      "fill": 0.567,
       "clipped": false
     },
     "P_Greystone_Primary_Impact": {
       "target": [
-        -19.5,
-        -6.7,
-        14.0
+        -21.7,
+        -3.2,
+        8.8
       ],
-      "distance": 391.6,
-      "fill": 0.233,
+      "distance": 482.6,
+      "fill": 0.678,
       "clipped": false
     },
     "P_Greystone_Spawn_DrawSword": {
       "target": [
-        -11.0,
-        15.0,
-        33.9
+        -5.9,
+        4.7,
+        46.0
       ],
-      "distance": 382.3,
-      "fill": 0.228,
+      "distance": 428.6,
+      "fill": 0.617,
       "clipped": false
     },
     "P_Greystone_Statue_Destroy": {
       "target": [
-        4.5,
-        15.0,
-        70.7
+        10.9,
+        -71.5,
+        85.8
       ],
-      "distance": 1296.1,
-      "fill": 0.772,
+      "distance": 1872.1,
+      "fill": 0.794,
       "clipped": false
     },
     "P_Greystone_SwordSpinning_01": {
       "target": [
-        -35.7,
-        -11.7,
-        -24.3
+        -45.5,
+        -21.4,
+        -47.5
       ],
       "distance": 1072.3,
-      "fill": 0.639,
+      "fill": 0.55,
       "clipped": false
     },
     "P_Greystone_SwordSpinning_End": {
       "target": [
-        -51.3,
-        -26.6,
-        -61.2
+        -82.8,
+        6.7,
+        -135.7
       ],
-      "distance": 1318.7,
-      "fill": 0.613,
-      "clipped": true
+      "distance": 1183.8,
+      "fill": 0.494,
+      "clipped": false
     },
     "P_Greystone_SwordSpinning_Start": {
       "target": [
-        -22.7,
-        -76.6,
-        6.3
+        -35.6,
+        -62.1,
+        -24.2
       ],
-      "distance": 1146.9,
-      "fill": 0.683,
+      "distance": 1320.7,
+      "fill": 0.633,
       "clipped": false
     },
     "P_Greystone_Ultimate_Glow_Activate": {
       "target": [
-        -28.6,
-        0.0,
-        -7.5
+        -29.9,
+        0.4,
+        -10.6
       ],
-      "distance": 230.8,
-      "fill": 0.067,
+      "distance": 150.0,
+      "fill": 0.222,
       "clipped": false
     },
     "P_Greystone_Ultimate_Glow_Light": {
       "target": [
-        -26.0,
-        -1.7,
-        -1.3
+        -27.1,
+        -0.0,
+        -4.0
       ],
-      "distance": 230.8,
-      "fill": 0.078,
+      "distance": 150.0,
+      "fill": 0.272,
       "clipped": false
     },
     "P_Greystone_Ultimate_Slow": {
       "target": [
-        -18.8,
+        -74.1,
         -23.3,
-        15.5
+        -115.2
       ],
-      "distance": 1542.0,
-      "fill": 0.919,
-      "clipped": false
+      "distance": 2645.9,
+      "fill": 0.944,
+      "clipped": true
     },
     "P_Greystone_Ultimate_Stone": {
       "target": [
-        -40.3,
-        1.7,
-        -35.1
+        -41.3,
+        0.6,
+        -37.6
       ],
-      "distance": 298.4,
-      "fill": 0.178,
+      "distance": 262.2,
+      "fill": 0.483,
       "clipped": false
     },
     "P_HToKill_TurnToStone": {
       "target": [
-        -44.8,
-        20.0,
-        -45.8
+        -40.9,
+        28.1,
+        -36.6
       ],
-      "distance": 345.0,
-      "fill": 0.206,
+      "distance": 257.9,
+      "fill": 0.411,
       "clipped": false
     },
     "P_LeapSmash_Location": {
       "target": [
-        29.9,
-        23.3,
-        130.5
+        34.2,
+        15.4,
+        140.7
       ],
-      "distance": 876.5,
-      "fill": 0.522,
+      "distance": 894.2,
+      "fill": 0.561,
       "clipped": false
     }
   }
