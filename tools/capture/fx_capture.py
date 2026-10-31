@@ -28,6 +28,8 @@ import unreal
 # ---------------------------------------------------------------- 설정
 PACK_FILTER = ["paragon-greystone"]  # 처리할 팩 id. 비우면 effects_export.json 의 전체 팩
 TEST_LIMIT = 3          # 시험 실행용: 팩마다 앞에서 몇 개만 렌더링할지. 0 이면 전부
+# 시험 실행 때 이 이름들을 우선 렌더링 (화면에 잘 보이는 이펙트). 비우면 목록 앞에서부터
+TEST_NAMES = ["P_Greystone_SwordSpinning_01", "P_Greystone_LeapAOE_GroundSmash", "P_Greystone_Primary_Impact"]
 SECONDS = 6             # 이펙트마다 녹화할 길이(초). 루프 판정은 이 길이 기준
 FPS = 30
 WIDTH, HEIGHT = 640, 360
@@ -232,8 +234,13 @@ def main():
     log("3/4 이펙트 시퀀스 만드는 중")
     items = []
     packs = [p for p in export["packs"] if not PACK_FILTER or p["id"] in PACK_FILTER]
-    todo = [(p["id"], e) for p in packs for e in (p["effects"][:TEST_LIMIT] if TEST_LIMIT else p["effects"])
-            if e.get("system") == "Cascade"]
+    def pick(effects):
+        if not TEST_LIMIT:
+            return effects
+        named = [e for e in effects if e["name"] in TEST_NAMES]
+        rest = [e for e in effects if e["name"] not in TEST_NAMES]
+        return (named + rest)[:TEST_LIMIT]
+    todo = [(p["id"], e) for p in packs for e in pick(p["effects"]) if e.get("system") == "Cascade"]
     with unreal.ScopedSlowTask(len(todo), "이펙트 시퀀스 만드는 중") as task:
         task.make_dialog(True)
         for pack_id, effect in todo:
