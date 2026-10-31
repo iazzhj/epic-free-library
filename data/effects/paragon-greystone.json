@@ -55,9 +55,12 @@
     {
       "name": "P_Greystone_SwordSpinning_01",
       "path": "Greystone/Abilities/ClearAPath",
-      "loop": null,
+      "loop": true,
       "duration": null,
-      "system": "Cascade"
+      "system": "Cascade",
+      "video": "media/paragon-greystone/P_Greystone_SwordSpinning_01.webm",
+      "poster": "media/paragon-greystone/P_Greystone_SwordSpinning_01.jpg",
+      "visible": true
     },
     {
       "name": "P_Greystone_SwordSpinning_End",
@@ -104,9 +107,12 @@
     {
       "name": "P_Greystone_LeapAOE_GroundSmash",
       "path": "Greystone/Abilities/LeapAOE",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 1.0,
+      "system": "Cascade",
+      "video": "media/paragon-greystone/P_Greystone_LeapAOE_GroundSmash.webm",
+      "poster": "media/paragon-greystone/P_Greystone_LeapAOE_GroundSmash.jpg",
+      "visible": true
     },
     {
       "name": "P_Greystone_LeapAOE_GroundSmash1",
@@ -132,9 +138,12 @@
     {
       "name": "P_Greystone_Primary_Impact",
       "path": "Greystone/Abilities/Primary",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 0.3,
+      "system": "Cascade",
+      "video": "media/paragon-greystone/P_Greystone_Primary_Impact.webm",
+      "poster": "media/paragon-greystone/P_Greystone_Primary_Impact.jpg",
+      "visible": true
     },
     {
       "name": "P_Greystone_Primary_Sparks",

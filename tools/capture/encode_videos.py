@@ -30,8 +30,46 @@ THRESHOLD = 24       # 0~255. 이보다 밝은 픽셀을 '보이는 것'으로 �
 MIN_PIXELS = 4       # 한 프레임에서 밝은 픽셀이 이 수 이상이면 이펙트가 보이는 프레임
 TAIL_SECONDS = 0.5   # 녹화 마지막 이 구간에도 보이면 루프로 판단
 PAD_SECONDS = 0.3    # 끝나는 이펙트는 사라진 뒤 이만큼 여유를 두고 자름
+GAP_SECONDS = 0.3    # 이보다 긴 빈 구간이 있으면 '반복 재생되는 단발 이펙트'로 판단
 CRF = 40             # 영상 화질 (낮을수록 고화질·대용량, 32~45 권장)
 ANALYZE_W, ANALYZE_H = 320, 180
+
+
+def analyze(counts, fps=FPS):
+    """밝은 픽셀 수 목록으로 재생 형태를 판정.
+    반환: dict(pattern, loop, duration, start, end, poster) 또는 None(보이는 것 없음)
+      pattern: 'loop'   녹화 끝까지 계속 보임
+               'burst'  한 번 터지고 끝남
+               'repeat' 미리보기에서 주기적으로 다시 터지는 단발 이펙트 (첫 1회만 사용)"""
+    n = len(counts)
+    vis = [c >= MIN_PIXELS for c in counts]
+    gap = max(1, int(GAP_SECONDS * fps))
+    segs, s, last = [], None, None
+    for i, v in enumerate(vis):
+        if not v:
+            continue
+        if s is None:
+            s = i
+        elif i - last > gap:
+            segs.append((s, last))
+            s = i
+        last = i
+    if s is None:
+        return None
+    segs.append((s, last))
+    first = segs[0]
+    start = max(0, first[0] - 2)
+    pad = int(PAD_SECONDS * fps)
+    if len(segs) == 1 and first[1] >= n - int(TAIL_SECONDS * fps):
+        return {"pattern": "loop", "loop": True, "duration": None,
+                "start": start, "end": n, "poster": start + int((n - start) * 0.6)}
+    seg_len = first[1] - first[0] + 1
+    end = min(n, first[1] + 1 + pad)
+    if len(segs) > 1:
+        end = min(end, segs[1][0])
+    return {"pattern": "repeat" if len(segs) > 1 else "burst", "loop": False,
+            "duration": round(seg_len / fps, 1),
+            "start": start, "end": end, "poster": first[0] + max(2, int(seg_len * 0.15))}
 # ----------------------------------------------------------------
 
 NO_WINDOW = 0x08000000 if os.name == "nt" else 0
@@ -146,28 +184,23 @@ def main():
             if not files:
                 continue
             counts = bright_counts(ffmpeg, folder, files)
-            visible = [i for i, c in enumerate(counts) if c >= MIN_PIXELS]
-            if not visible:
+            a = analyze(counts)
+            if a is None:
                 pack_result[name] = {"visible": False, "loop": None, "duration": None}
                 log("{0}: 화면에 보이는 입자 없음 (광원·카메라 효과일 수 있음)".format(name))
                 continue
-            n = len(counts)
-            last = visible[-1]
-            loop = last >= n - int(TAIL_SECONDS * FPS)
-            end = n if loop else min(n, last + 1 + int(PAD_SECONDS * FPS))
-            duration = None if loop else round((last + 1) / FPS, 1)
             video = os.path.join(out_dir, name + ".webm")
             jpg = os.path.join(out_dir, name + ".jpg")
-            encode(ffmpeg, folder, files[:end], video)
-            peak = max(range(end), key=lambda i: counts[i])
-            poster(ffmpeg, os.path.join(folder, files[peak]), jpg)
+            encode(ffmpeg, folder, files[a["start"]:a["end"]], video)
+            poster(ffmpeg, os.path.join(folder, files[min(a["poster"], len(files) - 1)]), jpg)
             pack_result[name] = {
-                "visible": True, "loop": loop, "duration": duration,
+                "visible": True, "loop": a["loop"], "duration": a["duration"], "pattern": a["pattern"],
                 "video": "media/{0}/{1}.webm".format(pack_id, name),
                 "poster": "media/{0}/{1}.jpg".format(pack_id, name),
             }
+            label = {"loop": "Loop", "burst": "{0}s", "repeat": "{0}s (반복 단발)"}[a["pattern"]].format(a["duration"])
             log("{0}: {1}, 영상 {2:.1f}초, {3}KB".format(
-                name, "Loop" if loop else "{0}s".format(duration), end / FPS, os.path.getsize(video) // 1024))
+                name, label, (a["end"] - a["start"]) / FPS, os.path.getsize(video) // 1024))
 
         with open(result_path, "w", encoding="utf-8") as f:
             json.dump(result, f, ensure_ascii=False, indent=2)
