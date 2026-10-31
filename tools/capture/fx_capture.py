@@ -193,7 +193,12 @@ def queue_jobs(items):
         job.sequence = unreal.SoftObjectPath(seq_path + "." + seq_path.split("/")[-1])
         cfg = job.get_configuration()
         cfg.find_or_add_setting_by_class(unreal.MoviePipelineDeferredPassBase)
-        cfg.find_or_add_setting_by_class(unreal.MoviePipelineImageSequenceOutput_PNG)
+        png = cfg.find_or_add_setting_by_class(unreal.MoviePipelineImageSequenceOutput_PNG)
+        try:
+            # 투명도 채널을 빼야 일반 사진 뷰어에서 검정 배경이 그대로 보임
+            png.set_editor_property("write_alpha", False)
+        except Exception:
+            pass
         out = cfg.find_or_add_setting_by_class(unreal.MoviePipelineOutputSetting)
         out_dir = os.path.join(FRAMES_ROOT, pack_id, effect["name"])
         os.makedirs(out_dir, exist_ok=True)
