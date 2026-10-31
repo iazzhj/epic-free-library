@@ -27,14 +27,14 @@ import unreal
 
 # ---------------------------------------------------------------- 설정
 PACK_FILTER = ["paragon-greystone"]  # 처리할 팩 id. 비우면 effects_export.json 의 전체 팩
-TEST_LIMIT = 3          # 시험 실행용: 팩마다 앞에서 몇 개만 렌더링할지. 0 이면 전부
+TEST_LIMIT = 0          # 시험 실행용: 팩마다 앞에서 몇 개만 렌더링할지. 0 이면 전부
 # 시험 실행 때 이 이름들을 우선 렌더링 (화면에 잘 보이는 이펙트). 비우면 목록 앞에서부터
 TEST_NAMES = ["P_Greystone_SwordSpinning_01", "P_Greystone_LeapAOE_GroundSmash", "P_Greystone_Primary_Impact"]
 SECONDS = 6             # 이펙트마다 녹화할 길이(초). 루프 판정은 이 길이 기준
 FPS = 30
 WIDTH, HEIGHT = 640, 360
 
-CAMERA_LOCATION = unreal.Vector(-520.0, 0.0, 260.0)  # 이펙트(원점)를 비스듬히 내려다보는 위치
+CAMERA_LOCATION = unreal.Vector(-850.0, 0.0, 420.0)  # 이펙트(원점)를 비스듬히 내려다보는 위치
 CAMERA_TARGET = unreal.Vector(0.0, 0.0, 60.0)
 CAMERA_FOV = 60.0
 EXPOSURE_BIAS = 0.0     # 영상이 너무 어두우면 +1~+2, 너무 밝으면 -1
