@@ -45,13 +45,20 @@ SAVED = os.path.join(unreal.Paths.project_saved_dir(), "EpicFreeLibrary")
 EXPORT_FILE = os.path.join(SAVED, "effects_export.json")
 FRAMES_ROOT = os.path.join(SAVED, "frames")
 
-level_sub = unreal.get_editor_subsystem(unreal.LevelEditorSubsystem)
-actor_sub = unreal.get_editor_subsystem(unreal.EditorActorSubsystem)
-asset_tools = unreal.AssetToolsHelpers.get_asset_tools()
+level_sub = actor_sub = asset_tools = None
 
 
 def log(msg):
     unreal.log("[EFL] " + msg)
+
+
+def init():
+    global level_sub, actor_sub, asset_tools
+    level_sub = unreal.get_editor_subsystem(unreal.LevelEditorSubsystem)
+    actor_sub = unreal.get_editor_subsystem(unreal.EditorActorSubsystem)
+    asset_tools = unreal.AssetToolsHelpers.get_asset_tools()
+    if not hasattr(unreal, "MoviePipelineQueueSubsystem"):
+        raise RuntimeError("Movie Render Queue 플러그인이 꺼져 있습니다. 편집 → 플러그인에서 켜고 에디터를 재시작하세요.")
 
 
 # ---------------------------------------------------------------- 촬영 레벨
@@ -205,13 +212,19 @@ def on_finished(executor, success):
 
 def main():
     global _executor
+    log("녹화 스크립트 시작")
+    init()
+    log("1/4 준비 확인 완료 (설정 파일: {0})".format(os.path.abspath(EXPORT_FILE)))
     if not os.path.exists(EXPORT_FILE):
         unreal.log_error("[EFL] effects_export.json 이 없습니다. extract_effects.py 를 먼저 실행하세요.")
         return
     with open(EXPORT_FILE, encoding="utf-8") as f:
         export = json.load(f)
+    os.makedirs(FRAMES_ROOT, exist_ok=True)
 
+    log("2/4 촬영 레벨 준비 중")
     cam = setup_map()
+    log("3/4 이펙트 시퀀스 만드는 중")
     items = []
     packs = [p for p in export["packs"] if not PACK_FILTER or p["id"] in PACK_FILTER]
     todo = [(p["id"], e) for p in packs for e in (p["effects"][:TEST_LIMIT] if TEST_LIMIT else p["effects"])
@@ -230,11 +243,18 @@ def main():
     if not items:
         unreal.log_error("[EFL] 렌더링할 시퀀스가 없습니다.")
         return
-    log("시퀀스 {0}개 준비. 렌더링을 시작합니다 (이펙트당 {1}초, {2}fps).".format(len(items), SECONDS, FPS))
+    log("4/4 시퀀스 {0}개 준비. 렌더링을 시작합니다 (이펙트당 {1}초, {2}fps).".format(len(items), SECONDS, FPS))
     mrq = queue_jobs(items)
     _executor = mrq.render_queue_with_executor(unreal.MoviePipelinePIEExecutor)
     if _executor:
         _executor.on_executor_finished_delegate.add_callable_unique(on_finished)
+    else:
+        unreal.log_error("[EFL] 렌더링을 시작하지 못했습니다. 창 → 시네마틱스 → 무비 렌더 큐 창에서 작업이 보이는지 확인하세요.")
 
 
-main()
+try:
+    main()
+except Exception:
+    import traceback
+    for line in traceback.format_exc().splitlines():
+        unreal.log_error("[EFL] " + line)
