@@ -7,169 +7,253 @@
       "name": "P_EruptionBeam2",
       "key": "P_EruptionBeam2",
       "path": "Belica/Abilities/EruptionBeam",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 2.0,
+      "system": "Cascade",
+      "video": "media/paragon-lt-belica/P_EruptionBeam2.webm",
+      "poster": "media/paragon-lt-belica/P_EruptionBeam2.jpg",
+      "visible": true,
+      "pattern": "repeat"
     },
     {
       "name": "P_EruptionRocks",
       "key": "P_EruptionRocks",
       "path": "Belica/Abilities/EruptionBeam",
-      "loop": null,
+      "loop": true,
       "duration": null,
-      "system": "Cascade"
+      "system": "Cascade",
+      "video": "media/paragon-lt-belica/P_EruptionRocks.webm",
+      "poster": "media/paragon-lt-belica/P_EruptionRocks.jpg",
+      "visible": true,
+      "pattern": "loop"
     },
     {
       "name": "P_GroundPunch",
       "key": "P_GroundPunch",
       "path": "Belica/Abilities/EruptionBeam",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 4.2,
+      "system": "Cascade",
+      "video": "media/paragon-lt-belica/P_GroundPunch.webm",
+      "poster": "media/paragon-lt-belica/P_GroundPunch.jpg",
+      "visible": true,
+      "pattern": "repeat"
     },
     {
       "name": "P_Holo_Targeting",
       "key": "P_Holo_Targeting",
       "path": "Belica/Abilities/EruptionBeam",
-      "loop": null,
+      "loop": true,
       "duration": null,
-      "system": "Cascade"
+      "system": "Cascade",
+      "video": "media/paragon-lt-belica/P_Holo_Targeting.webm",
+      "poster": "media/paragon-lt-belica/P_Holo_Targeting.jpg",
+      "visible": true,
+      "pattern": "loop"
     },
     {
       "name": "P_QSwing",
       "key": "P_QSwing",
       "path": "Belica/Abilities/EruptionBeam",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 0.4,
+      "system": "Cascade",
+      "video": "media/paragon-lt-belica/P_QSwing.webm",
+      "poster": "media/paragon-lt-belica/P_QSwing.jpg",
+      "visible": true,
+      "pattern": "repeat"
     },
     {
       "name": "P_BombBeamIn",
       "key": "P_BombBeamIn",
       "path": "Belica/Abilities/ManaBomb",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 1.6,
+      "system": "Cascade",
+      "video": "media/paragon-lt-belica/P_BombBeamIn.webm",
+      "poster": "media/paragon-lt-belica/P_BombBeamIn.jpg",
+      "visible": true,
+      "pattern": "repeat"
     },
     {
       "name": "P_BombLightTrails",
       "key": "P_BombLightTrails",
       "path": "Belica/Abilities/ManaBomb",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 2.7,
+      "system": "Cascade",
+      "video": "media/paragon-lt-belica/P_BombLightTrails.webm",
+      "poster": "media/paragon-lt-belica/P_BombLightTrails.jpg",
+      "visible": true,
+      "pattern": "repeat"
     },
     {
       "name": "P_ManaBomb_Airglow",
       "key": "P_ManaBomb_Airglow",
       "path": "Belica/Abilities/ManaBomb",
-      "loop": null,
+      "loop": true,
       "duration": null,
-      "system": "Cascade"
+      "system": "Cascade",
+      "video": "media/paragon-lt-belica/P_ManaBomb_Airglow.webm",
+      "poster": "media/paragon-lt-belica/P_ManaBomb_Airglow.jpg",
+      "visible": true,
+      "pattern": "loop"
     },
     {
       "name": "P_ManaBombBurst",
       "key": "P_ManaBombBurst",
       "path": "Belica/Abilities/ManaBomb",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 2.5,
+      "system": "Cascade",
+      "video": "media/paragon-lt-belica/P_ManaBombBurst.webm",
+      "poster": "media/paragon-lt-belica/P_ManaBombBurst.jpg",
+      "visible": true,
+      "pattern": "repeat"
     },
     {
       "name": "P_ManaBombBurst_Smaller",
       "key": "P_ManaBombBurst_Smaller",
       "path": "Belica/Abilities/ManaBomb",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 2.3,
+      "system": "Cascade",
+      "video": "media/paragon-lt-belica/P_ManaBombBurst_Smaller.webm",
+      "poster": "media/paragon-lt-belica/P_ManaBombBurst_Smaller.jpg",
+      "visible": true,
+      "pattern": "repeat"
     },
     {
       "name": "P_ManabombCharging",
       "key": "P_ManabombCharging",
       "path": "Belica/Abilities/ManaBomb",
-      "loop": null,
+      "loop": true,
       "duration": null,
-      "system": "Cascade"
+      "system": "Cascade",
+      "video": "media/paragon-lt-belica/P_ManabombCharging.webm",
+      "poster": "media/paragon-lt-belica/P_ManabombCharging.jpg",
+      "visible": true,
+      "pattern": "loop"
     },
     {
       "name": "P_ManaBombGround",
       "key": "P_ManaBombGround",
       "path": "Belica/Abilities/ManaBomb",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 2.6,
+      "system": "Cascade",
+      "video": "media/paragon-lt-belica/P_ManaBombGround.webm",
+      "poster": "media/paragon-lt-belica/P_ManaBombGround.jpg",
+      "visible": true,
+      "pattern": "repeat"
     },
     {
       "name": "P_ManaBombLensFX",
       "key": "P_ManaBombLensFX",
       "path": "Belica/Abilities/ManaBomb",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 0.8,
+      "system": "Cascade",
+      "video": "media/paragon-lt-belica/P_ManaBombLensFX.webm",
+      "poster": "media/paragon-lt-belica/P_ManaBombLensFX.jpg",
+      "visible": true,
+      "pattern": "repeat"
     },
     {
       "name": "P_TargetingBeam",
       "key": "P_TargetingBeam",
       "path": "Belica/Abilities/ManaBomb",
-      "loop": null,
+      "loop": true,
       "duration": null,
-      "system": "Cascade"
+      "system": "Cascade",
+      "video": "media/paragon-lt-belica/P_TargetingBeam.webm",
+      "poster": "media/paragon-lt-belica/P_TargetingBeam.jpg",
+      "visible": true,
+      "pattern": "loop"
     },
     {
       "name": "P_Belica_Target_EnemyAttached",
       "key": "P_Belica_Target_EnemyAttached",
       "path": "Belica/Abilities/ManaBomb/TempFX",
-      "loop": null,
+      "loop": true,
       "duration": null,
-      "system": "Cascade"
+      "system": "Cascade",
+      "video": "media/paragon-lt-belica/P_Belica_Target_EnemyAttached.webm",
+      "poster": "media/paragon-lt-belica/P_Belica_Target_EnemyAttached.jpg",
+      "visible": true,
+      "pattern": "loop"
     },
     {
       "name": "P_BelicaHitCharacter",
       "key": "P_BelicaHitCharacter",
       "path": "Belica/Abilities/Primary",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 0.7,
+      "system": "Cascade",
+      "video": "media/paragon-lt-belica/P_BelicaHitCharacter.webm",
+      "poster": "media/paragon-lt-belica/P_BelicaHitCharacter.jpg",
+      "visible": true,
+      "pattern": "repeat"
     },
     {
       "name": "P_BelicaHitWorld",
       "key": "P_BelicaHitWorld__Primary",
       "path": "Belica/Abilities/Primary",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 1.0,
+      "system": "Cascade",
+      "video": "media/paragon-lt-belica/P_BelicaHitWorld__Primary.webm",
+      "poster": "media/paragon-lt-belica/P_BelicaHitWorld__Primary.jpg",
+      "visible": true,
+      "pattern": "repeat"
     },
     {
       "name": "P_BelicaMuzzle",
       "key": "P_BelicaMuzzle",
       "path": "Belica/Abilities/Primary",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 0.6,
+      "system": "Cascade",
+      "video": "media/paragon-lt-belica/P_BelicaMuzzle.webm",
+      "poster": "media/paragon-lt-belica/P_BelicaMuzzle.jpg",
+      "visible": true,
+      "pattern": "repeat"
     },
     {
       "name": "P_BelicaNoHit",
       "key": "P_BelicaNoHit",
       "path": "Belica/Abilities/Primary",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 0.1,
+      "system": "Cascade",
+      "video": "media/paragon-lt-belica/P_BelicaNoHit.webm",
+      "poster": "media/paragon-lt-belica/P_BelicaNoHit.jpg",
+      "visible": true,
+      "pattern": "repeat"
     },
     {
       "name": "P_BelicaPrimary",
       "key": "P_BelicaPrimary",
       "path": "Belica/Abilities/Primary",
-      "loop": null,
+      "loop": true,
       "duration": null,
-      "system": "Cascade"
+      "system": "Cascade",
+      "video": "media/paragon-lt-belica/P_BelicaPrimary.webm",
+      "poster": "media/paragon-lt-belica/P_BelicaPrimary.jpg",
+      "visible": true,
+      "pattern": "loop"
     },
     {
       "name": "P_Belica_TeslaConduit_Trail",
       "key": "P_Belica_TeslaConduit_Trail",
       "path": "Belica/Abilities/TeslaConduit",
-      "loop": null,
+      "loop": true,
       "duration": null,
-      "system": "Cascade"
+      "system": "Cascade",
+      "video": "media/paragon-lt-belica/P_Belica_TeslaConduit_Trail.webm",
+      "poster": "media/paragon-lt-belica/P_Belica_TeslaConduit_Trail.jpg",
+      "visible": true,
+      "pattern": "loop"
     },
     {
       "name": "P_ConduitBeam",
@@ -177,103 +261,152 @@
       "path": "Belica/Abilities/TeslaConduit",
       "loop": null,
       "duration": null,
-      "system": "Cascade"
+      "system": "Cascade",
+      "visible": false
     },
     {
       "name": "P_DroneBeamIn",
       "key": "P_DroneBeamIn",
       "path": "Belica/Abilities/TeslaConduit",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 0.7,
+      "system": "Cascade",
+      "video": "media/paragon-lt-belica/P_DroneBeamIn.webm",
+      "poster": "media/paragon-lt-belica/P_DroneBeamIn.jpg",
+      "visible": true,
+      "pattern": "repeat"
     },
     {
       "name": "P_DroneBeamOut",
       "key": "P_DroneBeamOut",
       "path": "Belica/Abilities/TeslaConduit",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 1.2,
+      "system": "Cascade",
+      "video": "media/paragon-lt-belica/P_DroneBeamOut.webm",
+      "poster": "media/paragon-lt-belica/P_DroneBeamOut.jpg",
+      "visible": true,
+      "pattern": "repeat"
     },
     {
       "name": "P_DroneExplode",
       "key": "P_DroneExplode",
       "path": "Belica/Abilities/TeslaConduit",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 2.9,
+      "system": "Cascade",
+      "video": "media/paragon-lt-belica/P_DroneExplode.webm",
+      "poster": "media/paragon-lt-belica/P_DroneExplode.jpg",
+      "visible": true,
+      "pattern": "repeat"
     },
     {
       "name": "P_DroneScanning",
       "key": "P_DroneScanning",
       "path": "Belica/Abilities/TeslaConduit",
-      "loop": null,
+      "loop": true,
       "duration": null,
-      "system": "Cascade"
+      "system": "Cascade",
+      "video": "media/paragon-lt-belica/P_DroneScanning.webm",
+      "poster": "media/paragon-lt-belica/P_DroneScanning.jpg",
+      "visible": true,
+      "pattern": "loop"
     },
     {
       "name": "P_DroneTargetOrb",
       "key": "P_DroneTargetOrb",
       "path": "Belica/Abilities/TeslaConduit",
-      "loop": null,
+      "loop": true,
       "duration": null,
-      "system": "Cascade"
+      "system": "Cascade",
+      "video": "media/paragon-lt-belica/P_DroneTargetOrb.webm",
+      "poster": "media/paragon-lt-belica/P_DroneTargetOrb.jpg",
+      "visible": true,
+      "pattern": "loop"
     },
     {
       "name": "P_HomingBeacon",
       "key": "P_HomingBeacon",
       "path": "Belica/Abilities/TeslaConduit",
-      "loop": null,
+      "loop": true,
       "duration": null,
-      "system": "Cascade"
+      "system": "Cascade",
+      "video": "media/paragon-lt-belica/P_HomingBeacon.webm",
+      "poster": "media/paragon-lt-belica/P_HomingBeacon.jpg",
+      "visible": true,
+      "pattern": "loop"
     },
     {
       "name": "P_OrbTrail",
       "key": "P_OrbTrail",
       "path": "Belica/Abilities/TeslaConduit",
-      "loop": null,
+      "loop": true,
       "duration": null,
-      "system": "Cascade"
+      "system": "Cascade",
+      "video": "media/paragon-lt-belica/P_OrbTrail.webm",
+      "poster": "media/paragon-lt-belica/P_OrbTrail.jpg",
+      "visible": true,
+      "pattern": "loop"
     },
     {
       "name": "P_Tesla_Impact",
       "key": "P_Tesla_Impact",
       "path": "Belica/Abilities/TeslaConduit",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 0.7,
+      "system": "Cascade",
+      "video": "media/paragon-lt-belica/P_Tesla_Impact.webm",
+      "poster": "media/paragon-lt-belica/P_Tesla_Impact.jpg",
+      "visible": true,
+      "pattern": "repeat"
     },
     {
       "name": "P_Tesla_Muzzle",
       "key": "P_Tesla_Muzzle",
       "path": "Belica/Abilities/TeslaConduit",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 0.7,
+      "system": "Cascade",
+      "video": "media/paragon-lt-belica/P_Tesla_Muzzle.webm",
+      "poster": "media/paragon-lt-belica/P_Tesla_Muzzle.jpg",
+      "visible": true,
+      "pattern": "repeat"
     },
     {
       "name": "P_Wing_Burst",
       "key": "P_Wing_Burst",
       "path": "Belica/Abilities/TeslaConduit",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 0.7,
+      "system": "Cascade",
+      "video": "media/paragon-lt-belica/P_Wing_Burst.webm",
+      "poster": "media/paragon-lt-belica/P_Wing_Burst.jpg",
+      "visible": true,
+      "pattern": "repeat"
     },
     {
       "name": "P_Wing_Energy",
       "key": "P_Wing_Energy",
       "path": "Belica/Abilities/TeslaConduit",
-      "loop": null,
+      "loop": true,
       "duration": null,
-      "system": "Cascade"
+      "system": "Cascade",
+      "video": "media/paragon-lt-belica/P_Wing_Energy.webm",
+      "poster": "media/paragon-lt-belica/P_Wing_Energy.jpg",
+      "visible": true,
+      "pattern": "loop"
     },
     {
       "name": "P_BarrelFlameSide2",
       "key": "P_BarrelFlameSide2",
       "path": "Belica/Abilities/Ultimate",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 4.4,
+      "system": "Cascade",
+      "video": "media/paragon-lt-belica/P_BarrelFlameSide2.webm",
+      "poster": "media/paragon-lt-belica/P_BarrelFlameSide2.jpg",
+      "visible": true,
+      "pattern": "burst"
     },
     {
       "name": "P_BarrelSmoke",
@@ -281,47 +414,68 @@
       "path": "Belica/Abilities/Ultimate",
       "loop": null,
       "duration": null,
-      "system": "Cascade"
+      "system": "Cascade",
+      "visible": false
     },
     {
       "name": "P_BelicaHitWorld",
       "key": "P_BelicaHitWorld__Ultimate",
       "path": "Belica/Abilities/Ultimate",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 1.8,
+      "system": "Cascade",
+      "video": "media/paragon-lt-belica/P_BelicaHitWorld__Ultimate.webm",
+      "poster": "media/paragon-lt-belica/P_BelicaHitWorld__Ultimate.jpg",
+      "visible": true,
+      "pattern": "repeat"
     },
     {
       "name": "P_BelicaUltHit",
       "key": "P_BelicaUltHit",
       "path": "Belica/Abilities/Ultimate",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 1.7,
+      "system": "Cascade",
+      "video": "media/paragon-lt-belica/P_BelicaUltHit.webm",
+      "poster": "media/paragon-lt-belica/P_BelicaUltHit.jpg",
+      "visible": true,
+      "pattern": "repeat"
     },
     {
       "name": "P_BelicaUltHit2",
       "key": "P_BelicaUltHit2",
       "path": "Belica/Abilities/Ultimate",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 1.7,
+      "system": "Cascade",
+      "video": "media/paragon-lt-belica/P_BelicaUltHit2.webm",
+      "poster": "media/paragon-lt-belica/P_BelicaUltHit2.jpg",
+      "visible": true,
+      "pattern": "repeat"
     },
     {
       "name": "P_EyeTargeting",
       "key": "P_EyeTargeting",
       "path": "Belica/Abilities/Ultimate",
-      "loop": null,
+      "loop": true,
       "duration": null,
-      "system": "Cascade"
+      "system": "Cascade",
+      "video": "media/paragon-lt-belica/P_EyeTargeting.webm",
+      "poster": "media/paragon-lt-belica/P_EyeTargeting.jpg",
+      "visible": true,
+      "pattern": "loop"
     },
     {
       "name": "P_EyeTargeting_V2",
       "key": "P_EyeTargeting_V2",
       "path": "Belica/Abilities/Ultimate",
-      "loop": null,
+      "loop": true,
       "duration": null,
-      "system": "Cascade"
+      "system": "Cascade",
+      "video": "media/paragon-lt-belica/P_EyeTargeting_V2.webm",
+      "poster": "media/paragon-lt-belica/P_EyeTargeting_V2.jpg",
+      "visible": true,
+      "pattern": "loop"
     },
     {
       "name": "P_Ult_Beam",
@@ -329,111 +483,164 @@
       "path": "Belica/Abilities/Ultimate",
       "loop": null,
       "duration": null,
-      "system": "Cascade"
+      "system": "Cascade",
+      "visible": false
     },
     {
       "name": "P_UltTracer",
       "key": "P_UltTracer",
       "path": "Belica/Abilities/Ultimate",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 0.2,
+      "system": "Cascade",
+      "video": "media/paragon-lt-belica/P_UltTracer.webm",
+      "poster": "media/paragon-lt-belica/P_UltTracer.jpg",
+      "visible": true,
+      "pattern": "repeat"
     },
     {
       "name": "PS_TEMP_Explosion",
       "key": "PS_TEMP_Explosion",
       "path": "Belica/Abilities/Ultimate",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 1.2,
+      "system": "Cascade",
+      "video": "media/paragon-lt-belica/PS_TEMP_Explosion.webm",
+      "poster": "media/paragon-lt-belica/PS_TEMP_Explosion.jpg",
+      "visible": true,
+      "pattern": "repeat"
     },
     {
       "name": "P_BelicaHitCharacter_Heavy",
       "key": "P_BelicaHitCharacter_Heavy",
       "path": "Belica/Skins/HeavyArmor",
-      "loop": null,
+      "loop": true,
       "duration": null,
-      "system": "Cascade"
+      "system": "Cascade",
+      "video": "media/paragon-lt-belica/P_BelicaHitCharacter_Heavy.webm",
+      "poster": "media/paragon-lt-belica/P_BelicaHitCharacter_Heavy.jpg",
+      "visible": true,
+      "pattern": "loop"
     },
     {
       "name": "P_BelicaHitWorld_Heavy",
       "key": "P_BelicaHitWorld_Heavy",
       "path": "Belica/Skins/HeavyArmor",
-      "loop": null,
+      "loop": true,
       "duration": null,
-      "system": "Cascade"
+      "system": "Cascade",
+      "video": "media/paragon-lt-belica/P_BelicaHitWorld_Heavy.webm",
+      "poster": "media/paragon-lt-belica/P_BelicaHitWorld_Heavy.jpg",
+      "visible": true,
+      "pattern": "loop"
     },
     {
       "name": "P_EruptionBeam_Heavy",
       "key": "P_EruptionBeam_Heavy",
       "path": "Belica/Skins/HeavyArmor/Abilities/EruptionBeamHeavy",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 0.7,
+      "system": "Cascade",
+      "video": "media/paragon-lt-belica/P_EruptionBeam_Heavy.webm",
+      "poster": "media/paragon-lt-belica/P_EruptionBeam_Heavy.jpg",
+      "visible": true,
+      "pattern": "repeat"
     },
     {
       "name": "P_GroundPunch_Heavy",
       "key": "P_GroundPunch_Heavy",
       "path": "Belica/Skins/HeavyArmor/Abilities/EruptionBeamHeavy",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 4.2,
+      "system": "Cascade",
+      "video": "media/paragon-lt-belica/P_GroundPunch_Heavy.webm",
+      "poster": "media/paragon-lt-belica/P_GroundPunch_Heavy.jpg",
+      "visible": true,
+      "pattern": "repeat"
     },
     {
       "name": "P_Holo_Targeting_Heavy",
       "key": "P_Holo_Targeting_Heavy",
       "path": "Belica/Skins/HeavyArmor/Abilities/EruptionBeamHeavy",
-      "loop": null,
+      "loop": true,
       "duration": null,
-      "system": "Cascade"
+      "system": "Cascade",
+      "video": "media/paragon-lt-belica/P_Holo_Targeting_Heavy.webm",
+      "poster": "media/paragon-lt-belica/P_Holo_Targeting_Heavy.jpg",
+      "visible": true,
+      "pattern": "loop"
     },
     {
       "name": "P_BombBeamIn_Heavy",
       "key": "P_BombBeamIn_Heavy",
       "path": "Belica/Skins/HeavyArmor/Abilities/ManaBomb",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 1.5,
+      "system": "Cascade",
+      "video": "media/paragon-lt-belica/P_BombBeamIn_Heavy.webm",
+      "poster": "media/paragon-lt-belica/P_BombBeamIn_Heavy.jpg",
+      "visible": true,
+      "pattern": "repeat"
     },
     {
       "name": "P_ManabombCharging_Heavy",
       "key": "P_ManabombCharging_Heavy",
       "path": "Belica/Skins/HeavyArmor/Abilities/ManaBomb",
-      "loop": null,
+      "loop": true,
       "duration": null,
-      "system": "Cascade"
+      "system": "Cascade",
+      "video": "media/paragon-lt-belica/P_ManabombCharging_Heavy.webm",
+      "poster": "media/paragon-lt-belica/P_ManabombCharging_Heavy.jpg",
+      "visible": true,
+      "pattern": "loop"
     },
     {
       "name": "P_ArmTargeting_Heavy",
       "key": "P_ArmTargeting_Heavy",
       "path": "Belica/Skins/HeavyArmor/Abilities/Ultimate",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 0.4,
+      "system": "Cascade",
+      "video": "media/paragon-lt-belica/P_ArmTargeting_Heavy.webm",
+      "poster": "media/paragon-lt-belica/P_ArmTargeting_Heavy.jpg",
+      "visible": true,
+      "pattern": "repeat"
     },
     {
       "name": "P_BarrelFlameSide2_Heavy",
       "key": "P_BarrelFlameSide2_Heavy",
       "path": "Belica/Skins/HeavyArmor/Abilities/Ultimate",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 2.1,
+      "system": "Cascade",
+      "video": "media/paragon-lt-belica/P_BarrelFlameSide2_Heavy.webm",
+      "poster": "media/paragon-lt-belica/P_BarrelFlameSide2_Heavy.jpg",
+      "visible": true,
+      "pattern": "burst"
     },
     {
       "name": "P_BelicaUltHit_Heavy",
       "key": "P_BelicaUltHit_Heavy",
       "path": "Belica/Skins/HeavyArmor/Abilities/Ultimate",
-      "loop": null,
-      "duration": null,
-      "system": "Cascade"
+      "loop": false,
+      "duration": 1.8,
+      "system": "Cascade",
+      "video": "media/paragon-lt-belica/P_BelicaUltHit_Heavy.webm",
+      "poster": "media/paragon-lt-belica/P_BelicaUltHit_Heavy.jpg",
+      "visible": true,
+      "pattern": "repeat"
     },
     {
       "name": "P_EyeTargeting_Heavy",
       "key": "P_EyeTargeting_Heavy",
       "path": "Belica/Skins/HeavyArmor/Abilities/Ultimate",
-      "loop": null,
+      "loop": true,
       "duration": null,
-      "system": "Cascade"
+      "system": "Cascade",
+      "video": "media/paragon-lt-belica/P_EyeTargeting_Heavy.webm",
+      "poster": "media/paragon-lt-belica/P_EyeTargeting_Heavy.jpg",
+      "visible": true,
+      "pattern": "loop"
     },
     {
       "name": "P_Ult_Beam_Heavy",
@@ -441,7 +648,8 @@
       "path": "Belica/Skins/HeavyArmor/Abilities/Ultimate",
       "loop": null,
       "duration": null,
-      "system": "Cascade"
+      "system": "Cascade",
+      "visible": false
     }
   ]
 }

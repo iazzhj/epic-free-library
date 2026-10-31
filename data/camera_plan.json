@@ -490,5 +490,517 @@
       "fill": 0.594,
       "clipped": false
     }
+  },
+  "paragon-lt-belica": {
+    "PS_TEMP_Explosion": {
+      "target": [
+        -66.3,
+        17.6,
+        -96.5
+      ],
+      "distance": 1569.7,
+      "fill": 0.622,
+      "clipped": false
+    },
+    "P_ArmTargeting_Heavy": {
+      "target": [
+        -25.0,
+        -91.4,
+        0.8
+      ],
+      "distance": 461.1,
+      "fill": 0.534,
+      "clipped": false
+    },
+    "P_BarrelFlameSide2": {
+      "target": [
+        -8.6,
+        18.2,
+        39.7
+      ],
+      "distance": 493.5,
+      "fill": 0.544,
+      "clipped": false
+    },
+    "P_BarrelFlameSide2_Heavy": {
+      "target": [
+        -73.2,
+        52.2,
+        -112.9
+      ],
+      "distance": 1254.4,
+      "fill": 0.7,
+      "clipped": false
+    },
+    "P_BelicaHitCharacter": {
+      "target": [
+        -38.0,
+        -1.8,
+        -29.5
+      ],
+      "distance": 460.1,
+      "fill": 0.65,
+      "clipped": false
+    },
+    "P_BelicaHitCharacter_Heavy": {
+      "target": [
+        -21.2,
+        1.2,
+        10.0
+      ],
+      "distance": 150.0,
+      "fill": 0.528,
+      "clipped": false
+    },
+    "P_BelicaHitWorld_Heavy": {
+      "target": [
+        -15.8,
+        -1.4,
+        22.6
+      ],
+      "distance": 357.5,
+      "fill": 0.561,
+      "clipped": false
+    },
+    "P_BelicaHitWorld__Primary": {
+      "target": [
+        -24.3,
+        -0.1,
+        2.7
+      ],
+      "distance": 242.6,
+      "fill": 0.533,
+      "clipped": false
+    },
+    "P_BelicaHitWorld__Ultimate": {
+      "target": [
+        -15.8,
+        -0.4,
+        22.8
+      ],
+      "distance": 279.5,
+      "fill": 0.5,
+      "clipped": false
+    },
+    "P_BelicaMuzzle": {
+      "target": [
+        -21.3,
+        2.8,
+        9.5
+      ],
+      "distance": 158.3,
+      "fill": 0.5,
+      "clipped": false
+    },
+    "P_BelicaNoHit": {
+      "target": [
+        -35.1,
+        -4.1,
+        -22.9
+      ],
+      "distance": 436.5,
+      "fill": 0.539,
+      "clipped": false
+    },
+    "P_BelicaPrimary": {
+      "target": [
+        -78.6,
+        6.1,
+        -125.8
+      ],
+      "distance": 1013.6,
+      "fill": 0.45,
+      "clipped": false
+    },
+    "P_BelicaUltHit": {
+      "target": [
+        -24.0,
+        1.5,
+        3.6
+      ],
+      "distance": 453.8,
+      "fill": 0.589,
+      "clipped": false
+    },
+    "P_BelicaUltHit2": {
+      "target": [
+        -19.7,
+        -3.5,
+        13.5
+      ],
+      "distance": 254.2,
+      "fill": 0.522,
+      "clipped": false
+    },
+    "P_BelicaUltHit_Heavy": {
+      "target": [
+        -22.4,
+        -10.5,
+        7.0
+      ],
+      "distance": 407.2,
+      "fill": 0.544,
+      "clipped": false
+    },
+    "P_Belica_Target_EnemyAttached": {
+      "target": [
+        -6.3,
+        4.4,
+        45.0
+      ],
+      "distance": 377.2,
+      "fill": 0.494,
+      "clipped": false
+    },
+    "P_Belica_TeslaConduit_Trail": {
+      "target": [
+        -84.5,
+        -1.5,
+        -139.5
+      ],
+      "distance": 1077.5,
+      "fill": 0.667,
+      "clipped": false
+    },
+    "P_BombBeamIn": {
+      "target": [
+        58.5,
+        11.3,
+        198.0
+      ],
+      "distance": 2108.6,
+      "fill": 0.672,
+      "clipped": false
+    },
+    "P_BombBeamIn_Heavy": {
+      "target": [
+        58.6,
+        -24.7,
+        198.4
+      ],
+      "distance": 2299.5,
+      "fill": 0.706,
+      "clipped": false
+    },
+    "P_BombLightTrails": {
+      "target": [
+        -11.0,
+        2.2,
+        34.1
+      ],
+      "distance": 185.0,
+      "fill": 0.539,
+      "clipped": false
+    },
+    "P_DroneBeamIn": {
+      "target": [
+        0.9,
+        0.0,
+        62.3
+      ],
+      "distance": 2301.7,
+      "fill": 0.572,
+      "clipped": false
+    },
+    "P_DroneBeamOut": {
+      "target": [
+        99.8,
+        3.8,
+        295.6
+      ],
+      "distance": 2221.3,
+      "fill": 0.706,
+      "clipped": false
+    },
+    "P_DroneExplode": {
+      "target": [
+        -53.7,
+        17.7,
+        -66.7
+      ],
+      "distance": 1598.9,
+      "fill": 0.678,
+      "clipped": false
+    },
+    "P_DroneScanning": {
+      "target": [
+        -9.1,
+        1.4,
+        38.7
+      ],
+      "distance": 383.3,
+      "fill": 0.417,
+      "clipped": false
+    },
+    "P_DroneTargetOrb": {
+      "target": [
+        -21.6,
+        -0.1,
+        9.0
+      ],
+      "distance": 150.0,
+      "fill": 0.244,
+      "clipped": false
+    },
+    "P_EruptionBeam2": {
+      "target": [
+        -27.3,
+        -17.4,
+        -4.6
+      ],
+      "distance": 625.8,
+      "fill": 0.606,
+      "clipped": false
+    },
+    "P_EruptionBeam_Heavy": {
+      "target": [
+        -24.6,
+        -1.7,
+        1.9
+      ],
+      "distance": 885.9,
+      "fill": 0.553,
+      "clipped": false
+    },
+    "P_EruptionRocks": {
+      "target": [
+        21.1,
+        -623.1,
+        110.0
+      ],
+      "distance": 1550.3,
+      "fill": 0.572,
+      "clipped": false
+    },
+    "P_EyeTargeting": {
+      "target": [
+        -20.9,
+        -2.9,
+        10.7
+      ],
+      "distance": 150.0,
+      "fill": 0.05,
+      "clipped": false
+    },
+    "P_EyeTargeting_Heavy": {
+      "target": [
+        -18.7,
+        5.5,
+        15.7
+      ],
+      "distance": 181.8,
+      "fill": 0.517,
+      "clipped": false
+    },
+    "P_EyeTargeting_V2": {
+      "target": [
+        -19.1,
+        5.3,
+        15.0
+      ],
+      "distance": 150.0,
+      "fill": 0.094,
+      "clipped": false
+    },
+    "P_GroundPunch": {
+      "target": [
+        -34.2,
+        0.1,
+        -20.8
+      ],
+      "distance": 1357.4,
+      "fill": 0.611,
+      "clipped": false
+    },
+    "P_GroundPunch_Heavy": {
+      "target": [
+        -32.8,
+        -1.9,
+        -17.5
+      ],
+      "distance": 1333.6,
+      "fill": 0.589,
+      "clipped": false
+    },
+    "P_Holo_Targeting": {
+      "target": [
+        -21.9,
+        -0.1,
+        8.4
+      ],
+      "distance": 173.0,
+      "fill": 0.544,
+      "clipped": false
+    },
+    "P_Holo_Targeting_Heavy": {
+      "target": [
+        -29.3,
+        -1.9,
+        -9.2
+      ],
+      "distance": 159.3,
+      "fill": 0.544,
+      "clipped": false
+    },
+    "P_HomingBeacon": {
+      "target": [
+        -9.7,
+        1.6,
+        37.1
+      ],
+      "distance": 859.9,
+      "fill": 0.533,
+      "clipped": false
+    },
+    "P_ManaBombBurst": {
+      "target": [
+        -17.8,
+        4.3,
+        18.1
+      ],
+      "distance": 3000.0,
+      "fill": 0.694,
+      "clipped": false
+    },
+    "P_ManaBombBurst_Smaller": {
+      "target": [
+        -18.8,
+        -12.5,
+        15.6
+      ],
+      "distance": 2623.7,
+      "fill": 0.6,
+      "clipped": false
+    },
+    "P_ManaBombGround": {
+      "target": [
+        -10.0,
+        10.3,
+        36.3
+      ],
+      "distance": 1019.7,
+      "fill": 0.569,
+      "clipped": false
+    },
+    "P_ManaBombLensFX": {
+      "target": [
+        -19.0,
+        -7.4,
+        15.2
+      ],
+      "distance": 300.8,
+      "fill": 0.556,
+      "clipped": false
+    },
+    "P_ManaBomb_Airglow": {
+      "target": [
+        -22.0,
+        0.0,
+        8.0
+      ],
+      "distance": 150.0,
+      "fill": 0.072,
+      "clipped": false
+    },
+    "P_ManabombCharging": {
+      "target": [
+        -22.6,
+        1.2,
+        6.4
+      ],
+      "distance": 625.7,
+      "fill": 0.55,
+      "clipped": false
+    },
+    "P_ManabombCharging_Heavy": {
+      "target": [
+        -12.4,
+        59.2,
+        30.9
+      ],
+      "distance": 760.9,
+      "fill": 0.539,
+      "clipped": false
+    },
+    "P_OrbTrail": {
+      "target": [
+        -21.6,
+        0.0,
+        9.0
+      ],
+      "distance": 150.0,
+      "fill": 0.233,
+      "clipped": false
+    },
+    "P_QSwing": {
+      "target": [
+        -7.2,
+        28.2,
+        42.9
+      ],
+      "distance": 455.2,
+      "fill": 0.517,
+      "clipped": false
+    },
+    "P_TargetingBeam": {
+      "target": [
+        -19.8,
+        0.0,
+        13.1
+      ],
+      "distance": 150.0,
+      "fill": 0.067,
+      "clipped": false
+    },
+    "P_Tesla_Impact": {
+      "target": [
+        -16.3,
+        1.5,
+        21.3
+      ],
+      "distance": 643.5,
+      "fill": 0.55,
+      "clipped": false
+    },
+    "P_Tesla_Muzzle": {
+      "target": [
+        -215.4,
+        61.8,
+        -448.7
+      ],
+      "distance": 1261.9,
+      "fill": 0.628,
+      "clipped": false
+    },
+    "P_UltTracer": {
+      "target": [
+        215.7,
+        0.0,
+        569.2
+      ],
+      "distance": 1655.5,
+      "fill": 0.483,
+      "clipped": false
+    },
+    "P_Wing_Burst": {
+      "target": [
+        -38.4,
+        0.4,
+        -30.7
+      ],
+      "distance": 265.5,
+      "fill": 0.5,
+      "clipped": false
+    },
+    "P_Wing_Energy": {
+      "target": [
+        -23.4,
+        0.0,
+        4.8
+      ],
+      "distance": 232.6,
+      "fill": 0.55,
+      "clipped": false
+    }
   }
 }

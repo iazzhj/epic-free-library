@@ -149,7 +149,7 @@ def bright_counts(ffmpeg, folder, files):
 
 # ---------------------------------------------------------------- 카메라 계획
 TARGET_FILL = 0.55   # 이펙트가 화면 가로·세로 중 큰 쪽의 이 비율을 차지하도록 맞춤
-MIN_DIST, MAX_DIST = 150.0, 3000.0
+MIN_DIST, MAX_DIST = 60.0, 3000.0
 
 
 def measure(heat, w=ANALYZE_W, h=ANALYZE_H):
