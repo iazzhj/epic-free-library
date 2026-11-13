@@ -5,22 +5,31 @@ Epic 무료 에셋 라이브러리 — 이펙트 미리보기 녹화 (2단계: �
   fx_capture.py 가 렌더링한 PNG 프레임을 읽어
   1. 프레임마다 밝은 픽셀 수를 세어 이펙트가 언제 끝나는지 측정합니다.
      - 녹화 끝까지 보이면 Loop: Yes, 중간에 사라지면 Loop: No + 길이(초)
-  2. 웹용 webm 영상과 대표 이미지(jpg)를 만듭니다.
-  3. 결과를 묶어 upload_<팩 id>.zip 으로 저장합니다. 이 zip 을 Claude 에게 보내면 사이트에 반영됩니다.
+  2. 화면 상태를 자동으로 점검해 표시를 붙입니다 (flags).
+     - empty      빈 화면: 보이는 입자가 없음 (광원·카메라 효과, 궤적 이펙트 등)
+     - faint      작게 보임: 가장 클 때도 화면의 아주 작은 부분만 차지
+     - clipped    가장자리 잘림: 이펙트가 화면 밖으로 나감
+     - fullscreen 화면 전체: 화면 대부분을 덮는 섬광·후처리형 이펙트
+  3. 웹용 webm 영상과 대표 이미지(jpg)를 만듭니다.
+  4. 결과를 묶어 upload_<팩 id>.zip 으로 저장합니다. 이 zip 을 Claude 에게 보내면 사이트에 반영됩니다.
+
+  fx_capture.py 의 일괄 모드는 이 파일을 불러와 자동으로 실행하므로, 그때는 따로 실행하지 않아도 됩니다.
 
 필요한 것
   ffmpeg (Windows: 명령 프롬프트에서  winget install Gyan.FFmpeg  실행 후 에디터 재시작)
 
-실행
+실행 (따로 실행할 때)
   언리얼 에디터: 도구 → Python 스크립트 실행 → 이 파일 선택
   또는 일반 파이썬: python encode_videos.py "<프로젝트>/Saved/EpicFreeLibrary"
 """
 
+import builtins
 import json
 import os
 import shutil
 import subprocess
 import sys
+import threading
 import zipfile
 
 # ---------------------------------------------------------------- 설정
@@ -33,6 +42,14 @@ PAD_SECONDS = 0.3    # 끝나는 이펙트는 사라진 뒤 이만큼 여유를 
 GAP_SECONDS = 0.3    # 이보다 긴 빈 구간이 있으면 '반복 재생되는 단발 이펙트'로 판단
 CRF = 40             # 영상 화질 (낮을수록 고화질·대용량, 32~45 권장)
 ANALYZE_W, ANALYZE_H = 320, 180
+
+# 화면 점검 기준 (분석 화면 320x180 = 57,600 픽셀 기준 비율)
+FAINT_RATIO = 0.002       # 가장 클 때 밝은 픽셀이 화면의 0.2% 미만이면 '작게 보임'
+FULLSCREEN_RATIO = 0.6    # 한 프레임이라도 화면의 60% 이상이 밝으면 '화면 전체'
+# 다음 회차에 다시 찍을 기준 (fx_capture.py 일괄 모드가 사용)
+RESHOOT_FILL = (0.30, 0.85)   # 이펙트가 화면에서 차지하는 비율이 이 범위를 벗어나면 다시 촬영
+
+FLAG_LABELS = {"empty": "빈 화면", "faint": "작게 보임", "clipped": "가장자리 잘림", "fullscreen": "화면 전체"}
 
 
 def analyze(counts, fps=FPS):
@@ -70,6 +87,22 @@ def analyze(counts, fps=FPS):
     return {"pattern": "repeat" if len(segs) > 1 else "burst", "loop": False,
             "duration": max(0.1, round(seg_len / fps, 1)),  # 한두 프레임짜리 섬광도 0초로 표시되지 않게
             "start": start, "end": end, "poster": first[0] + max(2, int(seg_len * 0.15))}
+
+
+def quality_flags(counts, a, m, w=ANALYZE_W, h=ANALYZE_H):
+    """화면 점검 표시 목록과 가장 클 때의 화면 점유율(0~1)."""
+    area = float(w * h)
+    peak = (max(counts) / area) if counts else 0.0
+    if a is None:
+        return ["empty"], round(peak, 4)
+    flags = []
+    if peak < FAINT_RATIO:
+        flags.append("faint")
+    if peak >= FULLSCREEN_RATIO:
+        flags.append("fullscreen")
+    elif m and m.get("clipped"):
+        flags.append("clipped")   # 화면 전체형은 잘림이 당연하므로 따로 표시하지 않음
+    return flags, round(peak, 4)
 # ----------------------------------------------------------------
 
 NO_WINDOW = 0x08000000 if os.name == "nt" else 0
@@ -124,7 +157,6 @@ def bright_counts(ffmpeg, folder, files):
     cmd = [ffmpeg, "-hide_banner", "-loglevel", "error", "-f", "image2pipe", "-c:v", "png", "-i", "-",
            "-vf", "scale={0}:{1}:flags=area,format=gray".format(ANALYZE_W, ANALYZE_H),
            "-f", "rawvideo", "-"]
-    import threading
     proc = subprocess.Popen(cmd, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
                             creationflags=NO_WINDOW)
     t = threading.Thread(target=feed, args=(proc, folder, files))
@@ -211,6 +243,16 @@ def plan_camera(m, cam):
             "fill": round(fill, 3), "clipped": m["clipped"]}
 
 
+def needs_reshoot(entry, plan_entry):
+    """다음 회차에 카메라를 옮겨 다시 찍을 이펙트인지. 보이지 않거나 화면 전체형은 다시 찍어도 같으므로 제외."""
+    if not entry.get("visible") or "fullscreen" in entry.get("flags", []) or not plan_entry:
+        return False
+    lo, hi = RESHOOT_FILL
+    if plan_entry.get("distance") in (MIN_DIST, MAX_DIST):
+        return False  # 더 다가가거나 물러날 수 없음
+    return plan_entry.get("clipped") or not (lo <= plan_entry.get("fill", 0.55) <= hi)
+
+
 DEFAULT_CAMERA = {"target": [0.0, 0.0, 60.0], "distance": 923.1, "fov": 60.0, "width": 640, "height": 360,
                   "base_location": [-850.0, 0.0, 420.0], "base_target": [0.0, 0.0, 60.0]}
 
@@ -221,10 +263,13 @@ def encode(ffmpeg, folder, files, out_path):
            "-pix_fmt", "yuv420p", "-row-mt", "1", "-deadline", "good", "-cpu-used", "4", "-an", out_path]
     proc = subprocess.Popen(cmd, stdin=subprocess.PIPE, stdout=subprocess.DEVNULL, stderr=subprocess.PIPE,
                             creationflags=NO_WINDOW)
+    err = []
+    t = threading.Thread(target=lambda: err.append(proc.stderr.read()))
+    t.start()
     feed(proc, folder, files)
-    err = proc.stderr.read().decode("utf-8", "replace")
+    t.join()
     if proc.wait() != 0:
-        raise RuntimeError(err.strip()[-300:])
+        raise RuntimeError((err[0] if err else b"").decode("utf-8", "replace").strip()[-300:])
 
 
 def poster(ffmpeg, png_path, out_path):
@@ -232,24 +277,124 @@ def poster(ffmpeg, png_path, out_path):
                    check=True, creationflags=NO_WINDOW)
 
 
+def _load(path):
+    if os.path.exists(path):
+        with open(path, encoding="utf-8") as f:
+            return json.load(f)
+    return {}
+
+
+def _save(path, data):
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(data, f, ensure_ascii=False, indent=2)
+
+
+def process_effect(ffmpeg, pack_id, name, folder, out_dir):
+    """이펙트 하나: 측정 → 표시(flags) → 영상·대표 이미지. 반환: (결과, 카메라 계획 또는 None)."""
+    files = frame_files(folder)
+    counts = bright_counts(ffmpeg, folder, files)
+    a = analyze(counts)
+    m = measure(bright_counts.heat) if a else None
+    flags, peak = quality_flags(counts, a, m)
+    for ext in (".webm", ".jpg"):  # 이전 회차 결과 제거
+        old = os.path.join(out_dir, name + ext)
+        if os.path.exists(old):
+            os.remove(old)
+    if a is None:
+        log("{0}: 빈 화면 (보이는 입자 없음 — 광원·카메라 효과일 수 있음)".format(name))
+        return {"visible": False, "loop": None, "duration": None, "flags": flags, "peak": peak}, None
+    video = os.path.join(out_dir, name + ".webm")
+    jpg = os.path.join(out_dir, name + ".jpg")
+    encode(ffmpeg, folder, files[a["start"]:a["end"]], video)
+    poster(ffmpeg, os.path.join(folder, files[min(a["poster"], len(files) - 1)]), jpg)
+    entry = {
+        "visible": True, "loop": a["loop"], "duration": a["duration"], "pattern": a["pattern"],
+        "video": "media/{0}/{1}.webm".format(pack_id, name),
+        "poster": "media/{0}/{1}.jpg".format(pack_id, name),
+        "flags": flags, "peak": peak,
+    }
+    plan = None
+    if m:
+        cam = dict(DEFAULT_CAMERA, **_load(os.path.join(folder, "camera.json")))
+        plan = plan_camera(m, cam)
+    label = {"loop": "Loop", "burst": "{0}s", "repeat": "{0}s (반복 단발)"}[a["pattern"]].format(a["duration"])
+    note = ", 화면 점유 {0:.0%}{1}".format(plan["fill"], " (잘림)" if plan["clipped"] else "") if plan else ""
+    marks = " [{0}]".format(", ".join(FLAG_LABELS[f] for f in flags)) if flags else ""
+    log("{0}: {1}, 영상 {2:.1f}초, {3}KB{4}{5}".format(
+        name, label, (a["end"] - a["start"]) / FPS, os.path.getsize(video) // 1024, note, marks))
+    return entry, plan
+
+
+def process_pack(base, pack_id, names=None, ffmpeg=None, round_no=1):
+    """팩 하나의 프레임을 변환. names 를 주면 그 이펙트만 다시 처리하고 나머지 결과는 그대로 둠.
+    결과는 capture_result.json·camera_plan.json 에 누적 저장. 반환: {이름: 결과}
+    round_no: 몇 번째 촬영인지 (일괄 모드의 카메라 자동 조절 회차)"""
+    ffmpeg = ffmpeg or find_ffmpeg()
+    pack_dir = os.path.join(base, "frames", pack_id)
+    out_dir = os.path.join(base, "media", pack_id)
+    os.makedirs(out_dir, exist_ok=True)
+    result_path = os.path.join(base, "capture_result.json")
+    plan_path = os.path.join(base, "camera_plan.json")
+    result, plans = _load(result_path), _load(plan_path)
+    pack_result = result.setdefault(pack_id, {})
+    done = {}
+    for name in sorted(os.listdir(pack_dir)):
+        if names is not None and name not in names:
+            continue
+        folder = os.path.join(pack_dir, name)
+        if not os.path.isdir(folder) or not frame_files(folder):
+            continue
+        entry, plan = process_effect(ffmpeg, pack_id, name, folder, out_dir)
+        entry["round"] = round_no
+        pack_result[name] = entry
+        if plan:
+            plans.setdefault(pack_id, {})[name] = plan
+        done[name] = entry
+    _save(result_path, result)
+    _save(plan_path, plans)
+    return done
+
+
+def build_zip(base, pack_id, export_pack=None):
+    """upload_<팩 id>.zip: 이 팩의 결과·카메라 계획·영상(+ 이펙트 목록). 반환: zip 경로"""
+    result, plans = _load(os.path.join(base, "capture_result.json")), _load(os.path.join(base, "camera_plan.json"))
+    out_dir = os.path.join(base, "media", pack_id)
+    pack_result = result.get(pack_id, {})
+    linked = {os.path.basename(e[k]) for e in pack_result.values() for k in ("video", "poster") if e.get(k)}
+    zip_path = os.path.join(base, "upload_{0}.zip".format(pack_id))
+    with zipfile.ZipFile(zip_path, "w", zipfile.ZIP_STORED) as z:
+        z.writestr("capture_result.json", json.dumps({pack_id: pack_result}, ensure_ascii=False, indent=2))
+        z.writestr("camera_plan.json", json.dumps({pack_id: plans.get(pack_id, {})}, ensure_ascii=False, indent=2))
+        if export_pack:
+            z.writestr("effects_export.json", json.dumps(export_pack, ensure_ascii=False, indent=2))
+        for fname in sorted(os.listdir(out_dir)) if os.path.isdir(out_dir) else []:
+            if fname in linked:  # 결과에 연결된 파일만 (지난 회차 찌꺼기 제외)
+                z.write(os.path.join(out_dir, fname), "media/{0}/{1}".format(pack_id, fname))
+    return zip_path
+
+
+def summarize(pack_result):
+    """팩 결과 요약: 전체·영상·표시별 개수."""
+    s = {"total": len(pack_result), "video": 0}
+    for f in FLAG_LABELS:
+        s[f] = 0
+    for e in pack_result.values():
+        if e.get("video"):
+            s["video"] += 1
+        for f in e.get("flags", []):
+            s[f] = s.get(f, 0) + 1
+    return s
+
+
 def main():
+    """따로 실행할 때: frames 아래 모든 팩 중 새로 녹화된 팩만 변환하고 zip 생성."""
     base = saved_dir()
     frames_root = os.path.join(base, "frames")
-    media_root = os.path.join(base, "media")
     if not os.path.isdir(frames_root):
         raise RuntimeError("프레임 폴더가 없습니다: " + frames_root)
     ffmpeg = find_ffmpeg()
-    result_path = os.path.join(base, "capture_result.json")
-    result = {}
-    if os.path.exists(result_path):
-        with open(result_path, encoding="utf-8") as f:
-            result = json.load(f)
-    plan_path = os.path.join(base, "camera_plan.json")
-    plan = {}
-    if os.path.exists(plan_path):
-        with open(plan_path, encoding="utf-8") as f:
-            plan = json.load(f)
-
+    export = _load(os.path.join(base, "effects_export.json"))
+    packs = {p["id"]: p for p in export.get("packs", [])}
     for pack_id in sorted(os.listdir(frames_root)):
         pack_dir = os.path.join(frames_root, pack_id)
         if not os.path.isdir(pack_dir):
@@ -262,69 +407,20 @@ def main():
             if newest and newest < os.path.getmtime(zip_path):
                 log("{0}: 새로 녹화된 프레임이 없어 건너뜀".format(pack_id))
                 continue
-        out_dir = os.path.join(media_root, pack_id)
-        if os.path.isdir(out_dir):
-            shutil.rmtree(out_dir)  # 이전 회차 영상이 섞이지 않게 비우고 다시 만듦
-        os.makedirs(out_dir, exist_ok=True)
-        pack_result = {}
-        result[pack_id] = pack_result
-        for name in sorted(os.listdir(pack_dir)):
-            folder = os.path.join(pack_dir, name)
-            files = frame_files(folder) if os.path.isdir(folder) else []
-            if not files:
-                continue
-            counts = bright_counts(ffmpeg, folder, files)
-            a = analyze(counts)
-            if a is None:
-                pack_result[name] = {"visible": False, "loop": None, "duration": None}
-                log("{0}: 화면에 보이는 입자 없음 (광원·카메라 효과일 수 있음)".format(name))
-                continue
-            video = os.path.join(out_dir, name + ".webm")
-            jpg = os.path.join(out_dir, name + ".jpg")
-            encode(ffmpeg, folder, files[a["start"]:a["end"]], video)
-            poster(ffmpeg, os.path.join(folder, files[min(a["poster"], len(files) - 1)]), jpg)
-            pack_result[name] = {
-                "visible": True, "loop": a["loop"], "duration": a["duration"], "pattern": a["pattern"],
-                "video": "media/{0}/{1}.webm".format(pack_id, name),
-                "poster": "media/{0}/{1}.jpg".format(pack_id, name),
-            }
-            label = {"loop": "Loop", "burst": "{0}s", "repeat": "{0}s (반복 단발)"}[a["pattern"]].format(a["duration"])
-            m = measure(bright_counts.heat)
-            size_note = ""
-            if m:
-                cam_file = os.path.join(folder, "camera.json")
-                cam = DEFAULT_CAMERA
-                if os.path.exists(cam_file):
-                    with open(cam_file, encoding="utf-8") as f:
-                        cam = dict(DEFAULT_CAMERA, **json.load(f))
-                p = plan_camera(m, cam)
-                plan.setdefault(pack_id, {})[name] = p
-                size_note = ", 화면 점유 {0:.0%}{1} → 다음 거리 {2:.0f}".format(
-                    p["fill"], " (잘림)" if p["clipped"] else "", p["distance"])
-            log("{0}: {1}, 영상 {2:.1f}초, {3}KB{4}".format(
-                name, label, (a["end"] - a["start"]) / FPS, os.path.getsize(video) // 1024, size_note))
-
-        with open(result_path, "w", encoding="utf-8") as f:
-            json.dump(result, f, ensure_ascii=False, indent=2)
-        with open(plan_path, "w", encoding="utf-8") as f:
-            json.dump(plan, f, ensure_ascii=False, indent=2)
-
-        zip_path = os.path.join(base, "upload_{0}.zip".format(pack_id))
-        with zipfile.ZipFile(zip_path, "w", zipfile.ZIP_STORED) as z:
-            # zip 에는 이 팩의 결과만 담음
-            z.writestr("capture_result.json", json.dumps({pack_id: pack_result}, ensure_ascii=False, indent=2))
-            z.writestr("camera_plan.json", json.dumps({pack_id: plan.get(pack_id, {})}, ensure_ascii=False, indent=2))
-            for fname in sorted(os.listdir(out_dir)):
-                z.write(os.path.join(out_dir, fname), "media/{0}/{1}".format(pack_id, fname))
+        process_pack(base, pack_id, ffmpeg=ffmpeg)
+        exp = packs.get(pack_id)
+        zip_path = build_zip(base, pack_id, {"engine": export.get("engine"), "packs": [exp]} if exp else None)
         log("완료: {0} ({1}MB) — 이 파일을 Claude 에게 보내 주세요.".format(
             os.path.abspath(zip_path), round(os.path.getsize(zip_path) / 1048576, 1)))
 
 
-try:
-    main()
-except Exception as e:
+# fx_capture.py 일괄 모드가 이 파일을 모듈로 불러올 때는 자동 실행하지 않음
+if not getattr(builtins, "EFL_NO_AUTORUN", False):
     try:
-        import unreal
-        unreal.log_error("[EFL] " + str(e))
-    except ImportError:
-        raise
+        main()
+    except Exception as e:
+        try:
+            import unreal
+            unreal.log_error("[EFL] " + str(e))
+        except ImportError:
+            raise

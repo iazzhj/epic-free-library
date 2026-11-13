@@ -42,7 +42,7 @@ def main():
         effects = load("data", "effects", pid + ".json")["effects"]
         if info["count"] != len(effects):
             errors.append(f"{pid}: 색인 개수 {info['count']} ≠ 상세 {len(effects)}")
-        videos = invisible = pending = 0
+        videos = invisible = pending = niagara = 0
         for e in effects:
             for k in ("video", "poster"):
                 if e.get(k):
@@ -53,9 +53,17 @@ def main():
                 videos += 1
             elif e.get("visible") is False:
                 invisible += 1
+            elif e.get("system") == "Niagara":
+                niagara += 1
             else:
                 pending += 1
-        notes.append(f"{pid}: 이펙트 {len(effects)} · 영상 {videos} · 정지 촬영 불가 {invisible} · 영상 대기 {pending}")
+        flags = {}
+        for e in effects:
+            for fl in e.get("flags", []):
+                flags[fl] = flags.get(fl, 0) + 1
+        label = {"faint": "작게", "clipped": "잘림", "fullscreen": "화면전체", "empty": "빈화면"}
+        marks = " · 표시 " + ", ".join(f"{label.get(k, k)} {v}" for k, v in sorted(flags.items())) if flags else ""
+        notes.append(f"{pid}: 이펙트 {len(effects)} · 영상 {videos} · 정지 촬영 불가 {invisible} · 영상 대기 {pending}{' · Niagara ' + str(niagara) if niagara else ''}{marks}")
 
     media_root = os.path.join(ROOT, "media")
     orphans = []

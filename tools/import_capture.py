@@ -3,23 +3,32 @@
 
 사용법: python tools/import_capture.py <upload_xxx.zip>
 
+- zip 에 effects_export.json 이 있으면(일괄 모드) 먼저 이펙트 목록을 등록합니다 (import_export.py 와 같음).
 - zip 안의 media/ 파일을 저장소 media/ 로 복사합니다.
-- capture_result.json 의 loop·duration·video·poster·visible 값을 data/effects/<id>.json 에 병합합니다.
+- capture_result.json 의 loop·duration·video·poster·visible·flags 값을 data/effects/<id>.json 에 병합합니다.
 """
 import json
 import os
 import sys
+import tempfile
 import zipfile
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from ids import resolve  # noqa: E402
+import import_export  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-FIELDS = ("loop", "duration", "video", "poster", "visible", "pattern")
+FIELDS = ("loop", "duration", "video", "poster", "visible", "pattern", "flags")
 
 
 def main(zip_path):
     with zipfile.ZipFile(zip_path) as z:
+        if "effects_export.json" in z.namelist():
+            with tempfile.TemporaryDirectory() as tmp:
+                path = os.path.join(tmp, "effects_export.json")
+                with open(path, "wb") as f:
+                    f.write(z.read("effects_export.json"))
+                import_export.main(path)
         result = json.loads(z.read("capture_result.json").decode("utf-8"))
         if "camera_plan.json" in z.namelist():
             plan_path = os.path.join(ROOT, "data", "camera_plan.json")
@@ -62,6 +71,8 @@ def main(zip_path):
             for k in FIELDS:
                 if k in r:
                     e[k] = r[k]
+            if not e.get("flags"):
+                e.pop("flags", None)  # 문제 없는 이펙트는 빈 목록을 남기지 않음
             if e.get("duration") == 0:
                 e["duration"] = 0.1  # 예전 변환본의 0초 표기 보정
         with open(path, "w", encoding="utf-8") as f:

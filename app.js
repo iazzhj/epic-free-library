@@ -15,7 +15,7 @@
 
   let DATA = null, FXINDEX = { assets:{} };
   const fxCache = new Map();
-  const state = { id:null, q:"", scope:"all", cat:store.get("cat","all"), speed:store.get("speed",1) };
+  const state = { id:null, q:"", scope:"all", cat:store.get("cat","all"), speed:store.get("speed",1), hideEmpty:store.get("hideEmpty",false) };
   let visible = [];
 
   const fabUrl = f => f.startsWith("http") ? f : "https://www.fab.com/listings/" + f;
@@ -107,18 +107,29 @@
     document.title = shortName(a) + " · Epic 무료 에셋 라이브러리";
   }
 
+  // 녹화 영상 자동 점검 표시 (encode_videos.py 가 판정). 빈 화면은 영상 자리에 안내문이 나오므로 배지 생략
+  const FLAG_INFO = {
+    faint:["작게 보임","가장 클 때도 화면의 아주 작은 부분만 차지합니다"],
+    clipped:["가장자리 잘림","이펙트 일부가 화면 밖으로 나갑니다"],
+    fullscreen:["화면 전체","화면 대부분을 덮는 섬광·후처리형 이펙트입니다"],
+  };
+  const flagBadges = f => (f.flags || []).filter(k => FLAG_INFO[k])
+    .map(k => `<span class="flag" title="${esc(FLAG_INFO[k][1])}">${esc(FLAG_INFO[k][0])}</span>`).join("");
+  const isEmpty = f => f.visible === false || (f.flags || []).includes("empty");
+  const shown = list => state.hideEmpty ? list.filter(f => !isEmpty(f)) : list;
+
   function fxCard(f, i, ownerId){
     const src = mediaUrl(f.video);
     const owner = ownerId ? byId(ownerId) : null;
     return `<article class="fx">
       <div class="fx-media">
         ${src ? `<video muted loop playsinline preload="none" data-src="${esc(src)}"${f.poster ? ` poster="${esc(mediaUrl(f.poster))}"` : ""}></video>`
-              : `<span class="no-video">${f.visible === false ? (/trail/i.test(f.name) ? "궤적 이펙트 · 움직이는 대상이 필요해 정지 촬영 불가" : "정지 촬영으로는 보이지 않는 이펙트") : "영상 준비 중"}</span>`}
+              : `<span class="no-video">${f.visible === false ? (/trail/i.test(f.name) ? "궤적 이펙트 · 움직이는 대상이 필요해 정지 촬영 불가" : "정지 촬영으로는 보이지 않는 이펙트") : f.system === "Niagara" ? "Niagara 이펙트 · 미리보기 준비 중" : "영상 준비 중"}</span>`}
         <span class="fx-num">${i + 1}</span>
       </div>
       <div class="fx-body">
         <h3 class="fx-name">${esc(f.name)}</h3>
-        ${f.loop != null ? `<span class="loop ${f.loop ? "y" : "n"}">Loop: ${f.loop ? "Yes" : "No"}</span>` : ""}
+        <div class="fx-tags">${f.loop != null ? `<span class="loop ${f.loop ? "y" : "n"}">Loop: ${f.loop ? "Yes" : "No"}</span>` : ""}${flagBadges(f)}</div>
         <div class="fx-path">${esc(f.path || "")}${f.duration ? ` · ${esc(f.duration)}s` : ""}</div>
         ${f.desc ? `<p class="fx-desc">${esc(f.desc)}</p>` : ""}
         ${owner ? `<button class="fx-owner" data-id="${esc(owner.id)}">${esc(shortName(owner))} →</button>` : ""}
@@ -137,7 +148,7 @@
       const owners = visible.filter(x => fxNameMatches(x.id, q));
       if (owners.length) {
         $("#effectsTitle").textContent = "EFFECTS · 검색 결과";
-        const sets = await Promise.all(owners.map(async o => (await loadEffects(o.id)).filter(f => fxMatches(f, q)).map(f => [f, o.id])));
+        const sets = await Promise.all(owners.map(async o => shown((await loadEffects(o.id)).filter(f => fxMatches(f, q))).map(f => [f, o.id])));
         if (token !== renderToken) return;
         const all = sets.flat();
         $("#effectsMeta").textContent = `${owners.length}개 항목 · ${all.length}개`;
@@ -158,7 +169,11 @@
     let list = await loadEffects(a.id);
     if (token !== renderToken) return;
     if (q && state.scope === "cur") list = list.filter(f => fxMatches(f, q));
-    $("#effectsMeta").textContent = q && state.scope === "cur" ? `${list.length} / ${info.count}개` : `${info.count}개`;
+    const before = list.length;
+    list = shown(list);
+    const hidden = before - list.length;
+    $("#effectsMeta").textContent = (q && state.scope === "cur" || hidden ? `${list.length} / ${info.count}개` : `${info.count}개`)
+      + (hidden ? ` · 빈 화면 ${hidden}개 숨김` : "");
     grid.innerHTML = list.length ? groupedCards(list)
       : `<div class="empty"><strong>검색어와 맞는 이펙트가 없습니다.</strong>검색어를 지우거나 범위를 '전체'로 바꿔 보세요.</div>`;
     wireVideos();
@@ -290,6 +305,8 @@
     $("#openSide").addEventListener("click", openSide);
     $("#closeSide").addEventListener("click", closeSide);
     $("#speedRange").addEventListener("input", e => setSpeed(+e.target.value));
+    $("#hideEmpty").checked = !!state.hideEmpty;
+    $("#hideEmpty").addEventListener("change", e => { state.hideEmpty = e.target.checked; store.set("hideEmpty", state.hideEmpty); refresh(); });
     document.addEventListener("click", e => {
       const it = e.target.closest("[data-id]"); if (it) { select(it.dataset.id); return; }
       const sb = e.target.closest("[data-s]"); if (sb) { setSpeed(+sb.dataset.s); return; }

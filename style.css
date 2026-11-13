@@ -94,6 +94,11 @@ button,input,select{font:inherit;color:inherit}
 .loop.y{background:color-mix(in srgb,var(--yes) 22%,transparent);color:var(--yes)}
 .loop.n{background:color-mix(in srgb,var(--no) 22%,transparent);color:var(--no)}
 .fx-path{font:11px var(--mono);color:var(--muted);overflow-wrap:anywhere}
+.fx-tags{display:flex;flex-wrap:wrap;gap:6px}
+.flag{font:600 11px var(--mono);border-radius:4px;padding:1px 6px;background:color-mix(in srgb,var(--gold) 20%,transparent);color:var(--gold);cursor:help}
+.section-tools{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;justify-content:flex-end}
+.check{display:inline-flex;align-items:center;gap:6px;font:12px var(--mono);color:var(--muted);cursor:pointer;user-select:none}
+.check input{accent-color:var(--accent);margin:0}
 .fx-desc{margin:0;font-size:13px;color:var(--ink)}
 .fx-owner{font:11px var(--mono);color:var(--accent);background:none;border:0;padding:0;cursor:pointer;text-align:left}
 

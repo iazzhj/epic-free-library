@@ -156,4 +156,7 @@ def main():
     unreal.log("[EFL] 저장 위치: " + os.path.abspath(out_file))
 
 
-main()
+# fx_capture.py 일괄 모드가 이 파일을 모듈로 불러올 때는 자동 실행하지 않음
+import builtins  # noqa: E402
+if not getattr(builtins, "EFL_NO_AUTORUN", False):
+    main()

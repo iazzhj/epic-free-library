@@ -16,7 +16,7 @@ from ids import resolve  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 FX_DIR = os.path.join(ROOT, "data", "effects")
-KEEP = ("desc", "video", "poster", "loop", "duration", "visible", "pattern")
+KEEP = ("desc", "video", "poster", "loop", "duration", "visible", "pattern", "flags")
 
 
 def clean_path(obj_path, folder):
