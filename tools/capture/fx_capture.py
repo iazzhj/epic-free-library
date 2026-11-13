@@ -41,6 +41,7 @@ SKIP_PACKS = ["paragon-greystone", "paragon-lt-belica", "paragon-feng-mao"]  # �
 MAX_ROUNDS = 3          # 카메라 자동 조절 촬영 최대 횟수 (1이면 재촬영 없음)
 AUTO_EXTRACT = True     # 시작할 때 이펙트 목록을 새로 추출
 RESUME = True           # 이전 실행에서 끝난 이펙트는 건너뜀
+DELETE_FRAMES = True    # 영상으로 변환이 끝난 이펙트의 PNG 프레임을 지워 디스크 공간 확보 (영상·결과는 남음)
 SCRIPT_DIR = ""         # 세 스크립트가 있는 폴더. 비우면 이 파일이 있는 폴더 (찾지 못하면 여기에 경로 입력)
 TEST_LIMIT = 0          # 시험 실행용: 팩마다 앞에서 몇 개만 렌더링할지. 0 이면 전부
 # 시험 실행 때 이 이름들을 우선 렌더링 (화면에 잘 보이는 이펙트). 비우면 목록 앞에서부터
@@ -486,6 +487,11 @@ def after_round():
             nxt.append((pack_id, effect))
         else:
             entry["final"] = True
+            if DELETE_FRAMES:
+                folder = os.path.join(FRAMES_ROOT, pack_id, effect["key"])
+                for fn in os.listdir(folder) if os.path.isdir(folder) else []:
+                    if fn.lower().endswith(".png"):
+                        os.remove(os.path.join(folder, fn))  # camera.json 은 남김 (다음 촬영 계획에 필요)
     with open(result_path, "w", encoding="utf-8") as f:
         json.dump(result, f, ensure_ascii=False, indent=2)
     if failed:
