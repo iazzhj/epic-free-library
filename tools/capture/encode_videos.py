@@ -381,7 +381,10 @@ def summarize(pack_result):
     for e in pack_result.values():
         if e.get("video"):
             s["video"] += 1
-        for f in e.get("flags", []):
+        flags = e.get("flags")
+        if flags is None and e.get("visible") is False:
+            flags = ["empty"]  # 점검 표시가 생기기 전 녹화분도 빈 화면으로 셈
+        for f in flags or []:
             s[f] = s.get(f, 0) + 1
     return s
 
